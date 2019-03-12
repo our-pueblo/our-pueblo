@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Coming Soon!</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: header('Home')"></head>
 <body>
-    <h1>Our Pueblo is under construction, check back soon!</h1>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<h1 id="heading">Pour one out for my Home Page!</h1>
+
 </body>
 </html>
