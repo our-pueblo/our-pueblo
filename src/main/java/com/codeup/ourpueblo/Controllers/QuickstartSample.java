@@ -1,3 +1,4 @@
+package com.codeup.ourpueblo.Controllers;
 // [START translate_quickstart]
 // Imports the Google Cloud client library
 import com.google.cloud.translate.Translate;
@@ -11,7 +12,7 @@ public class QuickstartSample {
         Translate translate = TranslateOptions.getDefaultInstance().getService();
 
         // The text to translate
-        String text = "This is the greatest day of my life. Your mother looks like she works out.";
+        String text = "<div> <h1> This is the greatest day of my life. Your mother looks like she works out. </h1></div>";
 
         // Translates some text into Russian
         Translation translation =
