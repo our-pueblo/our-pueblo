@@ -2,9 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="fragments/header :: header('Home')"></head>
 <body>
-<div th:replace="fragments/navbar :: navbar"></div>
+    <div th:replace="fragments/navbar :: navbar"></div>
 
-<h1 id="heading">Pour one out for my Home Page!</h1>
+    <h1 id="heading">Our Pueblo Home Page</h1>
+
+    <h1>Links for testing</h1>
+    <h3>Home Controller</h3>
+    <a href="/about">About</a>
+    <br/>
+    <h3>User Controller</h3>
+    <a href="/register">Register</a>
+    <br/>
+    <a href="/user/profile">User Profile</a>
+    <br/>
+    <a href="/user/profile/edit">Edit Profile</a>
+    <br/>
 
 </body>
 </html>
