@@ -3,8 +3,12 @@ package com.codeup.ourpueblo.Models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "request_status")
 public class Request_Status {
 
     @Id
