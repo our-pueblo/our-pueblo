@@ -16,10 +16,10 @@ public class Request {
     @Column(unique = true, length = 1000)
     private String web_page;
 
-    @Column
+    @Column(columnDefinition = "text")
     private String untranslated_text;
 
-    @Column
+    @Column(columnDefinition = "text")
     private String description;
 
     @OneToOne
@@ -28,7 +28,7 @@ public class Request {
     @OneToOne
     private User user_id;
 
-    @Column
+    @Column(columnDefinition = "text")
     private String google_translate;
 
     @OneToOne

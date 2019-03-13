@@ -15,16 +15,16 @@ public class Translation {
     @OneToOne
     private User user;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     private String translation;
 
-    @Column
+    @Column(columnDefinition = "text")
     private String description_of_changes;
 
     @Column (nullable = false)
     private boolean flag_problm;
 
-    @Column
+    @Column(columnDefinition = "text")
     private String reason;
 
     @OneToOne
