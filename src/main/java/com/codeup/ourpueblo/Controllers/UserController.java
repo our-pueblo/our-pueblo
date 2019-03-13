@@ -19,4 +19,14 @@ public class UserController {
     public String editProfile(){
         return "edit_profile";
     }
+
+    @GetMapping("/user/dashboard")
+    public String dashboard(){
+        return "dashboard";
+    }
+
+    @GetMapping("/admin/userlist")
+    public String userlist(){
+        return "userlist";
+    }
 }
