@@ -8,7 +8,6 @@ import javax.persistence.Id;
 public class Request_Status {
 
     @Id
-    @JsonBackReference
     private long id;
 
     @Column

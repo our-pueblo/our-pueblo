@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Table(name="users")
 public class User {
 
-    @JsonBackReference
     @Id
     @GeneratedValue
     private long id;
@@ -18,7 +17,6 @@ public class User {
     private String username;
 
     @Column(nullable = false)
-    @JsonIgnore
     private String password;
 
     @Column(unique = true, nullable = false, length = 100)

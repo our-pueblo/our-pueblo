@@ -9,7 +9,6 @@ import javax.persistence.*;
 public class Department {
     @Id
     @GeneratedValue
-    @JsonBackReference
     private long id;
 
     @Column(unique = true, length = 100)
