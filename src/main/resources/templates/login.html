@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Login')"></head>
-<body>
-    <div th:replace="fragments/navbar :: navbar"></div>
 
-    <h1>Here is where admins and users will login</h1>
-    
+<head th:replace="fragments/header :: header('Login')">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <main>
+        <div id="container">
+            <form action="">
+            <h1 id="company_name">Our Pueblo</h1>
+                <img src="../static/img/bird-log-nobg.png"><br>
+                <input type="text" placeholder="Username"><br>
+                <input type="password" placeholder="Password"><br>
+                <input type="submit" value="Login"><br>
+                <span><a href="#">Forgot Password?</a></span>
+            </form>
+        </div>
+    </main>
 </body>
 </html>
