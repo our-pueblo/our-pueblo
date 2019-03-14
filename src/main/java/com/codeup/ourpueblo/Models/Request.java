@@ -23,10 +23,10 @@ public class Request {
     private String description;
 
     @OneToOne
-    private Department department_id;
+    private Department department;
 
     @OneToOne
-    private User user_id;
+    private User user;
 
     @Column(columnDefinition = "text")
     private String google_translate;
@@ -44,16 +44,32 @@ public class Request {
 
     public Request(){}
 
-    public Request (String web_page, String untranslated_text, String description, Department department_id, User user_id, String google_translate, Request_Status status, Date time){
+    public Request (String web_page, String untranslated_text, String description, Department department_id, User user_id, String google_translate, Request_Status status_id, Date time){
         this.web_page = web_page;
         this.untranslated_text = untranslated_text;
         this.description = description;
-        this.department_id = department_id;
-        this.user_id = user_id;
+        this.department = department_id;
+        this.user = user_id;
         this.google_translate = google_translate;
-        this.status = status;
+        this.status = status_id;
         this.time = time;
     }
+
+    public Request(String web_page, String description, Department department_id, Request_Status status) {
+        this.web_page = web_page;
+        this.description = description;
+        this.department = department_id;
+        this.status = status;
+    }
+
+    public Request(String web_page, String description, Department department_id, User user_id, Request_Status status) {
+        this.web_page = web_page;
+        this.description = description;
+        this.department = department_id;
+        this.user = user_id;
+        this.status = status;
+    }
+
 
 
     public long getId() {
@@ -89,19 +105,19 @@ public class Request {
     }
 
     public Department getDepartment_id() {
-        return department_id;
+        return department;
     }
 
     public void setDepartment_id(Department department_id) {
-        this.department_id = department_id;
+        this.department = department_id;
     }
 
     public User getUser_id() {
-        return user_id;
+        return user;
     }
 
     public void setUser_id(User user_id) {
-        this.user_id = user_id;
+        this.user = user_id;
     }
 
     public String getGoogle_translate() {
