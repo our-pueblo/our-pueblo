@@ -1,5 +1,8 @@
 package com.codeup.ourpueblo.Models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,13 +13,13 @@ public class User {
     @GeneratedValue
     private long id;
 
-    @Column
+    @Column(unique = true, nullable = false, length = 45)
     private String username;
 
-    @Column
+    @Column(nullable = false)
     private String password;
 
-    @Column
+    @Column(unique = true, nullable = false, length = 100)
     private String email;
 
     @Column
@@ -28,10 +31,10 @@ public class User {
     @Column
     private boolean receive_emails;
 
-    @Column
+    @Column(length = 12)
     private String phone_number;
 
-    @Column
+    @Column(length = 100)
     private String security_question;
 
 
