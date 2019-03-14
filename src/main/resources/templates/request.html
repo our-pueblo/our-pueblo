@@ -4,7 +4,21 @@
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
 
-    <h1>Here is where admins can post web pages to be translated</h1>
-    
+    <h1>TESTING REQUEST FUNCTIONALITY</h1>
+    <div class="form-group">
+        <form id="requestForm" th:action="@{/request}" th:method="post" th:object="${request}"></form>
+        <label for="webPage">Page URL</label>
+        <br/>
+        <input type="text" id="webPage" name="webPage" th:field="*{web_page}"/>
+        <br/>
+        <label for="description">Description of Page to be Translated</label>
+        <br/>
+        <input type="text" id="description" name="description" th:field="*{description}"/>
+        <br/>
+
+
+    </div>
+    <div th:replace="fragments/scripts :: scripts"></div>
+
 </body>
 </html>
