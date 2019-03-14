@@ -1,5 +1,5 @@
 function showText(){
-    const paragraph = "\"COMMUNITY POLICING OVERVIEW\n" +
+    const text = "\"COMMUNITY POLICING OVERVIEW\n" +
         "\n" +
         "The San Antonio Police Department has embraced Community Policing for many decades, through its Community Services and School Services Programs, Crime Prevention Programs (Neighborhood Watch, National Night Out), Store Fronts, Decentralized Patrol Substations, and the Downtown Foot and Bicycle Patrol Unit. In 1995 the Department created a special Community Policing Unit, the San Antonio Fear Free Environment Unit (SAFFE) which links closely with community involvement programs, such as Cellular on Patrol (initiated in 1993) and the Citizen Police Academy (initiated 1994).\n" +
         "\n" +
@@ -24,5 +24,7 @@ function showText(){
         "\n" +
         "P.O.P. is being used by police and residents to produce long-term solutions to persistent crime problems in communities throughout San Antonio, resulting in reductions not only in crime rates, but also in the fear of crime.\""
 
-
+    document.getElementById('placeholder').innerText=text;
 }
+        showText();
+        console.log("This stuff seems to work.");

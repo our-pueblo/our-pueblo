@@ -1,12 +1,8 @@
 package com.codeup.ourpueblo.Controllers;
-// [START translate_quickstart]
-// Imports the Google Cloud client library
 import com.google.cloud.translate.Translate;
 import com.google.cloud.translate.Translate.TranslateOption;
 import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 
 
 public class QuickstartSample {
@@ -14,7 +10,7 @@ public class QuickstartSample {
     public static void main(String... args) throws Exception {
         // Instantiates a client
         Translate translate = TranslateOptions.getDefaultInstance().getService();
-
+        // Enter sample text to be translated
         String text = "\"COMMUNITY POLICING OVERVIEW\n" +
                 "\n" +
                 "The San Antonio Police Department has embraced Community Policing for many decades, through its Community Services and School Services Programs, Crime Prevention Programs (Neighborhood Watch, National Night Out), Store Fronts, Decentralized Patrol Substations, and the Downtown Foot and Bicycle Patrol Unit. In 1995 the Department created a special Community Policing Unit, the San Antonio Fear Free Environment Unit (SAFFE) which links closely with community involvement programs, such as Cellular on Patrol (initiated in 1993) and the Citizen Police Academy (initiated 1994).\n" +
@@ -47,7 +43,7 @@ public class QuickstartSample {
                         TranslateOption.sourceLanguage("en"),
                         TranslateOption.targetLanguage("es"));
 
-
+        // Print for comparison
         System.out.printf("Text: %s%n", text);
         System.out.printf("Translation: %s%n", translation.getTranslatedText());
     }
