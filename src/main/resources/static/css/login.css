@@ -5,7 +5,7 @@
 }
 main{
     height: 100vh;
-    background: url('../static/img/sa-skyline-2.jpg') fixed no-repeat;
+    background: url('../img/sa-skyline-2.jpg') fixed no-repeat;
     background-size: cover;
 }
 

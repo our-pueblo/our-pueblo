@@ -1,3 +1,4 @@
+package com.codeup.ourpueblo.Controllers;
 // [START translate_quickstart]
 // Imports the Google Cloud client library
 import com.google.cloud.translate.Translate;
