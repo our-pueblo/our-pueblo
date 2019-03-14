@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Home')"></head>
-<body>
-<div th:replace="fragments/navbar :: navbar"></div>
+    <head th:replace="fragments/header :: header('Home')">
+    </head>
+        <body>
+        <div th:replace="fragments/navbar :: navbar"></div>
 
-<h1 id="heading">Home Page!</h1>
+        <h1 id="heading">Home Page!</h1>
 
-</body>
+            <p id="stored_text">
+
+            </p>
+
+            <script type="text/javascript" src="/js/displayText.js"></script>
+
+        </body>
 </html>
