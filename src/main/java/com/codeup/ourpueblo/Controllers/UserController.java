@@ -25,6 +25,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String addUser (@ModelAttribute User user){
+        user.setActive(true);
         User newUser = userDao.save(user);
         return "redirect:/login";
     }
@@ -50,7 +51,10 @@ public class UserController {
     }
 
     @GetMapping("/admin/userlist")
-    public String userlist(){
+    public String userlist(Model model){
+        Iterable<User> userList = userDao.findAll();
+        model.addAttribute("userList", userList);
         return "userlist";
+
     }
 }

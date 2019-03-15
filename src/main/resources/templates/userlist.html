@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('User List')"></head>
+<head th:replace="fragments/header :: header('User List', '')"></head>
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
-    <h1>Here is where admins will be able to view a list of users as well as be able to deactivate users</h1>
+    <h1>User list</h1>
+    <div th:each="user : ${userList}">
+        <h3>Username: <span th:text="${user.username}"></span></h3>
+        <p>ID: <span th:text="${user.id}"></span></p>
+        <p>Email: <span th:text="${user.email}"></span></p>
+        <p th:if="${user.active}">Account Status: Active</p>
+        <p th:if="${!user.active}">Account Status: Deactivated</p>
+        <hr/>
+
+
+
+    </div>
 </body>
 </html>
