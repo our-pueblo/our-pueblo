@@ -4,9 +4,7 @@ import com.codeup.ourpueblo.Models.User;
 import com.codeup.ourpueblo.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -57,4 +55,31 @@ public class UserController {
         return "userlist";
 
     }
+
+    @GetMapping("/admin/userlist/toggle/{userID}")
+    public String changeUserStatus (@PathVariable Long userID){
+        User user = userDao.findOne(userID);
+        boolean status = user.isActive();
+        if (status){
+            user.setActive(false);
+        }else {
+            user.setActive(true);
+        }
+        User alteredUser = userDao.save(user);
+        return "redirect:/admin/userlist";
+    }
+
+    @GetMapping("/admin/userlist/delete/{userID}")
+    public String deleteUser(@PathVariable Long userID, Model model){
+        User user = userDao.findOne(userID);
+        model.addAttribute("user", user);
+        return "deleteUser";
+    }
+
+    @PostMapping("/admin/userlist/delete")
+    public String confirmedDelete(@RequestParam long deleteID){
+        userDao.delete(deleteID);
+        return "redirect:/admin/userlist";
+    }
+
 }

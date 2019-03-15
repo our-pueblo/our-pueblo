@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: header('Delete User', '')"></head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div th:if="${user.admin}">
+        <h1>Admins may not alter the status of other Admins, Please contact the Website Administrator if an Admin
+            account needs to be deleted</h1>
+    </div>
+    <div th:if="${!user.admin}">
+        <h1 style="color: red">WARNING: DELETING A USER IS UNDOABLE</h1>
+        <h1>Are you sure that you want to delete user <span th:text="${user.username}"></span>?</h1>
+        <form id="deleteForm" action="/admin/userlist/delete" method="post">
+            <div class="form-group">
+                <input type="hidden" th:value="${user.id}" name="deleteID" id="deleteID"/>
+                <input type="submit" class="btn btn-block btn-primary" value="Yes"/>
+                <input type="button" class="btn btn-block btn-primary" onclick="location.href='/admin/userlist';"
+                       value="No"/>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
