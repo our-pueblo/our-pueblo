@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: header('Register','')">
+</head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <h1>TEST FORM FOR USER CREATION</h1>
+    <div class="form-group">
+        <form id="createUser" th:action="@{/register}" th:method="post" th:object="${user}">
+            <label for="username">Username</label>
+            <br/>
+            <input type="text" id="username" name="username" th:field="*{username}"/>
+            <br/>
+            <label for="email">Email</label>
+            <br/>
+            <input type="text" id="email" name="email" th:field="*{email}"/>
+            <br/>
+            <label for="password">Password</label>
+            <br/>
+            <input type="text" id="password" name="password" th:field="*{password}"/>
+            <br/>
+            <label for="phoneNumber">Phone Number</label>
+            <br/>
+            <input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phone_number}"/>
+            <br/>
+            <!--For Testing purposes users can set admin here, in production version admin status will be set by another admin-->
+            <label for="admin">TEST ONLY: Admin</label>
+            <br/>
+            <select name="admin" id="admin" th:field="*{admin}">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <br/>
+            <label for="receiveEmails">Receive Emails?</label>
+            <br/>
+            <select name="recieveEmails" id="receiveEmails" th:field="*{recieve_emails}">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <br/>
+            <label for="securityQuestion">What is your best friend's name?</label>
+            <br/>
+            <input type="text" id="securityQuestion" name="securityQuestion" th:field="*{security_question}"/>
+            <br/>
+            <input type="submit" class="btn btn-block btn-primary" value="Register"/>
+        </form>
+    </div>
+</body>
+</html>

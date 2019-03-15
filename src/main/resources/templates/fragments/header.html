@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:fragment="header(title)">
+<head th:fragment="header(title,css)">
     <meta charset="UTF-8" />
-    <title th:text="${'My Blog | ' + title}"></title>
-    <!--<link rel="stylesheet" href="/css/main.css" />-->
+    <title th:text="${'Our Pueblo | ' + title}"></title>
+    <!--TODO Link main.css when its up and running-->
+    <!--<link rel="stylesheet" href="/css/login.css" />-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Kalam|Shadows+Into+Light');
-    </style>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" th:href="${css}"/>
 </head>
 <body>
 </body>

@@ -1,4 +1,5 @@
 package com.codeup.ourpueblo.Controllers;
+
 import com.google.cloud.translate.Translate;
 import com.google.cloud.translate.Translate.TranslateOption;
 import com.google.cloud.translate.TranslateOptions;
