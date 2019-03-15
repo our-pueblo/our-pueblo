@@ -4,7 +4,28 @@
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
 
-    <h1>This is where users will translate a page</h1>
-    <h3>TEST OF ID: The submitted id for this page is <span th:text="${request_id}"></span></h3>
+    <div class="form-group">
+        <form id="translateForm" th:action="@{/translate}" th:method="post" th:object="${translation}">
+            <label for="untranslatedText">Untranslated Text</label>
+            <br/>
+            <textarea id="untranslatedText" name="untranslatedText" rows="10" th:text="${translationRequest.getUntranslated_text()}" readonly="readonly"></textarea>
+            <br/>
+            <label for="translatedText">Google Translated Text; Please make edits here</label>
+            <br/>
+            <textarea name="translatedText" id="translatedText"  rows="10" th:text="${translationRequest.getGoogle_translate()}" th:field="*{translation}"></textarea>
+            <label for="description">Please describe any changes you made</label>
+            <textarea name="description" id="description" rows="10" th:field="*{description_of_changes}"></textarea>
+            <label for="flagProblem">Are there any sever problems with the Google Translation</label>
+            <select name="flagProblem" id="flagProblem" th:field="*{flag_problem}">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <br/>
+            <!--TODO Look into a hidden input that becomes unhidden if above input is true-->
+            <input type="hidden" id="requestID" name="requestID" th:value="${translationRequest.getId()}" th:field="*{request}"/>
+            <input type="submit" class="btn btn-block btn-primary" value="Request"/>
+        </form>
+    </div>
+
 </body>
 </html>
