@@ -11,7 +11,7 @@ main{
 
 #container{
     width: 350px;
-    height: 500px;
+    height: 550px;
     background: inherit;
     position: absolute;
     overflow: hidden;
@@ -20,10 +20,11 @@ main{
     margin-left: -175px;
     margin-top: -250px;
     border-radius: 8px;
+    background: inherit;
 }
 #container:before{
     width: 400px;
-    height: 550px;
+    height: 600px;
     content: "";
     position: absolute;
     top: -25px;
@@ -52,7 +53,7 @@ input{
     outline: 0;
     border: 0;
     border-bottom: 2px solid rgba(255,255,255, 0.3);
-    margin: 20px 0;
+    margin: 15px 0;
     padding-bottom: 10px;
     font-size: 18px;
     font-weight: bold;
@@ -63,14 +64,14 @@ input[type="submit"]{
     border-radius: 8px;
     padding-bottom: 0;
     height: 60px;
-    background: green;
+    background: #092a3a;
     color: white;
     cursor: pointer;
-    transition: all 600ms ease-in-out;
+    transition: all 1000ms ease-in-out;
 
 }
 input[type="submit"]:hover{
-    background: darkgreen;
+    background: green;
 }
 span a{
     color: rgba(255,255,255, 0.8);
@@ -85,4 +86,17 @@ input[type="text"]{
 }
 input[type="password"]{
     text-align: center;
+}
+#register_text{
+    color: white;
+    text-shadow: 2px 2px slategrey;
+}
+::placeholder {
+    color: white;
+    font-size: 18px;
+    text-shadow: 1px 1px slategrey;
+}
+
+#register_button{
+    height: 35px;
 }
