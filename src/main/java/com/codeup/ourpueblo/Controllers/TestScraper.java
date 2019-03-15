@@ -7,8 +7,8 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 
 public class TestScraper {
-    public static void main(String[] args) throws IOException {
-        String url = "https://www.sanantonio.gov/mayor";
+    public static String scrapeText(String url) throws IOException {
+//        String url = "https://www.sanantonio.gov/mayor";
         System.out.println("Fetching %s..."+ url);
 
         Document doc = Jsoup.connect(url).get();
@@ -16,7 +16,7 @@ public class TestScraper {
         String text = pane.text();
 
         System.out.println(text);
-
+        return text;
     }
 
 }
