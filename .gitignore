@@ -27,3 +27,5 @@ HELP.md
 
 src/main/resources/application.properties
 src/main/resources/api-json.json
+apiKeys.*
+constants.*

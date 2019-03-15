@@ -5,6 +5,7 @@ import com.google.cloud.translate.Translate.TranslateOption;
 import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
 
+
 import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -13,11 +14,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 
+import static com.codeup.ourpueblo.Controllers.constants.googleKey;
+
+
 public class GetSpanish {
 
     public static String getSpanish(String text) throws Exception {
         // Instantiates a client
-        Translate translate = TranslateOptions.getDefaultInstance().getService();
+        Translate translate = TranslateOptions.newBuilder().setApiKey(googleKey).build().getService();
         // Enter sample text to be translated
 
 
