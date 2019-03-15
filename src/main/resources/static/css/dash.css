@@ -16,10 +16,7 @@ main{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    margin-left: -10px;
-    margin-bottom: -100px;
-    margin-right: 10px;
-    margin-top: -10px;
+    margin: -10px -10px -10px -10px;
 }
 
 .layout {
@@ -132,9 +129,7 @@ nav.main-nav .menu li.menu-item.selected, nav.main-nav .menu li.menu-item:hover 
 nav.main-nav .menu li.menu-item:hover {
     border: 0.5px solid #fff;
 }
-nav.main-nav .menu li.menu-item.selected:hover {
-    border: 0.5px solid #1765d8;
-}
+
 nav.main-nav .menu.sub-menu {
     margin-top: 30px;
 }

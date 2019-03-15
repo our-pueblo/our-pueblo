@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Dashboard')">
-    <link rel="stylesheet" href="../static/css/dash.css">
-</head>
+<head th:replace="fragments/header :: header('Dashboard','/css/dash.css')"></head>
 <body>
     <!--<div th:replace="fragments/navbar :: navbar"></div>-->
     <main>
@@ -10,7 +8,6 @@
 
             <section class="sidebar">
                 <div class="brand">
-                    <i class="icon fa fa-building"> </i>
                     <h2> Our Pueblo </h2>
                 </div>
 
@@ -37,8 +34,9 @@
                             <a href="#">View Translations</a>
                         </li>
 
+
                         <li class="menu-item">
-                            <a href="#"> View All Untranslated </a>
+                            <a href="#"> Logout </a>
                         </li>
 
                         <li class="menu-item">
@@ -57,7 +55,7 @@
                         </li>
 
                         <li class="menu-item">
-                            <a href="#"> Knowledge Base </a>
+                            <a href="#"> Dictionary </a>
                         </li>
                     </ul>
                 </nav>
@@ -81,8 +79,6 @@
                 </div>
             </section>
             </div>
-            </section>
-        </div>
     </main>
 </body>
 </html>
