@@ -1,10 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Request a Translation')"></head>
+<head th:replace="fragments/header :: header('Request a Translation', '')"></head>
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
 
-    <h1>Here is where admins can post web pages to be translated</h1>
-    
+    <h1>TESTING REQUEST FUNCTIONALITY</h1>
+    <div class="form-group">
+        <form id="requestForm" th:action="@{/request}" th:method="post" th:object="${request}">
+            <label for="webPage">Page URL</label>
+            <br/>
+            <input type="text" id="webPage" name="webPage" th:field="*{web_page}"/>
+            <br/>
+            <label for="description">Description of Page to be Translated</label>
+            <br/>
+            <input type="text" id="description" name="description" th:field="*{description}"/>
+            <br/>
+            <input type="submit" class="btn btn-block btn-primary" value="Request"/>
+        </form>
+    </div>
+    <div th:replace="fragments/scripts :: scripts"></div>
+
 </body>
 </html>

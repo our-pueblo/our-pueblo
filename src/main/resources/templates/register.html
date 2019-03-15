@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:replace="fragments/header :: header('Register','/css/login.css')"/>
+<head th:replace="fragments/header :: header('Register','')">
+</head>
 <body>
-    <main>
-        <div id="container">
-            <form action="">
-                <!--<h1 id="company_name">Our Pueblo</h1>-->
-                <!--<img src="../static/img/bird-log-nobg.png"><br/>-->
-                <h1 id="register_text">Register</h1>
-                <input type="text" placeholder="Username"/><br/>
-                <input type="text" placeholder="Confirm Username"/><br/>
-                <input type="text" placeholder="Email"/><br/>
-                <input type="password" placeholder="Password"/><br/>
-                <input type="password" placeholder="Confirm Password"/><br/>
-                <input id="register_button" type="submit" value="Login"/><br/>
-                <span><a href="#">Forgot Password?</a></span>
-            </form>
-        </div>
-    </main>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <h1>TEST FORM FOR USER CREATION</h1>
+    <div class="form-group">
+        <form id="createUser" th:action="@{/register}" th:method="post" th:object="${user}">
+            <label for="username">Username</label>
+            <br/>
+            <input type="text" id="username" name="username" th:field="*{username}"/>
+            <br/>
+            <label for="email">Email</label>
+            <br/>
+            <input type="text" id="email" name="email" th:field="*{email}"/>
+            <br/>
+            <label for="password">Password</label>
+            <br/>
+            <input type="text" id="password" name="password" th:field="*{password}"/>
+            <br/>
+            <label for="phoneNumber">Phone Number</label>
+            <br/>
+            <input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phone_number}"/>
+            <br/>
+            <!--For Testing purposes users can set admin here, in production version admin status will be set by another admin-->
+            <label for="admin">TEST ONLY: Admin</label>
+            <br/>
+            <select name="admin" id="admin" th:field="*{admin}">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <br/>
+            <label for="receiveEmails">Receive Emails?</label>
+            <br/>
+            <select name="recieveEmails" id="receiveEmails" th:field="*{recieve_emails}">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+            <br/>
+            <label for="securityQuestion">What is your best friend's name?</label>
+            <br/>
+            <input type="text" id="securityQuestion" name="securityQuestion" th:field="*{security_question}"/>
+            <br/>
+            <input type="submit" class="btn btn-block btn-primary" value="Register"/>
+        </form>
+    </div>
 </body>
 </html>

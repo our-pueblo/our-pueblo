@@ -1,29 +1,39 @@
 package com.codeup.ourpueblo.Controllers;
-// [START translate_quickstart]
-// Imports the Google Cloud client library
+
 import com.google.cloud.translate.Translate;
 import com.google.cloud.translate.Translate.TranslateOption;
 import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
 
-public class QuickstartSample {
-    public static void main(String... args) throws Exception {
+import javax.script.Invocable;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+
+public class GetSpanish {
+
+    public static String getSpanish(String text) throws Exception {
         // Instantiates a client
         Translate translate = TranslateOptions.getDefaultInstance().getService();
+        // Enter sample text to be translated
 
-        // The text to translate
-        String text = "This is the greatest day of my life. Your mother looks like she works out.";
 
-        // Translates some text into Russian
+        // Translates some text into Spanish
         Translation translation =
                 translate.translate(
                         text,
                         TranslateOption.sourceLanguage("en"),
                         TranslateOption.targetLanguage("es"));
 
-
+        // Print for comparison
         System.out.printf("Text: %s%n", text);
         System.out.printf("Translation: %s%n", translation.getTranslatedText());
+
+
+        return translation.getTranslatedText();
     }
 }
 // [END translate_quickstart]
