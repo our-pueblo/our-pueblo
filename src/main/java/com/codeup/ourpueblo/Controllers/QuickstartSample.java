@@ -4,6 +4,13 @@ import com.google.cloud.translate.Translate.TranslateOption;
 import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
 
+import javax.script.Invocable;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 
 public class QuickstartSample {
 
@@ -11,6 +18,8 @@ public class QuickstartSample {
         // Instantiates a client
         Translate translate = TranslateOptions.getDefaultInstance().getService();
         // Enter sample text to be translated
+
+        String url = "https://www.sanantonio.gov/CCDO/parking";
         String text = "\"COMMUNITY POLICING OVERVIEW\n" +
                 "\n" +
                 "The San Antonio Police Department has embraced Community Policing for many decades, through its Community Services and School Services Programs, Crime Prevention Programs (Neighborhood Watch, National Night Out), Store Fronts, Decentralized Patrol Substations, and the Downtown Foot and Bicycle Patrol Unit. In 1995 the Department created a special Community Policing Unit, the San Antonio Fear Free Environment Unit (SAFFE) which links closely with community involvement programs, such as Cellular on Patrol (initiated in 1993) and the Citizen Police Academy (initiated 1994).\n" +
@@ -46,6 +55,7 @@ public class QuickstartSample {
         // Print for comparison
         System.out.printf("Text: %s%n", text);
         System.out.printf("Translation: %s%n", translation.getTranslatedText());
+        
     }
 }
 // [END translate_quickstart]

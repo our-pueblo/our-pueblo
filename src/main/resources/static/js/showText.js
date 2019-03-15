@@ -28,3 +28,7 @@ function showText(){
 }
         showText();
         console.log("This stuff seems to work.");
+
+function showSpanishText(translated){
+    document.getElementById('placeholder2').innerText=translated;
+}
