@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import static com.codeup.ourpueblo.Controllers.GetSpanish.getSpanish;
+import static com.codeup.ourpueblo.Controllers.TestScraper.scrapeText;
+
 @Controller
 public class RequestController {
     Date date = new Date();
@@ -43,9 +46,18 @@ public class RequestController {
     }
 
     @PostMapping("/request")
-    public String addRequest (@ModelAttribute Request request){
-        request.setGoogle_translate("Translated Text goes here");
-        request.setUntranslated_text("Untranslated text can go here");
+    public String addRequest (@ModelAttribute Request request) throws Exception {
+        //Get url from request
+        String url = request.getWeb_page();
+        //use scrapeText method on URL to get untranslated text
+        String untranslated = (String) scrapeText(url);
+        //set request.untranslated_text to scraped text
+        request.setUntranslated_text(untranslated);
+        //use getSpanish to translate scraped text (en -> sp)
+        String translated = getSpanish(untranslated);
+        //set request.google_translate to translated text
+        request.setGoogle_translate(translated);
+
         User testUser = userDao.findOne(1L);
         request.setUser_id(testUser);
         long time = date.getTime();
