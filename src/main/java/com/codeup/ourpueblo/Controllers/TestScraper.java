@@ -12,7 +12,7 @@ public class TestScraper {
         System.out.println("Fetching %s..."+ url);
 
         Document doc = Jsoup.connect(url).get();
-        Elements pane = doc.select("div#dnn_ctr25435_HtmlModule_lblContent");
+        Elements pane = doc.select("div#dnn_ContentPane");
         String text = pane.text();
 
         System.out.println(text);
