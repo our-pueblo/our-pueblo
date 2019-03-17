@@ -112,14 +112,15 @@ public class Translation {
 
     public Translation(){}
 
-    public Translation(User user, String translation, String description_of_changes, boolean flag_problm, String reason, Request request, Translation_Status status, Date time) {
+    public Translation(User user, String translation, boolean flag_problm, String reason, Request request, Translation_Status status, Date time) {
         this.user = user;
         this.translation = translation;
-        this.description_of_changes = description_of_changes;
         this.flag_problem = flag_problm;
         this.reason = reason;
         this.request = request;
         this.status = status;
         this.time = time;
     }
+
+
 }
