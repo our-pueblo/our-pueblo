@@ -56,7 +56,9 @@ public class TranslationController {
         if (translationRequest.getStatus().getId()!=101){
             return "request_translation";
         }else {
-            model.addAttribute("requestLong", id);
+            Long reqID = translationRequest.getId();
+            System.out.println(reqID);
+            model.addAttribute("requestLong", reqID);
             model.addAttribute("translationRequest", translationRequest);
             model.addAttribute("newTranslation", new Translation());
             return "translate";
@@ -69,7 +71,7 @@ public class TranslationController {
     }
 
     @PostMapping("/translate")
-    public String submitTranslation(@ModelAttribute Translation newTranslation){
+    public String submitTranslation(@ModelAttribute Translation newTranslation, @RequestParam Long refRequest){
         User testUser = userDao.findOne(1L);
         newTranslation.setUser(testUser);
         Translation_Status translationStatus = translationStatusDao.findOne(101L);
@@ -77,12 +79,14 @@ public class TranslationController {
         long time = date.getTime();
         Timestamp ts = new Timestamp(time);
         newTranslation.setTime(ts);
-        Translation savedTranslation = translationDao.save(newTranslation);
-        Request changeStatus = requestDao.findOne(savedTranslation.getRequest().getId());
+        System.out.println(refRequest);
+        Request request = requestDao.findOne(refRequest);
+        newTranslation.setRequest(request);
         Request_Status newStatus = requestStatusDao.findOne(201L);
-        changeStatus.setStatus(newStatus);
-        requestDao.save(changeStatus);
-        return "redirect:/";
+        request.setStatus(newStatus);
+        Translation savedTranslation = translationDao.save(newTranslation);
+        Request changedRequest = requestDao.save(request);
+        return "index";
     }
 
     //TODO Write translation repository

@@ -12,7 +12,7 @@
             <br/>
             <label for="translatedText">Google Translated Text; Please make edits here</label>
             <br/>
-            <textarea name="translatedText" id="translatedText"  rows="10" th:text="${translationRequest.getGoogle_translate()}" th:field="*{translation}"></textarea>
+            <textarea name="translatedText" id="translatedText"  rows="10" th:text="${translationRequest.getGoogle_translate()}" th:field="*{userTranslation}"></textarea>
             <label for="description">Please describe any changes you made</label>
             <textarea name="description" id="description" rows="10" th:field="*{description_of_changes}"></textarea>
             <label for="flagProblem">Are there any severe problems with the Google Translations?</label>
@@ -24,8 +24,8 @@
             <!--TODO Look into a hidden input that becomes unhidden if above input is true-->
             <label for="reason">If you answered yes to the above question please explain why</label>
             <input type="text" id="reason" name="reason" th:field="*{reason}"/>
-            <input type="hidden" id="requestID" name="requestID" th:value="${translationRequest.id}" th:field="*{request}"/>
-            <input type="submit" class="btn btn-block btn-primary" value="Request"/>
+            <input type="hidden" id="refRequest" name="refRequest" th:value="${requestLong}"/>
+            <input type="submit" class="btn btn-block btn-primary" value="Submit Translation"/>
         </form>
     </div>
 
