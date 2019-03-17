@@ -57,7 +57,7 @@ public class RequestController {
     private final UserRepository userDao;
 
     private final Request_StatusRepository requestStatusDao;
-
+    //TODO fix department typo late
     private final DepartmentRepository departmanetDao;
 
     public RequestController(RequestRepository requestDao, UserRepository userDao, Request_StatusRepository requestStatusDao, DepartmentRepository departmanetDao, @Value("${api-key}") String apikey) {
@@ -105,8 +105,6 @@ public class RequestController {
         return "view_all_untranslated";
     }
 }
-
-
 
 
 // [END translate_quickstart]

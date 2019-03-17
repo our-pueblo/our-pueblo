@@ -37,7 +37,9 @@ public class TranslationController {
     }
 
     @GetMapping("/translate/request")
-    public String requestTranslation() {
+    public String requestTranslation(Model model) {
+        Iterable<Request> requests = requestDao.findAll();
+        model.addAttribute("requests", requests);
         return "request_translation";
     }
 
