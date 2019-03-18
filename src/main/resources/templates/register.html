@@ -1,50 +1,97 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org" lang="en">-->
+
+<!--<head th:replace="fragments/header :: header('Register','')">-->
+<!--</head>-->
+<!--<body>-->
+    <!--<div th:replace="fragments/navbar :: navbar"></div>-->
+    <!--<h1>TEST FORM FOR USER CREATION</h1>-->
+    <!--<div class="form-group">-->
+        <!--<form id="createUser" th:action="@{/register}" th:method="post" th:object="${user}">-->
+            <!--<label for="username">Username</label>-->
+            <!--<br/>-->
+            <!--<input type="text" id="username" name="username" th:field="*{username}"/>-->
+            <!--<br/>-->
+            <!--<label for="email">Email</label>-->
+            <!--<br/>-->
+            <!--<input type="text" id="email" name="email" th:field="*{email}"/>-->
+            <!--<br/>-->
+            <!--<label for="password">Password</label>-->
+            <!--<br/>-->
+            <!--<input type="text" id="password" name="password" th:field="*{password}"/>-->
+            <!--<br/>-->
+            <!--<label for="phoneNumber">Phone Number</label>-->
+            <!--<br/>-->
+            <!--<input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phone_number}"/>-->
+            <!--<br/>-->
+            <!--&lt;!&ndash;For Testing purposes users can set admin here, in production version admin status will be set by another admin&ndash;&gt;-->
+            <!--<label for="admin">TEST ONLY: Admin</label>-->
+            <!--<br/>-->
+            <!--<select name="admin" id="admin" th:field="*{admin}">-->
+                <!--<option value="true">Yes</option>-->
+                <!--<option value="false">No</option>-->
+            <!--</select>-->
+            <!--<br/>-->
+            <!--<label for="receiveEmails">Receive Emails?</label>-->
+            <!--<br/>-->
+            <!--<select name="recieveEmails" id="receiveEmails" th:field="*{recieve_emails}">-->
+                <!--<option value="true">Yes</option>-->
+                <!--<option value="false">No</option>-->
+            <!--</select>-->
+            <!--<br/>-->
+            <!--<label for="securityQuestion">What is your best friend's name?</label>-->
+            <!--<br/>-->
+            <!--<input type="text" id="securityQuestion" name="securityQuestion" th:field="*{security_question}"/>-->
+            <!--<br/>-->
+            <!--<input type="submit" class="btn btn-block btn-primary" value="Register"/>-->
+        <!--</form>-->
+    <!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:replace="fragments/header :: header('Register','')">
+<head th:replace="fragments/header :: header('Register')">
+</head>
+<link rel="stylesheet" href="../static/css/login.css"/>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Register</title>
 </head>
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
-    <h1>TEST FORM FOR USER CREATION</h1>
-    <div class="form-group">
-        <form id="createUser" th:action="@{/register}" th:method="post" th:object="${user}">
-            <label for="username">Username</label>
-            <br/>
-            <input type="text" id="username" name="username" th:field="*{username}"/>
-            <br/>
-            <label for="email">Email</label>
-            <br/>
-            <input type="text" id="email" name="email" th:field="*{email}"/>
-            <br/>
-            <label for="password">Password</label>
-            <br/>
-            <input type="text" id="password" name="password" th:field="*{password}"/>
-            <br/>
-            <label for="phoneNumber">Phone Number</label>
-            <br/>
-            <input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phone_number}"/>
-            <br/>
-            <!--For Testing purposes users can set admin here, in production version admin status will be set by another admin-->
-            <label for="admin">TEST ONLY: Admin</label>
-            <br/>
-            <select name="admin" id="admin" th:field="*{admin}">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-            <br/>
-            <label for="receiveEmails">Receive Emails?</label>
-            <br/>
-            <select name="recieveEmails" id="receiveEmails" th:field="*{recieve_emails}">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-            <br/>
-            <label for="securityQuestion">What is your best friend's name?</label>
-            <br/>
-            <input type="text" id="securityQuestion" name="securityQuestion" th:field="*{security_question}"/>
-            <br/>
-            <input type="submit" class="btn btn-block btn-primary" value="Register"/>
-        </form>
-    </div>
+    <!--<div th:replace="fragments/navbar :: navbar"></div>-->
+    <main>
+        <div id="container">
+
+            <form id="createUser" th:action="@{/register}" th:method="post" th:object="${user}">
+                <h1 id="register_text">Register</h1><br/>
+                <input type="text" id="username" placeholder="Username" name="username" th:field="*{username}"/> <br/>
+                <input type="text" placeholder="Confirm Username"/><br/>
+                <input type="text" id="email" placeholder="Email" name="email" th:field="*{email}"/> <br/>
+                <input type="text" id="password" placeholder="Password" name="password" th:field="*{password}"/>
+                <input type="password" placeholder="Confirm Password"/><br/>
+                <!--<input type="text" id="securityQuestion" name="securityQuestion" th:field="*{security_question}"/>-->
+                <label id="securityQuestionLabel" for="securityQuestion">Security Question</label>
+
+                <select name="securityQuestion" id="securityQuestionSelect" th:field="*{security_question}"/>
+                    <option value="true">What is your mother's maiden name?</option>
+                    <option value="false">What is your best friends name from high school?</option>
+                    <option value="false">What is your first pet's name?</option>
+                    <option value="false">What city were you born in?</option>
+                    <option value="false">Where did your parents meet?</option>
+                </select>
+                <input type="text" id="securityQuestion" name="securityQuestion" th:field="*{security_question}"/><br/>
+
+                <label id="updatesText" for="receiveEmails">Receive updates?</label>
+                <select name="receiveEmails" id="receiveEmails" th:field="*{recieve_emails}"/>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                    </select>
+                <input id="register_button" type="submit" value="Login"/><br/>
+                <span><a href="#">Forgot Password?</a></span>
+            </form>
+        </div>
+    </main>
 </body>
 </html>

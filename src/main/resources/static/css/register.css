@@ -10,8 +10,8 @@ main{
 }
 
 #container{
-    width: 350px;
-    height: 500px;
+    width: 550px;
+    height: 650px;
     background: inherit;
     position: absolute;
     overflow: hidden;
@@ -23,8 +23,8 @@ main{
     background: inherit;
 }
 #container:before{
-    width: 400px;
-    height: 550px;
+    width: 600px;
+    height: 700px;
     content: "";
     position: absolute;
     top: -25px;
