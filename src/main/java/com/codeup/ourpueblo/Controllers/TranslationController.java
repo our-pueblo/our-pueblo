@@ -109,9 +109,21 @@ public class TranslationController {
         return "index";
     }
 
+    @GetMapping("/translate/edit/{id}")
+    public String userEditTranslation(@PathVariable long id, Model model){
+        Translation editTranslation = translationDao.findOne(id);
+        model.addAttribute("editTranslation", editTranslation);
+        return "editTranslation";
+    }
+
+
     @PostMapping("/translate/edit")
-    public String editTranslation(@ModelAttribute Translation editedTranslation) {
-        //TODO Come back after repository
-        return "index";
+    public String editTranslation(@ModelAttribute Translation editTranslation) {
+        System.out.println(editTranslation.getId());
+        System.out.println(editTranslation.getUser().getId());
+        Translation_Status newStatus = translationStatusDao.findOne(101L);
+        editTranslation.setStatus(newStatus);
+        Translation savedTranslation = translationDao.save(editTranslation);
+        return "dashboard";
     }
 }
