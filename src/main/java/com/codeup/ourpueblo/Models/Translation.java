@@ -123,5 +123,22 @@ public class Translation {
         this.time = time;
     }
 
+    public Translation(long id, User user, String userTranslation, String description_of_changes, boolean flag_problem, String reason, Request request, Translation_Status status, Date time) {
+        this.id= id;
+        this.user = user;
+        this.userTranslation = userTranslation;
+        this.description_of_changes = description_of_changes;
+        this.flag_problem = flag_problem;
+        this.reason = reason;
+        this.request = request;
+        this.status = status;
+        this.time = time;
+    }
 
+    public Translation(long id, String userTranslation, String description_of_changes, Request request) {
+        this.id = id;
+        this.userTranslation = userTranslation;
+        this.description_of_changes = description_of_changes;
+        this.request = request;
+    }
 }

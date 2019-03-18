@@ -4,8 +4,17 @@
 <head th:replace="fragments/header :: header('Request a Page to Translate','')"></head>
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
-<div th:each="">
+<div th:each="translation: ${translationList}">
+    <div th:if = "${translation.status.id!=201}">
+        <h1>Description of Translation Request</h1>
+        <h4><span th:text="${translation.getRequest().getDescription()}"></span></h4>
+        <h1>Status of Translation</h1>
+        <h4><span th:text="${translation.status.getStatus()}"></span></h4>
+        <a th:if="${translation.status.id==101}" th:href="@{/translate/edit/{id}(id=${translation.id})}">
+            Edit Translation
+        </a>
 
+    </div>
 </div>
     
 </body>

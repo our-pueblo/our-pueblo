@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: header('Edit','')">
+</head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="form-group">
+    <form id="editForm" th:action="@{/translate/edit}" th:method="post" th:object="${editTranslation}">
+        <h1><span th:text="${editTranslation.id}"></span></h1>
+        <label for="untranslatedText"> Untranslated Text</label>
+        <br/>
+        <textarea id="untranslatedText"  rows="10" th:field="*{request}" readonly="readonly"></textarea>
+        <br/>
+        <label for="userTranslation">User Translated Text</label>
+        <br/>
+        <textarea id="userTranslation"  rows="10"  th:field="*{userTranslation}"></textarea>
+        <br/>
+        <label for="description">Please describe any changes that you have made.</label>
+        <br/>
+        <textarea id="description"  rows="10"  th:field="*{description_of_changes}"></textarea>
+        <br/>
+        <input type="submit" class="btn btn-block btn-primary" value="Submit Translation"/>
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{reason}"/>
+        <input type="hidden" th:field="*{user}"/>
+    </form>
+</div>
+</body>
+</html>
