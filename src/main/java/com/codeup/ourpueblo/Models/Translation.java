@@ -15,8 +15,8 @@ public class Translation {
     @OneToOne
     private User user;
 
-    @Column(nullable = false, columnDefinition = "text")
-    private String translation;
+    @Column(length = 9999)
+    private String userTranslation;
 
     @Column(columnDefinition = "text")
     private String description_of_changes;
@@ -49,12 +49,13 @@ public class Translation {
         this.user = user;
     }
 
-    public String getTranslation() {
-        return translation;
+
+    public String getUserTranslation() {
+        return userTranslation;
     }
 
-    public void setTranslation(String translation) {
-        this.translation = translation;
+    public void setUserTranslation(String userTranslation) {
+        this.userTranslation = userTranslation;
     }
 
     public String getDescription_of_changes() {
@@ -112,14 +113,15 @@ public class Translation {
 
     public Translation(){}
 
-    public Translation(User user, String translation, String description_of_changes, boolean flag_problm, String reason, Request request, Translation_Status status, Date time) {
+    public Translation(User user, String userTranslation, boolean flag_problm, String reason, Request request, Translation_Status status, Date time) {
         this.user = user;
-        this.translation = translation;
-        this.description_of_changes = description_of_changes;
+        this.userTranslation = userTranslation;
         this.flag_problem = flag_problm;
         this.reason = reason;
         this.request = request;
         this.status = status;
         this.time = time;
     }
+
+
 }

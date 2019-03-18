@@ -1,13 +1,7 @@
 package com.codeup.ourpueblo.Controllers;
 
-import com.codeup.ourpueblo.Models.Request;
-import com.codeup.ourpueblo.Models.Translation;
-import com.codeup.ourpueblo.Models.Translation_Status;
-import com.codeup.ourpueblo.Models.User;
-import com.codeup.ourpueblo.RequestRepository;
-import com.codeup.ourpueblo.TranslationRepository;
-import com.codeup.ourpueblo.TranslationStatusRepository;
-import com.codeup.ourpueblo.UserRepository;
+import com.codeup.ourpueblo.*;
+import com.codeup.ourpueblo.Models.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -29,15 +23,20 @@ public class TranslationController {
 
     private final RequestRepository requestDao;
 
-    public TranslationController(TranslationRepository translationDao, TranslationStatusRepository translationStatusDao, RequestRepository requestDao, UserRepository userDao) {
+    private final Request_StatusRepository requestStatusDao;
+
+    public TranslationController(TranslationRepository translationDao, TranslationStatusRepository translationStatusDao, RequestRepository requestDao, UserRepository userDao, Request_StatusRepository requestStatusDao) {
         this.translationDao = translationDao;
         this.translationStatusDao = translationStatusDao;
         this.requestDao = requestDao;
         this.userDao = userDao;
+        this.requestStatusDao = requestStatusDao;
     }
 
     @GetMapping("/translate/request")
-    public String requestTranslation() {
+    public String requestTranslation(Model model) {
+        Iterable<Request> requests = requestDao.findAll();
+        model.addAttribute("requests", requests);
         return "request_translation";
     }
 
@@ -54,12 +53,16 @@ public class TranslationController {
     @GetMapping("/translate/{id}")
     public String translate(@PathVariable long id, Model model) {
         Request translationRequest = requestDao.findOne(id);
-        String untranslatedText = translationRequest.getUntranslated_text();
-        model.addAttribute("untranslatedText", untranslatedText);
-        model.addAttribute("translationRequest", translationRequest);
-        model.addAttribute("request_id", id);
-        model.addAttribute("translation", new Translation());
-        return "translate";
+        if (translationRequest.getStatus().getId()!=101){
+            return "request_translation";
+        }else {
+            Long reqID = translationRequest.getId();
+            System.out.println(reqID);
+            model.addAttribute("requestLong", reqID);
+            model.addAttribute("translationRequest", translationRequest);
+            model.addAttribute("newTranslation", new Translation());
+            return "translate";
+        }
     }
 
     @GetMapping("/translate")
@@ -68,21 +71,21 @@ public class TranslationController {
     }
 
     @PostMapping("/translate")
-    public String submitTranslation(@ModelAttribute Translation translation){
+    public String submitTranslation(@ModelAttribute Translation newTranslation, @RequestParam Long refRequest){
         User testUser = userDao.findOne(1L);
-        translation.setUser(testUser);
+        newTranslation.setUser(testUser);
         Translation_Status translationStatus = translationStatusDao.findOne(101L);
-        if (translation.isFlag_problem()){
-            //TODO Change this once status list is seeded
-            translation.setStatus(translationStatus);
-        }else {
-            translation.setStatus(translationStatus);
-
-        }
+        newTranslation.setStatus(translationStatus);
         long time = date.getTime();
         Timestamp ts = new Timestamp(time);
-        translation.setTime(ts);
-        Translation newTranslation = translationDao.save(translation);
+        newTranslation.setTime(ts);
+        System.out.println(refRequest);
+        Request request = requestDao.findOne(refRequest);
+        newTranslation.setRequest(request);
+        Request_Status newStatus = requestStatusDao.findOne(201L);
+        request.setStatus(newStatus);
+        Translation savedTranslation = translationDao.save(newTranslation);
+        Request changedRequest = requestDao.save(request);
         return "index";
     }
 
