@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: header('Dashboard', '')"></head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <h1>User Features</h1>
+    <br/>
+    <h4>View Profile</h4>
+    <br/>
+    <a href="/user/profile">View Profile</a>
+    <h4>Request a Translation</h4>
+    <br/>
+    <a href="/translate/request">Request a Page to Translate</a>
+    <h4>View Submitted Translations</h4>
+    <br/>
+    <!--TODO Create this-->
+    <a href="/user/translations">View all Translations you have made</a>
+    <hr/>
+    <h1>Admin Features</h1>
+    <br/>
+    <h4>View User List</h4>
+    <br/>
+    <a href="/admin/userlist">View User List</a>
+    <h4>View All Requests</h4>
+    <br/>
+    <!--TODO Create this-->
+    <a href="/admin/requests">View All Requests</a>
+    <h4>View All Translations</h4>
+    <br/>
+    <!--TODO Create this-->
+    <a href="admin/translations">View All Translations</a>
+<h4>View Pages with text ready for deployment</h4>
+    <br/>
+    <!--TODO Create this-->
+    <a href="/admin/deployment">View Pages Ready for Deployment</a>
+
+</body>
+</html>

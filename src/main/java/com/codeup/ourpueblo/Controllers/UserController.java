@@ -45,7 +45,7 @@ public class UserController {
 
     @GetMapping("/user/dashboard")
     public String dashboard(){
-        return "dashboard";
+        return "dashboardPopout";
     }
 
     @GetMapping("/admin/userlist")
