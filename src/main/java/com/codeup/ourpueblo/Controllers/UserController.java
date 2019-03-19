@@ -2,6 +2,7 @@ package com.codeup.ourpueblo.Controllers;
 
 import com.codeup.ourpueblo.Models.User;
 import com.codeup.ourpueblo.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +12,11 @@ public class UserController {
 
     private final UserRepository userDao;
 
-    public UserController(UserRepository userDao){
+    private final PasswordEncoder passwordEncoder;
+
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder){
         this.userDao = userDao;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping("/register")
@@ -22,15 +26,20 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String addUser (@ModelAttribute User user){
-        user.setActive(true);
-        User newUser = userDao.save(user);
-        return "redirect:/login";
-    }
-    
-    @GetMapping("/login")
-    public String login (){
-        return "login";
+    public String addUser (@ModelAttribute User user, @RequestParam String password, @RequestParam String verifyPassword, Model model){
+        if (!password.equals(verifyPassword)){
+            model.addAttribute("passwordError", true);
+            return "redirect:/register";
+        }else if (!user.getEmail().contains("@")||!user.getEmail().contains(".")){
+            model.addAttribute("emailError", true);
+            return "redirect:/register";
+        }else {
+            user.setActive(true);
+            String hashedPass = passwordEncoder.encode(user.getPassword());
+            user.setPassword(hashedPass);
+            User newUser = userDao.save(user);
+            return "redirect:/login";
+        }
     }
 
     @GetMapping("/user/profile")
