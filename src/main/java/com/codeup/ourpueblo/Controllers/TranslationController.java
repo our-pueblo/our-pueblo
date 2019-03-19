@@ -103,10 +103,23 @@ public class TranslationController {
     }
     //TODO Implement these
 
+    @GetMapping("/translate/delete/{id}")
+    public String confirmUserDelete(@PathVariable long id, Model model){
+        model.addAttribute("deleteID", id);
+        return "confirmDelete";
+    }
+
     @PostMapping("/translate/delete")
-    public String deleteTranslation(@RequestParam long deleteID) {
-        //TODO Come back after repository
-        return "index";
+    public String deleteTranslation(@RequestParam long deleteID, Model model) {
+        Long id = deleteID;
+        Translation deletingTranslation =  translationDao.findOne(id);
+        Long requestID = deletingTranslation.getRequest().getId();
+        Request editRequest = requestDao.findOne(requestID);
+        Request_Status newStatus = requestStatusDao.findOne(101L);
+        editRequest.setStatus(newStatus);
+        requestDao.save(editRequest);
+        translationDao.delete(id);
+        return "dashboard";
     }
 
     @GetMapping("/translate/edit/{id}")

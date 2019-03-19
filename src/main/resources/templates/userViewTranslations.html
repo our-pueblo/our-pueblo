@@ -10,8 +10,13 @@
         <h4><span th:text="${translation.getRequest().getDescription()}"></span></h4>
         <h1>Status of Translation</h1>
         <h4><span th:text="${translation.status.getStatus()}"></span></h4>
+        <!--TODO Expand the statuses for edit and delete later-->
         <a th:if="${translation.status.id==101}" th:href="@{/translate/edit/{id}(id=${translation.id})}">
             Edit Translation
+        </a>
+        <br/>
+        <a th:if="${translation.status.id==101||translation.status.id==301}" th:href="@{/translate/delete/{id}(id=${translation.id})}">
+            Delete Translation
         </a>
 
     </div>

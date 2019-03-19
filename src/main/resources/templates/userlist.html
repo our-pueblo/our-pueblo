@@ -10,8 +10,11 @@
         <p>Email: <span th:text="${user.email}"></span></p>
         <p th:if="${user.active}">Account Status: Active</p>
         <p th:if="${!user.active}">Account Status: Deactivated</p>
+        <p th:if="${user.admin}">Account Type: Admin</p>
+        <p th:if="${!user.admin}">Account Type: User</p>
         <a th:href="@{/admin/userlist/toggle/{userID}(userID=${user.id})}">Change account status</a>
-        <a th:href="@{/admin/userlist/delete/{userID}(userID=${user.id})}">Delete User</a>
+        <a th:href="@{/admin/userlist/makeadmin/{userID}(userID=${user.id})}" th:if="${!user.admin}">Make user admin</a>
+        <a th:href="@{/admin/userlist/delete/{userID}(userID=${user.id})}" th:if="${!user.admin}">Delete User</a>
         <hr/>
 
 

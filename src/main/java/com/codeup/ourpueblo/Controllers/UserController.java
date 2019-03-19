@@ -69,6 +69,14 @@ public class UserController {
         return "redirect:/admin/userlist";
     }
 
+    @GetMapping("/admin/userlist/makeadmin/{userID}")
+    public String makeAdming (@PathVariable Long userID){
+        User user = userDao.findOne(userID);
+        user.setAdmin(true);
+        User alteredUser = userDao.save(user);
+        return "redirect:/admin/userlist";
+    }
+
     @GetMapping("/admin/userlist/delete/{userID}")
     public String deleteUser(@PathVariable Long userID, Model model){
         User user = userDao.findOne(userID);
