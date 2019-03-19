@@ -1,7 +1,15 @@
 package com.codeup.ourpueblo.Controllers;
 
+import com.codeup.ourpueblo.DepartmentRepository;
+import com.codeup.ourpueblo.Models.Department;
+import com.codeup.ourpueblo.Models.Request_Status;
+import com.codeup.ourpueblo.Models.Translation_Status;
 import com.codeup.ourpueblo.Models.User;
+import com.codeup.ourpueblo.Request_StatusRepository;
+import com.codeup.ourpueblo.TranslationStatusRepository;
 import com.codeup.ourpueblo.UserRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +19,20 @@ public class UserController {
 
     private final UserRepository userDao;
 
-    public UserController(UserRepository userDao){
+    private final PasswordEncoder passwordEncoder;
+
+    private final Request_StatusRepository requestStatusDao;
+
+    private final TranslationStatusRepository translationStatusDao;
+
+    private final DepartmentRepository departmentDao;
+
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, Request_StatusRepository requestStatusDao, TranslationStatusRepository translationStatusDao, DepartmentRepository departmentDao){
         this.userDao = userDao;
+        this.passwordEncoder = passwordEncoder;
+        this.requestStatusDao = requestStatusDao;
+        this.translationStatusDao = translationStatusDao;
+        this.departmentDao = departmentDao;
     }
 
     @GetMapping("/register")
@@ -22,15 +42,23 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String addUser (@ModelAttribute User user){
-        user.setActive(true);
-        User newUser = userDao.save(user);
-        return "redirect:/login";
-    }
-    
-    @GetMapping("/login")
-    public String login (){
-        return "login";
+    public String addUser (@ModelAttribute User user, @RequestParam String password, @RequestParam String verifyPassword, Model model){
+        if (!password.equals(verifyPassword)){
+            model.addAttribute("passwordError", true);
+            return "redirect:/register";
+        }else if (!user.getEmail().contains("@")||!user.getEmail().contains(".")){
+            model.addAttribute("emailError", true);
+            return "redirect:/register";
+        }else {
+            if (user.getUsername().equals("admin")){
+                user.setAdmin(true);
+            }
+            user.setActive(true);
+            String hashedPass = passwordEncoder.encode(user.getPassword());
+            user.setPassword(hashedPass);
+            User newUser = userDao.save(user);
+            return "redirect:/login";
+        }
     }
 
     @GetMapping("/user/profile")
@@ -44,7 +72,10 @@ public class UserController {
     }
 
     @GetMapping("/user/dashboard")
-    public String dashboard(){
+    public String dashboard(Model model){
+        User user  = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+            model.addAttribute("currentUser", current);
         return "dashboard";
     }
 
@@ -90,4 +121,39 @@ public class UserController {
         return "redirect:/admin/userlist";
     }
 
+
+    @GetMapping("/seed")
+    public String seedTables(Model model){
+        User user  = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        if (current.getUsername().equals("admin")){
+            model.addAttribute("currentUser", current);
+            model.addAttribute("checkUser", "admin");
+            return "initialSeed";
+        }else {
+            return "redirect:/user/dashboard";
+        }
+    }
+
+    @PostMapping("/seed")
+    public String seeded(){
+        Request_Status seedStatus = new Request_Status();
+        seedStatus.setId(101);
+        seedStatus.setStatus("Request submitted, awaiting user translation");
+        requestStatusDao.save(seedStatus);
+        seedStatus.setId(201);
+        seedStatus.setStatus("Translated by User");
+        requestStatusDao.save(seedStatus);
+        Department department = new Department();
+        department.setName("First");
+        departmentDao.save(department);
+        Translation_Status status = new Translation_Status();
+        status.setId(101);
+        status.setStatus("Waiting for Admin Approval");
+        translationStatusDao.save(status);
+        status.setId(201);
+        status.setStatus("Approved by Admin");
+        translationStatusDao.save(status);
+        return "redirect:/user/dashboard";
+    }
 }

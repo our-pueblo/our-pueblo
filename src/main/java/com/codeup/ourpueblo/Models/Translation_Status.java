@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class Translation_Status {
 
     @Id
-    @GeneratedValue
     private long id;
 
     @Column
