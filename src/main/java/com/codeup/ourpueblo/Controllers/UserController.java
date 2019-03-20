@@ -54,6 +54,7 @@ public class UserController {
                 user.setAdmin(true);
             }
             user.setActive(true);
+            user.setAdmin(false);
             String hashedPass = passwordEncoder.encode(user.getPassword());
             user.setPassword(hashedPass);
             User newUser = userDao.save(user);
@@ -203,5 +204,34 @@ public class UserController {
         Iterable<Translation> translationsList = translationDao.findByStatus(translation_status);
         model.addAttribute("deploymentList", translationsList);
         return "deploymentList";
+    }
+
+    @GetMapping("/admin/translations")
+    public String seeTranslations (Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        if (!current.isAdmin()){
+            return "redirect:/user/dashboard";
+        } else {
+            Translation_Status status = translationStatusDao.findOne(101L);
+            Iterable<Translation> list = translationDao.findByStatus(status);
+            model.addAttribute("list", list);
+            return "adminViewTranslations";
+        }
+    }
+
+    @GetMapping("/admin/translations/approve/{id}")
+    public String confirmApproval (@PathVariable long id, Model model){
+        model.addAttribute("id", id);
+        return "confirmApproval";
+    }
+
+    @PostMapping("/admin/translations/approve/")
+    public String approve (@RequestParam long approveID){
+        Translation translation = translationDao.findOne(approveID);
+        Translation_Status status = translationStatusDao.findOne(201L);
+        translation.setStatus(status);
+        translationDao.save(translation);
+        return "redirect:/user/dashboard";
     }
 }

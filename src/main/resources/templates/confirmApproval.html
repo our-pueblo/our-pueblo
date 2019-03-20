@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: header('Confirm Approval','')">
+</head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <h1>Approve this user translation</h1>
+    <form id="approveForm" th:action="@{/admin/translations/approve/}" method="post">
+    <div class="form-group">
+        <input type="hidden" th:value="${id}" name="approveID" id="approveID"/>
+        <input type="button" class="btn btn-block btn-primary" onclick="location.href='/user/dashboard';" value="No" />
+        <input type="submit" class="btn btn-block btn-primary" value="Yes"/>
+    </div>
+    </form>
+
+</body>
+</html>

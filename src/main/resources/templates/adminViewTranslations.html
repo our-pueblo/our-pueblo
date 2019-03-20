@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="fragments/header :: header('View Translations','')">
+</head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <div th:each="translation : ${list}">
+        <h1>Request URL: <span th:text="${translation.request.web_page}"></span></h1>
+        <h1>Description: <span th:text="${translation.request.description}"></span></h1>
+        <h1>Department: <span th:text="${translation.request.department_id.name}"></span></h1>
+        <h1>Untranslated Text:</h1>
+        <br/>
+        <p><span th:text="${translation.request.untranslated_text}"></span></p>
+        <br/>
+        <h1>Google Translated Text:</h1>
+        <br/>
+        <p><span th:text="${translation.request.google_translate}"></span></p>
+        <br/>
+        <h1>User Translation: </h1>
+        <p><span th:text="${translation.userTranslation}"></span></p>
+        <a th:href="@{/admin/translations/approve/{id}(id=${translation.id})}">Approve Translation</a>
+        <a th:href="@{/admin/translations/delete/{id}(id=${translation.id})}">Delete Translation</a>
+    </div>
+</body>
+</html>

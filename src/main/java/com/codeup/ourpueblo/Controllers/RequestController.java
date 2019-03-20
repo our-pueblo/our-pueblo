@@ -97,7 +97,7 @@ public class RequestController {
         Department testDepartment = departmanetDao.findOne(1L);
         request.setDepartment_id(testDepartment);
         Request newRequest = requestDao.save(request);
-        return "index";
+        return "redirect:/user/dashboard";
     }
 
     @GetMapping("/request/viewall")
