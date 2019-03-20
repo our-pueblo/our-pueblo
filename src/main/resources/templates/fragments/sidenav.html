@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <head th:replace="fragments/header :: header('','/css/dash.css')"></head>
+</head>
+<body>
+
+        <div th:fragment="sidenav">
+                <div id="mySidepanel" class="sidepanel">
+                    <img src="/img/bird-log-nobg.png" class="owner-img" /><br/>
+                    <h2> Our Pueblo </h2>
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="#">Dashboard</a>
+                    <a href="#">Profile</a>
+                    <a href="#">Translate</a>
+                    <a href="#">Request New Translation</a>
+                    <a href="#">View Translations</a>
+                    <a href="#">Logout</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Need Help</a>
+                    <a href="#">Dictionary</a>
+                    <a href="#">Contact Us</a>
+                </div>
+
+                <!--<div id="main">-->
+                    <!--<button class="openbtn" onclick="openNav()">&#9776; Toggle Sidebar</button>-->
+                    <!--<h2>Collapsed Sidebar</h2>-->
+                    <!--<p>Content...</p>-->
+                <!--</div>-->
+                <!--<nav class="main-nav">-->
+                    <!--<ul class="main-menu menu">-->
+                        <!--<li class="menu-item selected selected">-->
+                            <!--<a href="#"> Dashboard </a>-->
+                        <!--</li>-->
+
+                        <!--<li class="menu-item">-->
+                            <!--<a href="#">Profile</a>-->
+                        <!--</li>-->
+
+                        <!--<li class="menu-item">-->
+                            <!--<a href="#">Translate</a>-->
+                        <!--</li>-->
+
+                        <!--<li class="menu-item">-->
+                            <!--<a href="/translate/request">Request New Translation</a>-->
+                            <!--&lt;!&ndash;<span class="badge"> 2 </span>&ndash;&gt;-->
+                        <!--</li>-->
+
+                        <!--<li class="menu-item">-->
+                            <!--<a href="#">View Translations</a>-->
+                        <!--</li>-->
+
+
+                        <!--<li class="menu-item">-->
+                            <!--<a href="#"> Logout </a>-->
+                        <!--</li>-->
+
+                        <!--<li class="menu-item">-->
+                            <!--<a href="#"> About Us </a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+
+                    <!--&lt;!&ndash; Submenu &ndash;&gt;-->
+                    <!--<ul class="sub-menu menu">-->
+                        <!--<li class="menu-item">-->
+                            <!--<a href="#"> Need Help? </a>-->
+                        <!--</li>-->
+
+                        <!--<li class="menu-item">-->
+                            <!--<a href="#"> Contact Us </a>-->
+                        <!--</li>-->
+
+                        <!--<li class="menu-item">-->
+                            <!--<a href="#"> Dictionary </a>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</nav>-->
+                <!-- Creators -->
+                <!--<div class="creators">-->
+                    <!--<div class="owner">-->
+
+                        <!--<div class="desc">-->
+                            <!--<h3> Austin, Mike, Ryan </h3>-->
+                            <!--<h6> Project Creators </h6>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="copyright">-->
+                        <!--<h3> &copy; Our Pueblo Ltd. 2019 </h3>-->
+                        <!--<p class="copy-text"> Created with love and passion by developers who develop with the user in mind.</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+    </div>
+
+</body>
+</html>

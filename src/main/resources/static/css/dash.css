@@ -1,136 +1,71 @@
-html{
-    background: whitesmoke;
-    background-size: cover;
-
-}
-body {
-    font-family: "Open Sans", sans-serif;
-}
-main{
-    height: 100%;
-    width: 100%;
-    /*background: url('../img/riverwalk-night.jpg') fixed no-repeat;*/
-    background: whitesmoke;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    margin: -10px -10px -10px -10px;
+body{
 }
 
-.layout {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    /*box-shadow: 0px 0px 15px -6px #363636;*/
-    /*background: url("../img/riverwalk-night.jpg") fixed no-repeat;*/
+div#mainContent{
+    margin-top:5%;
+    margin-left:10%;
+    background-color: white;
+    opacity:.75;
+    width:75%;
+    padding:25px;
+}
+/* The sidepanel menu */
+.sidepanel {
+    height: 100%; /* Specify a height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
 }
 
-.sidebar {
-    background: #092a3a;
-    width: 270px;
-    display: flex;
-    flex-direction: column;
-    /*border-top-left-radius: 5px;*/
-    /*border-bottom-left-radius: 5px;*/
-}
-.sidebar .brand {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    padding: 10px 0 10px 10px;
-    /*border-bottom: 0.5px solid #424447;*/
-}
-.sidebar .brand .icon {
-    margin-right: 10px;
-}
-.sidebar .creators {
-    margin-top: auto;
-    color: #fff;
-    font-size: 0.75em;
-}
-.sidebar .creators .owner {
-    border-bottom: 0.5px solid #424447;
-    border-top: 0.5px solid #424447;
-    display: flex;
-    align-items: center;
-    padding: 15px 30px;
-}
-.sidebar .creators .owner .owner-img {
-    height: 25%;
-    width: 25%;
-    /*border-radius: 50%;*/
-}
-.sidebar .creators .owner .desc {
-    margin-left: 15px;
-}
-.sidebar .creators .owner .desc h6 {
-    margin-top: 10px;
-    color: #74777b;
-}
-.sidebar .creators .owner .icon {
-    display: block;
-    margin-left: auto;
-}
-.sidebar .creators .copyright {
-    padding: 30px;
-}
-.sidebar .creators .copyright .copy-text {
-    color: #74777b;
-    margin-top: 15px;
-    font-size: 0.95em;
-    line-height: 1.5em;
-}
-
-nav.main-nav {
-    color: #fff;
-    padding: 10px 15px 0 15px;
-    box-sizing: border-box;
-}
-nav.main-nav .main-menu {
-    padding-bottom: 15px;
-    border-bottom: 0.5px solid #424447;
-}
-nav.main-nav .main-menu::before {
-    content: "MENU";
-}
-nav.main-nav .sub-menu::before {
-    content: "TOOLS";
-}
-nav.main-nav .menu::before {
-    color: #74777b;
-    display: block;
-    padding: 0 15px 15px 15px;
-    font-size: 0.75em;
-}
-nav.main-nav .menu li.menu-item {
-    font-size: 0.75em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #fff;
-    padding: 15px;
-    border-radius: 2.5px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-nav.main-nav .menu li.menu-item a {
+/* The sidepanel links */
+.sidepanel a {
+    padding: 8px 8px 8px 32px;
     text-decoration: none;
-    color: #fff;
-}
-nav.main-nav .menu li.menu-item.selected, nav.main-nav .menu li.menu-item:hover {
-    background: darkgreen;
-    cursor: pointer;
-}
-nav.main-nav .menu li.menu-item:hover {
-    border: 0.5px solid #fff;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
 }
 
-nav.main-nav .menu.sub-menu {
-    margin-top: 30px;
+/* When you mouse over the navigation links, change their color */
+.sidepanel a:hover {
+    color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Style the button that is used to open the sidepanel */
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+img.owner-img {
+    width: 64px;
+    float: left;
+    margin-left: 3%;
+    margin-top: -3%;
+    /*cursor: pointer;*/
+    position: fixed;
 }
 
