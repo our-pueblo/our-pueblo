@@ -4,7 +4,7 @@
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
     <h1 style="color: red;">ARE YOU SURE YOU WANT TO DELETE THIS TRANSLATION?</h1>
-    <form id="deleteForm" action="/translate/delete" method="post">
+    <form id="deleteForm" th:action="@{/translate/delete}" method="post">
         <div class="form-group">
             <input type="hidden" th:value="${deleteID}" name="deleteID"/>
             <input type="button" class="btn btn-block btn-primary" onclick="location.href='/user/dashboard';" value="No" />

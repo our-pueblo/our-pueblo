@@ -2,6 +2,7 @@ package com.codeup.ourpueblo.Controllers;
 
 import com.codeup.ourpueblo.*;
 import com.codeup.ourpueblo.Models.*;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -76,8 +77,9 @@ public class TranslationController {
     //    How users submit their translations
     @PostMapping("/translate")
     public String submitTranslation(@ModelAttribute Translation newTranslation, @RequestParam Long refRequest) {
-        User testUser = userDao.findOne(1L);
-        newTranslation.setUser(testUser);
+        User user  = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        newTranslation.setUser(current);
         Translation_Status translationStatus = translationStatusDao.findOne(101L);
         newTranslation.setStatus(translationStatus);
         long time = date.getTime();
@@ -90,14 +92,15 @@ public class TranslationController {
         request.setStatus(newStatus);
         Translation savedTranslation = translationDao.save(newTranslation);
         Request changedRequest = requestDao.save(request);
-        return "dashboard";
+        return "redirect:/user/dashboard";
     }
 
     @GetMapping("/user/translations")
     public String userViewTranslations(Model model) {
 //       TODO Just for testing user id is hardwired, fix this after security
-        User testUser = userDao.findOne(1L);
-        Iterable<Translation> userTranslations = translationDao.findByUser(testUser);
+        User user  = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        Iterable<Translation> userTranslations = translationDao.findByUser(current);
         model.addAttribute("translationList", userTranslations);
         return "userViewTranslations";
     }
@@ -119,7 +122,7 @@ public class TranslationController {
         editRequest.setStatus(newStatus);
         requestDao.save(editRequest);
         translationDao.delete(id);
-        return "dashboard";
+        return "redirect:/user/dashboard";
     }
 
     @GetMapping("/translate/edit/{id}")
@@ -136,7 +139,10 @@ public class TranslationController {
         System.out.println(editTranslation.getUser().getId());
         Translation_Status newStatus = translationStatusDao.findOne(101L);
         editTranslation.setStatus(newStatus);
+        long time = date.getTime();
+        Timestamp ts = new Timestamp(time);
+        editTranslation.setTime(ts);
         Translation savedTranslation = translationDao.save(editTranslation);
-        return "dashboard";
+        return "redirect:/user/dashboard";
     }
 }

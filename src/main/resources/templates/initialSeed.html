@@ -6,6 +6,7 @@
 
     <div class="form-group" th:if="${currentUser.username.equals(checkUser)}">
         <form id="seedForm" th:action="@{/seed}" th:method="post">
+            <h1>Only run this once, unless you drop the database beforehand!</h1>
             <h1>Give me the data!</h1>
             <input type="submit" class="btn btn-block btn-primary" value="You got it boss"/>
         </form>
