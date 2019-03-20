@@ -7,10 +7,9 @@
 
 <div class="form-group">
     <form id="editForm" th:action="@{/translate/edit}" th:method="post" th:object="${editTranslation}">
-        <h1><span th:text="${editTranslation.id}"></span></h1>
         <label for="untranslatedText"> Untranslated Text</label>
         <br/>
-        <textarea id="untranslatedText"  rows="10" th:field="*{request}" readonly="readonly"></textarea>
+        <textarea id="untranslatedText"  rows="10" th:text="${editTranslation.request.getUntranslated_text()}" readonly="readonly"></textarea>
         <br/>
         <label for="userTranslation">User Translated Text</label>
         <br/>
@@ -24,6 +23,7 @@
         <input type="hidden" th:field="*{id}"/>
         <input type="hidden" th:field="*{reason}"/>
         <input type="hidden" th:field="*{user}"/>
+        <input type="hidden" th:field="*{request}"/>
     </form>
 </div>
 </body>
