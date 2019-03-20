@@ -54,6 +54,7 @@ public class UserController {
                 user.setAdmin(true);
             }
             user.setActive(true);
+            user.setAdmin(false);
             String hashedPass = passwordEncoder.encode(user.getPassword());
             user.setPassword(hashedPass);
             User newUser = userDao.save(user);
