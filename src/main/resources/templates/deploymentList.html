@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: header('Deployment List','')"></head>
 <body>
-    
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <div th:each="deployment : ${deploymentList}">
+
+        <h1>Request URL: <span th:text="${deployment.request.web_page}"></span></h1>
+        <h1>Timestamp: <span th:text="${deployment.time}"></span></h1>
+        <h1>Translation By:  <span th:text="${deployment.user.username}"></span></h1>
+        <h1>Translation: <p><span th:text="${deployment.userTranslation}"></span></p></h1>
+
+
+
+
+    </div>
+
+
 </body>
 </html>
