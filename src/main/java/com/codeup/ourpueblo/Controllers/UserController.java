@@ -196,4 +196,12 @@ public class UserController {
         translationStatusDao.save(status);
         return "redirect:/user/dashboard";
     }
+
+    @GetMapping("/admin/deployment")
+    public String deployment(Model model){
+        Translation_Status translation_status = translationStatusDao.findOne(201L);
+        Iterable<Translation> translationsList = translationDao.findByStatus(translation_status);
+        model.addAttribute("deploymentList", translationsList);
+        return "deploymentList";
+    }
 }
