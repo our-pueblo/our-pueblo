@@ -1,13 +1,7 @@
 package com.codeup.ourpueblo.Controllers;
 
-import com.codeup.ourpueblo.DepartmentRepository;
-import com.codeup.ourpueblo.Models.Department;
-import com.codeup.ourpueblo.Models.Request_Status;
-import com.codeup.ourpueblo.Models.Translation_Status;
-import com.codeup.ourpueblo.Models.User;
-import com.codeup.ourpueblo.Request_StatusRepository;
-import com.codeup.ourpueblo.TranslationStatusRepository;
-import com.codeup.ourpueblo.UserRepository;
+import com.codeup.ourpueblo.*;
+import com.codeup.ourpueblo.Models.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -27,30 +21,36 @@ public class UserController {
 
     private final DepartmentRepository departmentDao;
 
-    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, Request_StatusRepository requestStatusDao, TranslationStatusRepository translationStatusDao, DepartmentRepository departmentDao){
+    private final RequestRepository requestDao;
+
+    private final TranslationRepository translationDao;
+
+    public UserController(UserRepository userDao, PasswordEncoder passwordEncoder, Request_StatusRepository requestStatusDao, TranslationStatusRepository translationStatusDao, DepartmentRepository departmentDao, RequestRepository requestDao, TranslationRepository translationDao) {
         this.userDao = userDao;
         this.passwordEncoder = passwordEncoder;
         this.requestStatusDao = requestStatusDao;
         this.translationStatusDao = translationStatusDao;
         this.departmentDao = departmentDao;
+        this.requestDao = requestDao;
+        this.translationDao = translationDao;
     }
 
     @GetMapping("/register")
-    public String register (Model model){
+    public String register(Model model) {
         model.addAttribute("user", new User());
         return "register";
     }
 
     @PostMapping("/register")
-    public String addUser (@ModelAttribute User user, @RequestParam String password, @RequestParam String verifyPassword, Model model){
-        if (!password.equals(verifyPassword)){
+    public String addUser(@ModelAttribute User user, @RequestParam String password, @RequestParam String verifyPassword, Model model) {
+        if (!password.equals(verifyPassword)) {
             model.addAttribute("passwordError", true);
             return "redirect:/register";
-        }else if (!user.getEmail().contains("@")||!user.getEmail().contains(".")){
+        } else if (!user.getEmail().contains("@") || !user.getEmail().contains(".")) {
             model.addAttribute("emailError", true);
             return "redirect:/register";
-        }else {
-            if (user.getUsername().equals("admin")){
+        } else {
+            if (user.getUsername().equals("admin")) {
                 user.setAdmin(true);
             }
             user.setActive(true);
@@ -62,25 +62,25 @@ public class UserController {
     }
 
     @GetMapping("/user/profile")
-    public String profile (){
+    public String profile() {
         return "profile";
     }
 
     @GetMapping("/user/profile/edit")
-    public String editProfile(){
+    public String editProfile() {
         return "edit_profile";
     }
 
     @GetMapping("/user/dashboard")
-    public String dashboard(Model model){
-        User user  = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String dashboard(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User current = userDao.findOne(user.getId());
-            model.addAttribute("currentUser", current);
+        model.addAttribute("currentUser", current);
         return "dashboard";
     }
 
     @GetMapping("/admin/userlist")
-    public String userlist(Model model){
+    public String userlist(Model model) {
         Iterable<User> userList = userDao.findAll();
         model.addAttribute("userList", userList);
         return "userlist";
@@ -88,12 +88,12 @@ public class UserController {
     }
 
     @GetMapping("/admin/userlist/toggle/{userID}")
-    public String changeUserStatus (@PathVariable Long userID){
+    public String changeUserStatus(@PathVariable Long userID) {
         User user = userDao.findOne(userID);
         boolean status = user.isActive();
-        if (status){
+        if (status) {
             user.setActive(false);
-        }else {
+        } else {
             user.setActive(true);
         }
         User alteredUser = userDao.save(user);
@@ -101,7 +101,7 @@ public class UserController {
     }
 
     @GetMapping("/admin/userlist/makeadmin/{userID}")
-    public String makeAdming (@PathVariable Long userID){
+    public String makeAdming(@PathVariable Long userID) {
         User user = userDao.findOne(userID);
         user.setAdmin(true);
         User alteredUser = userDao.save(user);
@@ -109,34 +109,74 @@ public class UserController {
     }
 
     @GetMapping("/admin/userlist/delete/{userID}")
-    public String deleteUser(@PathVariable Long userID, Model model){
+    public String deleteUser(@PathVariable Long userID, Model model) {
         User user = userDao.findOne(userID);
         model.addAttribute("user", user);
         return "deleteUser";
     }
 
     @PostMapping("/admin/userlist/delete")
-    public String confirmedDelete(@RequestParam long deleteID){
+    public String confirmedDelete(@RequestParam long deleteID) {
         userDao.delete(deleteID);
         return "redirect:/admin/userlist";
     }
 
 
     @GetMapping("/seed")
-    public String seedTables(Model model){
-        User user  = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String seedTables(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User current = userDao.findOne(user.getId());
-        if (current.getUsername().equals("admin")){
+        if (current.getUsername().equals("admin")) {
             model.addAttribute("currentUser", current);
             model.addAttribute("checkUser", "admin");
             return "initialSeed";
-        }else {
+        } else {
             return "redirect:/user/dashboard";
         }
     }
 
+    @GetMapping("/admin/requests")
+    public String adminViewRequests(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        if (!current.isAdmin()) {
+            return "redirect:/user/dashboard";
+        } else {
+            Iterable<Request> requests = requestDao.findAll();
+            model.addAttribute("requestList", requests);
+            return "adminRequests";
+        }
+    }
+
+    @GetMapping("/admin/requests/delete/{id}")
+    public String confirmRequestDelete(@PathVariable long id, Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        if (!current.isAdmin()) {
+            return "redirect:/user/dashboard";
+        } else {
+            model.addAttribute("id", id);
+            return "confrimRequestDelete";
+        }
+    }
+
+    @PostMapping("/admin/requests/delete")
+    public String deleteRequest(@RequestParam long deleteID) {
+        Request request = requestDao.findOne(deleteID);
+        if (request.getStatus().getId() == 101) {
+            requestDao.delete(request);
+            return "redirect:/user/dashboard";
+        } else {
+            Translation deleteTranslation = translationDao.findByRequest(request);
+            translationDao.delete(deleteTranslation);
+            requestDao.delete(request);
+            return "redirect:/user/dashboard";
+        }
+
+    }
+
     @PostMapping("/seed")
-    public String seeded(){
+    public String seeded() {
         Request_Status seedStatus = new Request_Status();
         seedStatus.setId(101);
         seedStatus.setStatus("Request submitted, awaiting user translation");

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: header('View All Requests','')">
+</head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div th:each="request : ${requestList}">
+        <h1>Request URL: <span th:text="${request.web_page}"></span></h1>
+        <h1>Request Description: <span th:text="${request.description}"></span></h1>
+        <h1>Department: <span th:text="${request.department_id.name}"></span></h1>
+        <h1>Status: <span th:text="${request.status.status}"></span></h1>
+        <a th:href="@{/admin/requests/delete/{id}(id=${request.id})}">Delete this Request</a>
+
+    </div>
+</body>
+</html>
