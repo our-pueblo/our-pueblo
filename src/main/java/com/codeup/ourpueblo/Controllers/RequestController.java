@@ -12,11 +12,13 @@ import com.google.cloud.translate.Translate;
 import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -71,11 +73,13 @@ public class RequestController {
     @GetMapping("/request")
     public String makeRequest(Model model) {
         model.addAttribute("request", new Request());
+        Iterable<Department> list = departmanetDao.findAll();
+        model.addAttribute("dList", list);
         return "request";
     }
 
     @PostMapping("/request")
-    public String addRequest(@ModelAttribute Request request) throws Exception {
+    public String addRequest(@ModelAttribute Request request, @RequestParam long department) throws Exception {
         //Get url from request
         String url = request.getWeb_page();
         //use scrapeText method on URL to get untranslated text
@@ -87,15 +91,16 @@ public class RequestController {
         //set request.google_translate to translated text
         request.setGoogle_translate(translated);
 
-        User testUser = userDao.findOne(1L);
-        request.setUser_id(testUser);
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        request.setUser_id(current);
         long time = date.getTime();
         Timestamp ts = new Timestamp(time);
         request.setTime(ts);
         Request_Status testStatus = requestStatusDao.findOne(101L);
         request.setStatus(testStatus);
-        Department testDepartment = departmanetDao.findOne(1L);
-        request.setDepartment_id(testDepartment);
+        Department setDepartment = departmanetDao.findOne(department);
+        request.setDepartment_id(setDepartment);
         Request newRequest = requestDao.save(request);
         return "redirect:/user/dashboard";
     }

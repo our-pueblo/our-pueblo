@@ -15,6 +15,12 @@
             <br/>
             <input type="text" id="description" name="description" th:field="*{description}"/>
             <br/>
+            <label for="department">Department</label>
+            <br/>
+            <select name="department" id="department">
+                <option th:each="department : ${dList}" th:value="${department.id}" th:text="${department.name}"></option>
+            </select>
+            <br/>
             <input type="submit" class="btn btn-block btn-primary" value="Request"/>
         </form>
     </div>
