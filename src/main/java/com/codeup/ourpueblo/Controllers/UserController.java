@@ -245,7 +245,7 @@ public class UserController {
         User user = userDao.findByEmail(email);
         if (user==null){
             model.addAttribute("wrongEmail", true);
-            return "redirect:/user/forgot";
+            return "forgotPassword";
         }
         else {
             Long userID = user.getId();
@@ -265,7 +265,7 @@ public class UserController {
         } else {
             model.addAttribute("wrongAnswer", true);
             model.addAttribute("user", resetUser);
-            return "redirect:/verifysecurity";
+            return "verifySecurity";
         }
     }
 
@@ -280,7 +280,7 @@ public class UserController {
         }else {
             model.addAttribute("wrong", true);
             model.addAttribute("user", resetUser);
-            return "redirect:/reset/password";
+            return "reset";
         }
     }
 

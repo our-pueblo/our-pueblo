@@ -4,11 +4,12 @@
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
     <h1>Please enter new password.</h1>
-
+    <h1 th:if="${wrong}">Passwords do not match</h1>
     <form id="passwordForm" th:action="@{/reset/password}" th:method="post">
         <label for="password">Password</label>
         <br/>
         <input type="password" id="password" name="password"/>
+        <br/>
         <label for="verify">Verify Password</label>
         <br/>
         <input type="password" id="verify" name="verify"/>
