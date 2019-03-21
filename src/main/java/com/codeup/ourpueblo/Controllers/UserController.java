@@ -52,9 +52,10 @@ public class UserController {
         } else {
             if (user.getUsername().equals("admin")) {
                 user.setAdmin(true);
+            }else {
+                user.setAdmin(false);
             }
             user.setActive(true);
-            user.setAdmin(false);
             String hashedPass = passwordEncoder.encode(user.getPassword());
             user.setPassword(hashedPass);
             User newUser = userDao.save(user);
@@ -186,8 +187,29 @@ public class UserController {
         seedStatus.setStatus("Translated by User");
         requestStatusDao.save(seedStatus);
         Department department = new Department();
-        department.setName("First");
+        department.setName("Animal Care Services");
         departmentDao.save(department);
+        Department department2 = new Department();
+        department2.setName("Arts & Cultural Affairs");
+        departmentDao.save(department2);
+        Department department3 = new Department();
+        department3.setName("City Council");
+        departmentDao.save(department3);
+        Department department4 = new Department();
+        department4.setName("Parks and Recreation");
+        departmentDao.save(department4);
+        Department department5 = new Department();
+        department5.setName("Finance");
+        departmentDao.save(department5);
+        Department department6 = new Department();
+        department6.setName("Health");
+        departmentDao.save(department6);
+        Department department7 = new Department();
+        department7.setName("Police Department");
+        departmentDao.save(department7);
+        Department department8 = new Department();
+        department8.setName("Other");
+        departmentDao.save(department8);
         Translation_Status status = new Translation_Status();
         status.setId(101);
         status.setStatus("Waiting for Admin Approval");
@@ -234,4 +256,56 @@ public class UserController {
         translationDao.save(translation);
         return "redirect:/user/dashboard";
     }
+
+    @GetMapping("/user/forgot")
+    public String forgotPassword(Model model){
+        return "forgotPassword";
+    }
+
+    @PostMapping("/user/forgot")
+    public String emailCheck (@RequestParam String email, Model model){
+        User user = userDao.findByEmail(email);
+        if (user==null){
+            model.addAttribute("wrongEmail", true);
+            return "forgotPassword";
+        }
+        else {
+            Long userID = user.getId();
+            model.addAttribute("userID", userID);
+            return "verifySecurity";
+        }
+    }
+
+    @PostMapping("/verifysecurity")
+    public String verify (Model model, @RequestParam Long resetUser, @RequestParam String answer){
+        User user = userDao.findOne(resetUser);
+        String security = user.getSecurity_question();
+        if (answer.equals(security)){
+            Long userID = user.getId();
+            model.addAttribute("userID", userID);
+            return "reset";
+        } else {
+            model.addAttribute("wrongAnswer", true);
+            model.addAttribute("user", resetUser);
+            return "verifySecurity";
+        }
+    }
+
+
+    @PostMapping("/reset/password")
+    public String done(@RequestParam Long resetUser, @RequestParam String password, @RequestParam String verify, Model model){
+        if (password.equals(verify)){
+            String hashedPass = passwordEncoder.encode(password);
+            User user = userDao.findOne(resetUser);
+            user.setPassword(hashedPass);
+            return "redirect:/login";
+        }else {
+            model.addAttribute("wrong", true);
+            model.addAttribute("user", resetUser);
+            return "reset";
+        }
+    }
+
+
+
 }

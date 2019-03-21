@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: header('Security', '')"></head>
+<body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <h1 th:if="${wrongAnswer}">Answer does not match record on file, please try again</h1>
+    <h1>Please answer your security question: WHat is your best friends name?</h1>
+    <form id="passwordForm" th:action="@{/verifysecurity}" th:method="post">
+        <label for="answer">Answer</label>
+        <br/>
+        <input type="text" id="answer" name="answer"/>
+        <input type="hidden" name="resetUser" id="resetUser" th:value="${userID}"/>
+        <input type="submit" class="btn btn-block btn-primary" value="Request"/>
+    </form>
+</body>
+</html>
