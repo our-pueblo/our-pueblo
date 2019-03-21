@@ -234,4 +234,56 @@ public class UserController {
         translationDao.save(translation);
         return "redirect:/user/dashboard";
     }
+
+    @GetMapping("/user/forgot")
+    public String forgotPassword(Model model){
+        return "forgotPassword";
+    }
+
+    @PostMapping("/user/forgot")
+    public String emailCheck (@RequestParam String email, Model model){
+        User user = userDao.findByEmail(email);
+        if (user==null){
+            model.addAttribute("wrongEmail", true);
+            return "redirect:/user/forgot";
+        }
+        else {
+            Long userID = user.getId();
+            model.addAttribute("userID", userID);
+            return "verifySecurity";
+        }
+    }
+
+    @PostMapping("/verifysecurity")
+    public String verify (Model model, @RequestParam Long resetUser, @RequestParam String answer){
+        User user = userDao.findOne(resetUser);
+        String security = user.getSecurity_question();
+        if (answer.equals(security)){
+            Long userID = user.getId();
+            model.addAttribute("userID", userID);
+            return "reset";
+        } else {
+            model.addAttribute("wrongAnswer", true);
+            model.addAttribute("user", resetUser);
+            return "redirect:/verifysecurity";
+        }
+    }
+
+
+    @PostMapping("/reset/password")
+    public String done(@RequestParam Long resetUser, @RequestParam String password, @RequestParam String verify, Model model){
+        if (password.equals(verify)){
+            String hashedPass = passwordEncoder.encode(password);
+            User user = userDao.findOne(resetUser);
+            user.setPassword(hashedPass);
+            return "redirect:/login";
+        }else {
+            model.addAttribute("wrong", true);
+            model.addAttribute("user", resetUser);
+            return "redirect:/reset/password";
+        }
+    }
+
+
+
 }
