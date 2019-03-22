@@ -63,73 +63,50 @@
     /*position: fixed;*/
 /*}*/
 
-/*
- * Made by Erik Terwan
- * 24th of November 2015
- * MIT License
- *
- *
- * If you are thinking of using this in
- * production code, beware of the browser
- * prefixes.
- */
 
-body
-{
+body {
     margin: 0;
     padding: 0;
-
-    /* make it look decent enough */
-    background: whitesmoke;
-    color: #cdcdcd;
+    background-color: #092a3a;
 }
 
-a
-{
+a {
     text-decoration: none;
     color: #232323;
-
     transition: color 0.3s ease;
 }
 
-a:hover
-{
+a:hover {
     color: #092a3a;
 }
 
-#menuToggle
-{
+#menuToggle {
     display: block;
-    position: relative;
+    position: sticky;
     top: 50px;
     left: 50px;
-
     z-index: 1;
-
     -webkit-user-select: none;
     user-select: none;
+
 }
 
-#menuToggle input
-{
+#menuToggle input {
     display: block;
     width: 40px;
     height: 32px;
     position: absolute;
     top: -7px;
     left: -5px;
-
     cursor: pointer;
-
-    opacity: 0; /* hide this */
-    z-index: 2; /* and place it over the hamburger */
+    opacity: 0;
+    z-index: 2;
 
     -webkit-touch-callout: none;
 }
 
 
-#menuToggle span
-{
+#menuToggle span {
     display: block;
     width: 33px;
     height: 4px;
@@ -148,8 +125,7 @@ a:hover
     opacity 0.55s ease;
 }
 
-#menuToggle span:first-child
-{
+#menuToggle span:first-child {
     transform-origin: 0% 0%;
 }
 
@@ -159,54 +135,60 @@ a:hover
 }
 
 
-#menuToggle input:checked ~ span
-{
+#menuToggle input:checked ~ span{
     opacity: 1;
     transform: rotate(45deg) translate(-2px, -1px);
     background: #232323;
 }
 
-#menuToggle input:checked ~ span:nth-last-child(3)
-{
+#menuToggle input:checked ~ span:nth-last-child(3){
     opacity: 0;
     transform: rotate(0deg) scale(0.2, 0.2);
 }
 
 
-#menuToggle input:checked ~ span:nth-last-child(2)
-{
+#menuToggle input:checked ~ span:nth-last-child(2){
     transform: rotate(-45deg) translate(0, -1px);
 }
 
-/*
- * Make this absolute positioned
- * at the top left of the screen
- */
-#menu
-{
+#menu {
     position: absolute;
     width: 300px;
-    margin: -100px 0 0 -50px;
+    margin: -100px 0 0 0px;
     padding: 50px;
     padding-top: 125px;
-
-    background: #ededed;
+    background: whitesmoke;
     list-style-type: none;
-
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
 
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 
-#menu li
-{
+#menu li{
     padding: 10px 0;
     font-size: 22px;
 }
 
 
-#menuToggle input:checked ~ ul
-{
+#menuToggle input:checked ~ ul {
     transform: none;
+}
+
+.container-fluid{
+    background-color: #092a3a;
+    margin-top: -30px;
+}
+
+div.card{
+    width: 45%;
+    float: right;
+    margin: 1em;
+}
+
+ul#menu{
+    padding-left: 50px;
+}
+input[type=checkbox]{
+    margin-left: 10px;
 }
