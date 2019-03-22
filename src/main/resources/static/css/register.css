@@ -44,7 +44,7 @@ form{
     position: absolute;
     left: 57%;
     top: 49%;
-    transform: translate(-50%,-50%);
+    /*transform: translate(-50%,-50%);*/
     width:100%;
 }
 input{
@@ -67,7 +67,7 @@ input[type="submit"]{
     background: #092a3a;
     color: white;
     cursor: pointer;
-    transition: all 1000ms ease-in-out;
+    transition: none!important;
     width: 40%;
     margin-left: 28%;
 
@@ -116,7 +116,7 @@ input[type="password"]{
 
 input:-webkit-autofill {
     -webkit-animation-name: autofill;
-    -webkit-animation-fill-mode: both;
+    /*-webkit-animation-fill-mode: both;*/
 }
 span#sq{
     font-weight:bold;
