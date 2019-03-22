@@ -92,7 +92,7 @@ a:hover {
     margin: -100px 0 0 0px;
     padding: 50px;
     padding-top: 125px;
-    background: whitesmoke;
+    /*background: whitesmoke;*/
     list-style-type: none;
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
@@ -110,9 +110,10 @@ a:hover {
     transform: none;
 }
 
-.container-fluid{
-    background-color: #092a3a;
+.container{
+    /*background-color: #092a3a;*/
     margin-top: -30px;
+
 }
 
 div.card{
@@ -128,7 +129,7 @@ input[type=checkbox]{
 }
 
 div.container-fluid{
-    background-color: #092a3a;
+    /*background-color: #092a3a;*/
     overflow: hidden;
 }
 
