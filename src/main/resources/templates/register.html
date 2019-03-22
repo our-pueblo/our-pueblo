@@ -1,40 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<head th:replace="fragments/header :: header('Register','')">
+<head th:replace="fragments/header :: header('Register','/css/register.css')">
 </head>
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
-    <div class="form-group">
+    <!--<div th:replace="fragments/navbar :: navbar"></div>-->
+    <div class="form-group" id = "container">
         <form id="createUser" th:action="@{/register}" th:method="post" th:object="${user}">
             <label for="username">Username</label>
-            <br/>
             <input type="text" id="username" name="username" th:field="*{username}"/>
-            <br/>
-            <label for="email">Email</label>
-            <br/>
+            <label for="email" id="emailLabel">Email</label>
             <input type="text" id="email" name="email" th:field="*{email}"/>
             <br/>
             <label for="password">Password</label>
-            <br/>
             <input type="password" id="password" name="password" th:field="*{password}"/>
-            <label for="verifyPassword">Password</label>
-            <br/>
+            <label for="verifyPassword" id="verifyLabel">Confirm Password</label>
             <input type="password" id="verifyPassword" name="verifyPassword"/>
             <br/>
             <label for="phoneNumber">Phone Number</label>
-            <br/>
             <input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phone_number}"/>
-            <br/>
-            <label for="receiveEmails">Receive Emails?</label>
-            <br/>
+            <label for="receiveEmails" id="receiveLabel">Receive Emails?</label>
             <select name="recieveEmails" id="receiveEmails" th:field="*{recieve_emails}">
                 <option value="true">Yes</option>
                 <option value="false">No</option>
             </select>
             <br/>
-            <label for="securityQuestion">What is your best friend's name?</label>
-            <br/>
+            <label for="securityQuestion"><span id="sq">Security Question:</span><br/>What is your best friend's name?</label>
             <input type="text" id="securityQuestion" name="securityQuestion" th:field="*{security_question}"/>
             <br/>
             <input type="submit" class="btn btn-block btn-primary" value="Register"/>

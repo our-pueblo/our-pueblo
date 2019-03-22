@@ -5,25 +5,25 @@
 }
 body{
     /*height: 100vh;*/
-    background: url('../img/sa-skyline-2.jpg') fixed no-repeat;
+    background: url('../img/sa-market.jpg') fixed no-repeat;
     background-size: cover;
 }
 
 #container{
-    width: 350px;
-    height: 550px;
+    width: 700px;
+    height: 400px;
     background: inherit;
     position: absolute;
     overflow: hidden;
-    top: 50%;
-    left: 50%;
-    margin-left: -175px;
+    top: 59%;
+    left: 32%;
+    margin-left: -125px;
     margin-top: -250px;
     border-radius: 8px;
 }
 #container:before{
-    width: 400px;
-    height: 600px;
+    width: 750px;
+    height: 450px;
     content: "";
     position: absolute;
     top: -25px;
@@ -32,7 +32,7 @@ body{
     right: 0;
     background: inherit;
     box-shadow: inset 0 0 0 200px rgba(255,255,255,0.2);
-    filter: blur(10px);
+    filter: blur(20px);
 }
 form img{
     padding-top: 10px;
@@ -40,11 +40,12 @@ form img{
     height: 120px;
 }
 form{
-    text-align: center;
+    text-align: left;
     position: absolute;
-    left: 50%;
-    top: 50%;
+    left: 57%;
+    top: 49%;
     transform: translate(-50%,-50%);
+    width:100%;
 }
 input{
     background: 0;
@@ -67,6 +68,8 @@ input[type="submit"]{
     color: white;
     cursor: pointer;
     transition: all 1000ms ease-in-out;
+    width: 40%;
+    margin-left: 28%;
 
 }
 input[type="submit"]:hover{
@@ -96,7 +99,55 @@ input[type="password"]{
     font-size: 18px;
     text-shadow: 1px 1px slategrey;
 }
-
+#createUser > input.btn.btn-block.btn-primary{
+    width: 40%;
+    margin-left: 23%;
+    margin-right: auto;
+}
 #register_button{
     height: 35px;
+}
+@-webkit-keyframes autofill {
+    to {
+        color: #000;
+        background: transparent;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+span#sq{
+    font-weight:bold;
+}
+label{
+    font-size: large;
+    color: white;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: #092a3a !important;
+}
+input#email{
+    width:255px;
+}
+input#phoneNumber{
+    width:160px;
+}
+input#securityQuestion{
+    width:345px;
+}
+input#verifyPassword{
+    width:155px;
+}
+label#emailLabel{
+    padding-left: 20px;
+}
+label#verifyLabel{
+    padding-left: 20px;
+}
+label#receiveLabel{
+    padding-left: 20px;
+    padding-right:20px;
 }
