@@ -100,3 +100,6 @@ input[type="password"]{
 #register_button{
     height: 35px;
 }
+div#side_nav{
+    z-index: 10000;
+}

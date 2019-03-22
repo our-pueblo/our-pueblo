@@ -1,0 +1,43 @@
+
+#contain::before{
+    /*background: inherit;*/
+    /*box-shadow: inset 0 0 0 200px rgba(255,255,255,0.2);*/
+}
+
+div.card{
+    width: 100% !important;
+}
+
+/*div.card::before{*/
+    /*box-shadow: inset 0 0 0 200px rgba(255,255,255,0.2) !important;*/
+    /*filter: blur(10px) !important;*/
+/*}*/
+
+/*.card{*/
+/*background: inherit !important;*/
+
+/*}*/
+
+/*.card::before{*/
+    /*display: block !important;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*background-image: inherit !important;*/
+    /*background-size: cover !important;*/
+    /*content: ' ' !important;*/
+    /*opacity: 0.4 !important;*/
+    /*z-index: 10000 !important;*/
+/*}*/
+
+.container-item{
+    background: inherit !important;
+    overflow: hidden !important;
+
+}
+.container-item:before{
+    content: "" !important;
+
+    background: inherit !important;
+    box-shadow: inset 0 0 0 200px rgba(255,255,255,0.2) !important;
+    filter: blur(100px) !important;
+}
