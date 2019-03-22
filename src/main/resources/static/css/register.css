@@ -116,7 +116,7 @@ input[type="password"]{
 
 input:-webkit-autofill {
     -webkit-animation-name: autofill;
-    /*-webkit-animation-fill-mode: both;*/
+    -webkit-animation-fill-mode: both;
 }
 span#sq{
     font-weight:bold;
