@@ -1,67 +1,51 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Dashboard','/css/dash.css')"></head>
+<head th:replace="fragments/header :: header('Dashboard','/css/dashboard.css')">
+    <style>
+
+
+
+
+
+
+
+    </style>
+</head>
 <body>
+    <main>
+        <div id="side_nav" th:replace="fragments/sidenav"></div>
 
-    <div th:replace="fragments/sidenav"></div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 align-center">
-                <div class="card">
-                    <div class="card-header">
-                        Provife
-                    </div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            <a href="#">View Translations</a>
-                            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                        </blockquote>
+        <div  class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div  class="text-center card border-dark mb-3 shadow container-item" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body text-dark">
+                            <h5 class="card-title">Dark card title</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias amet cupiditate libero maxime nemo repellat, veniam voluptate? Asperiores dolorem error eum laborum necessitatibus perferendis quas quibusdam quis, sed, totam, veniam!</p>
+                        </div>
                     </div>
                 </div>
-
-            </div>
-            <div class="col-md-6 align-center">
-
-                <div class="card">
-                    <div class="card-header">
-                        Quote
+                <div class="col-md-4">
+                    <div class="text-center card border-dark mb-3 shadow container-item" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body text-dark">
+                            <h5 class="card-title">Dark card title</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aut autem, beatae cupiditate enim eos, expedita natus obcaecati quibusdam repellat suscipit vel voluptas voluptatem. Ad esse expedita in optio rem? Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                        </blockquote>
+                </div>
+                <div class="col-md-4">
+                    <div class="text-center card border-dark mb-3 shadow container-item" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body text-dark">
+                            <h5 class="card-title">Dark card title</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi harum libero, non officiis placeat quae quibusdam. A aliquam blanditiis debitis dolor fugit, impedit ipsam molestias nisi odio optio quibusdam quidem. Some quick example text to build on the card title and make up the bulk of the card's content. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium amet aperiam commodi culpa deleniti deserunt dicta distinctio enim harum iure labore molestiae molestias nisi perferendis quidem rem reprehenderit, sed ullam!</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-
-
-
-        <div class="card">
-            <div class="card-header">
-                Quote
-            </div>
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                </blockquote>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header">
-                Quote
-            </div>
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                </blockquote>
-            </div>
         </div>
         <br/>
         <br/>
@@ -121,49 +105,7 @@
         <br/>
         <br/>
         <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </div>
+    </main>
     <!--<img src="/img/bird-log-nobg.png" class="owner-img" onclick="openNav()" />-->
     <!--<div id="mainContent">-->
         <!--<h1>User Features</h1>-->
