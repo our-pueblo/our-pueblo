@@ -135,21 +135,20 @@ public class UserController {
         return "redirect:/admin/userlist";
     }
 
-    //Admin Feature: Delete a user
-    @GetMapping("/admin/userlist/delete/{userID}")
-    public String deleteUser(@PathVariable Long userID, Model model) {
-        //Find the user based on ID
-        User user = userDao.findOne(userID);
-        model.addAttribute("user", user);
-        return "deleteUser";
-    }
-
-    @PostMapping("/admin/userlist/delete")
-    public String confirmedDelete(@RequestParam long deleteID) {
-        //Delete the user
-        userDao.delete(deleteID);
-        return "redirect:/admin/userlist";
-    }
+//    //Admin Feature: Delete a user
+//    @GetMapping("/admin/userlist/delete/{userID}")
+//    public String deleteUser(@PathVariable Long userID, Model model) {
+//        //Find the user based on ID
+//        User user = userDao.findOne(userID);
+//        model.addAttribute("user", user);
+//        return "deleteUser";
+//    }
+//    @PostMapping("/admin/userlist/delete")
+//    public String confirmedDelete(@RequestParam long deleteID) {
+//        //Delete the user
+//        userDao.delete(deleteID);
+//        return "redirect:/admin/userlist";
+//    }
 
     //Get mapping for the in app seeder
     @GetMapping("/seed")
