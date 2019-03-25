@@ -7,47 +7,6 @@
         background-size: cover;
     }
 </style>
-<body>
-
-    <div th:replace="fragments/sidenav"></div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 align-center">
-                <div class="card" style="width:75%">
-                    <div class="card-header">
-                        <h1>User Features</h1>
-                    </div>
-                    <div class="card-body">
-                            <a href="/request">View Profile</a>
-                            <br/>
-                            <a href="/admin/userlist">Request a Page to Translate</a>
-                            <br/>
-                            <a href="/admin/requests">View All Your Translations</a>
-                    </div>
-                    </div>
-                </div>
-                            <div th:if="${currentUser.admin}" class="card-body">
-                                <h1>Admin Features</h1>
-                                <br/>
-                                <h4>Make a Request</h4>
-                                <br/>
-                                <a href="/request">Make a Request</a>
-                                <h4>View User List</h4>
-                                <br/>
-                                <a href="/admin/userlist">View User List</a>
-                                <h4>View All Requests</h4>
-                                <br/>
-                                <a href="/admin/requests">View All Requests</a>
-                                <h4>View All Translations</h4>
-                                <br/>
-                                <a href="/admin/translations">View All Translations Pending Approval</a>
-                                <h4>View Pages with text ready for deployment</h4>
-                                <br/>
-                                <a href="/admin/deployment">View Pages Ready for Deployment</a>
-                            </div>
-                    </div>
-                </div>
 
 <body>
     <main>
@@ -121,8 +80,6 @@
         <!--<a href="/admin/deployment">View Pages Ready for Deployment</a>-->
     <!--</div>-->
     <!--<script src="/static/js/showText.js"></script>-->
-
->>>>>>> 3ded1c56a4841ebdd091d77dfe3e6b5eb3fd56a3
 
 </body>
 </html>
