@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Index', '')">
+<head th:replace="fragments/header :: header('Index', '/css/index.css')">
 </head>
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
+<main>
+    <div id="side_nav" th:replace="fragments/sidenav">
+    </div>
+    <div class="container">
+    <!--<div th:replace="fragments/sidenav :: sidenav"></div>-->
+        <div id="container">
+            <!--<h1>Welcome to Our Pueblo!</h1>-->
+            <div class="row">
+                <div class="col-md-12">
+                    <div  class="text-center card border-dark mb-3 shadow container-item" style="max-width: 18rem;">
+                        <!--<div class="card-header">What is Our Pueblo?</div>-->
+                        <div class="card-body text-dark">
+                            <h5 class="card-title">What is Our Pueblo?</h5>
+                            <img src="../img/birdlogo.png" style="width:90px"/>
+                            <p class="card-text">Our Pueblo is an application that was created as a way for volunteers to contribute to the translation of the entire City of San Antonio website.</p>
+                        <hr/>
+                            <h5 class="card-title">How Does it Work?</h5>
+                            <p style="text-align: left"><br/>
 
-    <h1 id="heading">Our Pueblo Home Page</h1>
-    <h1>Links for testing</h1>
-    <h3>Home Controller</h3>
-    <a href="/about">About</a>
-    <br/>
-    <h3>User Controller</h3>
-    <a href="/register">Register</a>
-    <br/>
-    <a href="/login">Login</a>
-    <br/>
-    <!--<a href="/user/profile">User Profile</a>-->
-    <!--<br/>-->
-    <!--<a href="/user/profile/edit">Edit Profile</a>-->
-    <!--<br/>-->
-    <!--<a href="/user/dashboard">Dashboard</a>-->
-    <!--<br/>-->
-    <!--<h3>User Controller: Admin functions</h3>-->
-    <!--<a href="/admin/userlist">User List</a>-->
-    <!--<br/>-->
-    <!--<h3>Request Controller</h3>-->
-    <!--<a href="/request">Make a Request</a>-->
-    <!--<br/>-->
-    <!--<a href="/request/viewall">View All Untranslated Requests</a>-->
-    <!--<h3>Translation Controller</h3>-->
-    <!--<a href="/translate/request">Request a Page to Translate</a>-->
-    <!--<br/>-->
-    <!--<a href="/translate/123">Translate a page (Testing with ID 123)</a>-->
-    <!--<br/>-->
-    <!--<h3>Translation Controller: Admin Functions</h3>-->
-    <!--<a href="/translate/viewall">View all translations</a>-->
-    <!--<br/>-->
-    <!--<a href="/translate/view">View a Translation with Admin Functions</a>-->
+                                1. Employees log in and request for a page to be translated. (Copy and Paste the URL)<br/>
+                                2. Volunteers log in and request a page to translate. (Choose from a list)<br/>
+                                3. They compare the original English text with the results from Google Translate, correcting any mistakes.<br/>
+                                4. Once their translation is submitted, an employee reviews the text before it is accepted.<br/>
+                                5. When an employee accepts a translation, the volunteer is notified via email of the new status.<br/><br/>
+                            </p><br/>
+                            <p>It is just that simple! Try it for yourself!<br/>
+                                <a href="/login">Log In</a>
+                                <span> | </span>
+                                <a href="/register">Register</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
-
-
-
-<script src="/js/showText.js"></script>
+            </div>
+        </div>
+    </div>
+</main>
 </body>
 </html>

@@ -2,24 +2,25 @@
     margin: 0;
     padding: 0;
     font-family: sans-serif;
+
 }
 body{
     /*height: 100vh;*/
-    background: url('../img/sa-market.jpg') fixed no-repeat;
+    background: url('../img/sa-riverwalk.jpeg') fixed no-repeat;
     background-size: cover;
 }
 
 #container{
     width: 700px;
     height: 400px;
-    background: inherit;
-    position: absolute;
-    overflow: hidden;
+    background: inherit !important;
+    position: absolute ;
+    overflow: hidden !important;
     top: 59%;
     left: 32%;
     margin-left: -125px;
     margin-top: -250px;
-    border-radius: 8px;
+    border-radius: 8px!important;
 }
 #container:before{
     width: 750px;
@@ -31,9 +32,10 @@ body{
     bottom: 0;
     right: 0;
     background: inherit;
-    box-shadow: inset 0 0 0 200px rgba(255,255,255,0.2);
-    filter: blur(20px);
+    box-shadow: inset 0 0 0 200px rgba(255,255,255,0.2) !important;
+    filter: blur(1.5rem) !important;
 }
+
 form img{
     padding-top: 10px;
     width: 120px;
@@ -46,6 +48,7 @@ form{
     top: 49%;
     /*transform: translate(-50%,-50%);*/
     width:100%;
+    text-shadow: 2px 2px slategrey;
 }
 input{
     background: 0;
