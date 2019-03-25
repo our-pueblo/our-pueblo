@@ -4,21 +4,12 @@
     /*box-shadow: inset 0 0 0 200px rgba(255,255,255,0.2);*/
 }
 
-div.card{
-    width: 93% !important;
-    max-width:95%!important;
-}
-a.links{
-    position:relative;
-    color:dodgerblue!important;
-    padding-left: 25px;
-    padding-right: 25px;
-    /*z-index:1!important;*/
-}
+
+
 .container-item{
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2) !important;
     border-radius: 5px;
-    /*z-index: -1 !important;*/
+    z-index: 1 !important;
 
 }
 .container-item:before{
@@ -38,46 +29,41 @@ a.links{
 }
 
 main{
-    background: none!important;
+    /*background: url('../img/sa-skyline-2.jpg') fixed no-repeat;*/
     /*background-size: cover;*/
 }
 
 div.container{
-    /*background: url('../img/sa-skyline-2.jpg') fixed no-repeat;*/
+    background: url('../img/sa-skyline-2.jpg') fixed no-repeat;
     background-size: cover;
 }
 
-body{
-    background: url('../img/sa-market.jpg') fixed no-repeat!important;
+html{
+    background: url('../img/sa-skyline-2.jpg') fixed no-repeat;
     background-size: cover;
 }
 .container{
     width: 80% !important;
 }
-h1{
-    text-align: center;
-    color:white;
-}
-
 #container{
-    width: 900px !important;
-    height: 600px !important;
+    width: 300px !important;
+    height: 400px !important;
     background: inherit !important;
     position: absolute ;
     overflow: hidden !important;
-    top: 0 !important;
-    left: 10% !important;
+    top: 30% !important;
+    left: 40% !important;
     margin-left: 10px !important;
     margin-top: 25px !important;
     border-radius: 8px!important;
 }
 #container:before{
-    width: 1300px !important;
-    height: 800px!important;
+    width: 400px !important;
+    height: 500px!important;
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -25px !important;
+    left: -25px !important;
     bottom: 0;
     right: 0;
     background: inherit;
@@ -85,5 +71,19 @@ h1{
     filter: blur(1.5rem) !important;
 }
 div.row{
-    /*width: 90% !important;*/
+    width: 90% !important;
 }
+
+div.card{
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+    width: 100% !important;
+}
+
+@media (min-width: 576px){
+    #container{
+        left: 10%;
+        right: 10%;
+    }
+}
+
