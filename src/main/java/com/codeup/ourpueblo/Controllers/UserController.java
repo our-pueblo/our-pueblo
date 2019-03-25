@@ -73,7 +73,17 @@ public class UserController {
     }
 
     @GetMapping("/user/profile")
-    public String profile() {
+    public String profile(Model model) {
+        //Get the current user
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        model.addAttribute("currentUser", current);
+        Iterable<Translation> list = translationDao.findByUser(current);
+        int count = 0;
+        for (Translation translation : list){
+            count++;
+        }
+        model.addAttribute("totalTranslations", count);
         return "profile";
     }
 
