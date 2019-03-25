@@ -1,8 +1,29 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Profile','')"></head>
+<head th:replace="fragments/header :: header('Profile','/css/profile.css')"></head>
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
-    <h1>This is where a user/admin can view their profile</h1>
-    
+    <main>
+        <div id="side_nav" th:replace="fragments/sidenav"></div>
+
+        <div class="container container-fluid">
+            <div id="container">
+                <div class="row">
+                    <div class="col">
+                        <div  class="text-center card border-dark mb-3 shadow container-item" style="max-width: 18rem;">
+                            <div class="card-header">Profile Information</div>
+                            <div class="card-body text-dark">
+                                <h3>Username</h3>
+                                <h5 th:text="${currentUser.username}" class="card-title"></h5>
+                                <h3>Email</h3>
+                                <h5 th:text="${currentUser.email}" class="card-title"></h5>
+                                <h3>Total Number of Translations</h3>
+                                <h5 th:text="${totalTranslations}"></h5>
+                                <!--<p th:text="${currentUser.username}" class="card-text">  </p>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
