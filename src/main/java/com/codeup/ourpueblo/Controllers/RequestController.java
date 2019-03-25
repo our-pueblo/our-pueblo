@@ -28,7 +28,7 @@ import static com.codeup.ourpueblo.Controllers.TestScraper.scrapeText;
 @Controller
 public class RequestController {
 
-
+// Used to call the actual API key from application properties
     private String apikey;
 
     public String getSpanish(String text) throws Exception {
@@ -59,7 +59,6 @@ public class RequestController {
     private final UserRepository userDao;
 
     private final Request_StatusRepository requestStatusDao;
-    //TODO fix department typo late
     private final DepartmentRepository departmanetDao;
 
     public RequestController(RequestRepository requestDao, UserRepository userDao, Request_StatusRepository requestStatusDao, DepartmentRepository departmanetDao, @Value("${api-key}") String apikey) {
@@ -69,12 +68,16 @@ public class RequestController {
         this.departmanetDao = departmanetDao;
         this.apikey = apikey;
     }
-
+//Mapping for the Make A Request page
     @GetMapping("/request")
     public String makeRequest(Model model) {
+        //Create a new instance of of a request object and add it to the model
         model.addAttribute("request", new Request());
+        //Get a list of all the departments, the request page has a drop down that is populated by this
         Iterable<Department> list = departmanetDao.findAll();
+        //Add the list to the model
         model.addAttribute("dList", list);
+        //Load the page
         return "request";
     }
 
@@ -90,18 +93,28 @@ public class RequestController {
         String translated = getSpanish(untranslated);
         //set request.google_translate to translated text
         request.setGoogle_translate(translated);
-
+        //Get the currently logged in user and store it
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User current = userDao.findOne(user.getId());
+        //Set the user_id for the request to the current user
         request.setUser_id(current);
+        //Get the current time
         long time = date.getTime();
+        //Make a timestamp using the current time
         Timestamp ts = new Timestamp(time);
+        // Add the timestamp to the request object
         request.setTime(ts);
+        // Find the default Request_Status, 101 is Submitted but not user reviewed
         Request_Status testStatus = requestStatusDao.findOne(101L);
+        //Set the Request_Status
         request.setStatus(testStatus);
+        //The request form only gives back the ID of the selected department, here we pull the actual Department object that corresponds to the ID
         Department setDepartment = departmanetDao.findOne(department);
+        //Set the department of the request
         request.setDepartment_id(setDepartment);
+        //Save the request
         Request newRequest = requestDao.save(request);
+        //Go back to the dashboard
         return "redirect:/user/dashboard";
     }
 
