@@ -16,6 +16,10 @@ a {
 a:hover {
     color: #092a3a;
 }
+ul#menu{
+    background-color: #35823E;
+    border: 2px solid black;
+}
 
 #menuToggle {
     display: block;
@@ -93,10 +97,17 @@ a:hover {
     transform: translate(-100%, 0);
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
+img#navlogo{
+width:64px;
+float:left;
+margin-top:-15px;
+margin-right:10px;
 
+}
 #menu li{
     padding: 10px 0;
     font-size: 22px;
+    color:white;
 }
 
 
