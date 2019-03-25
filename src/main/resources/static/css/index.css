@@ -8,9 +8,11 @@ div.card{
     width: 93% !important;
     max-width:95%!important;
 }
-a{
+a.links{
     position:relative;
     color:dodgerblue!important;
+    padding-left: 25px;
+    padding-right: 25px;
     /*z-index:1!important;*/
 }
 .container-item{
