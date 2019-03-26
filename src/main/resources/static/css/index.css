@@ -1,3 +1,7 @@
+html{
+    background: url('../img/sa-skyline-2.jpg') fixed no-repeat;
+    background-size: cover;
+}
 
 #contain::before{
     /*background: inherit;*/
@@ -7,6 +11,8 @@
 div.card{
     width: 93% !important;
     max-width:95%!important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 a.links{
     position:relative;
@@ -37,20 +43,13 @@ a.links{
 
 }
 
+
 main{
-    background: none!important;
+    /*background:inherit!important;*/
+    /*background: url('../img/sa-skyline-2.jpg') fixed no-repeat;*/
     /*background-size: cover;*/
 }
 
-div.container{
-    /*background: url('../img/sa-skyline-2.jpg') fixed no-repeat;*/
-    background-size: cover;
-}
-
-body{
-    background: url('../img/sa-market.jpg') fixed no-repeat!important;
-    background-size: cover;
-}
 .container{
     width: 80% !important;
 }
@@ -60,15 +59,15 @@ h1{
 }
 
 #container{
-    width: 900px !important;
-    height: 600px !important;
+    width: 90% !important;
+    /*height: 600px !important;*/
     background: inherit !important;
     position: absolute ;
-    overflow: hidden !important;
-    top: 0 !important;
-    left: 10% !important;
-    margin-left: 10px !important;
-    margin-top: 25px !important;
+    /*overflow: hidden !important;*/
+    top: 3% !important;
+    left: 15% !important;
+    margin-left: -10% !important;
+    margin-top: 5% !important;
     border-radius: 8px!important;
 }
 #container:before{
@@ -85,5 +84,5 @@ h1{
     filter: blur(1.5rem) !important;
 }
 div.row{
-    /*width: 90% !important;*/
+    margin-top:5%!important;
 }
