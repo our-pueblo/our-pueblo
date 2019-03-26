@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Translate','')"></head>
+<head th:replace="fragments/header :: header('Translate','/css/translate.css')"></head>
 <body>
 <main>
-    <div id="side_nav" th:replace="fragments/sidenav">
+    <div th:replace="fragments/sidenav"></div>
+    <div class="container-fluid">
+        <div class="form-group">
+            <form id="translateForm" th:action="@{/translate}" th:method="post" th:object="${newTranslation}">
+               <h4 style="margin-top: .5em"> <label for="untranslatedText">Untranslated Text</label></h4>
+                <br/>
+                <textarea style="width:100%" id="untranslatedText" name="untranslatedText" rows="10" th:text="${translationRequest.getUntranslated_text()}" readonly="readonly"></textarea>
+                <hr/>
+                <br/>
+                <h4><label for="translatedText">Google Translated Text:
+                    <br/>
+                    <strong style="color: red"> Please make edits here</strong>
+                </label>
+                </h4>
+                <br/>
+                <textarea style="width: 100%" name="translatedText" id="translatedText"  rows="10" th:text="${translationRequest.getGoogle_translate()}" th:field="*{userTranslation}"></textarea>
+                <hr/>
+                <br/>
+                <h4>  <label for="description">Please describe any changes you made:</label></h4>
+                <br/>
+                <textarea style="width: 100%;" name="description" id="description" rows="10" th:field="*{description_of_changes}"></textarea>
+                <hr/>
+                <br/>
+                <label for="flagProblem">Are there any severe problems with the Google Translations?</label>
+                <br/>
+                <select name="flagProblem" id="flagProblem" th:field="*{flag_problem}">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+                <hr/>
+                <br/>
+                <!--TODO Look into a hidden input that becomes unhidden if above input is true-->
+                <label for="reason">If you answered yes to the above question please explain why</label>
+                <br/>
+                <input style="width: 50%" type="text" id="reason" name="reason" th:field="*{reason}"/>
+                <br/>
+                <br/>
+                <input type="hidden" id="refRequest" name="refRequest" th:value="${requestLong}"/>
+                <input type="submit" value="Submit Translation"/>
+            </form>
     </div>
-    <div class="form-group center-form">
-        <form id="translateForm" th:action="@{/translate}" th:method="post" th:object="${newTranslation}">
-            <label for="untranslatedText">Untranslated Text</label>
-            <br/>
-            <textarea id="untranslatedText" name="untranslatedText" rows="10" th:text="${translationRequest.getUntranslated_text()}" readonly="readonly"></textarea>
-            <br/>
-            <label for="translatedText">Google Translated Text; Please make edits here</label>
-            <br/>
-            <textarea name="translatedText" id="translatedText"  rows="10" th:text="${translationRequest.getGoogle_translate()}" th:field="*{userTranslation}"></textarea>
-            <br/>
-            <label for="description">Please describe any changes you made</label>
-            <br/>
-            <textarea name="description" id="description" rows="10" th:field="*{description_of_changes}"></textarea>
-            <br/>
-            <label for="flagProblem">Are there any severe problems with the Google Translations?</label>
-            <br/>
-            <select name="flagProblem" id="flagProblem" th:field="*{flag_problem}">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-            <br/>
-            <!--TODO Look into a hidden input that becomes unhidden if above input is true-->
-            <label for="reason">If you answered yes to the above question please explain why</label>
-            <br/>
-            <input type="text" id="reason" name="reason" th:field="*{reason}"/>
-            <input type="hidden" id="refRequest" name="refRequest" th:value="${requestLong}"/>
-            <input type="submit" class="btn btn-block btn-primary" value="Submit Translation"/>
-        </form>
     </div>
 </main>
 </body>

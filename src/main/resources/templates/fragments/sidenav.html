@@ -28,8 +28,12 @@
                 <!--<a href="#"><li>View My Translations</li></a>-->
                 <a href="/about"><li>About Us</li></a>
                 <!--<a href="#"><li>Resources</li></a>-->
-                <a sec:authorize="isAuthenticated()"
-                   href="/login"><li>Logout</li></a>
+                <li sec:authorize="isAuthenticated()"
+                   href="/login">
+                    <form th:action="@{/logout}" th:method="post" id="logoutForm" style="display: inline-block">
+                    <a href="#" onclick="document.getElementById('logoutForm').submit();">Logout</a>
+                </form>
+                </li>
 
             </ul>
         </div>
