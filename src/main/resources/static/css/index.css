@@ -84,5 +84,5 @@ h1{
     filter: blur(1.5rem) !important;
 }
 div.row{
-    /*width: 90% !important;*/
+    margin-top:5%!important;
 }

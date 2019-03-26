@@ -25,3 +25,12 @@ body {
     background: url('../img/sa-skyline-2.jpg') fixed no-repeat;
     background-size: cover;
 }
+div#indexRow{
+    margin-top:3%;
+}
+#\20 indexCard{
+    width: 75% !important;
+    margin: .5em !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
