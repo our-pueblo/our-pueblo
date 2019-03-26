@@ -34,3 +34,68 @@ div#indexRow{
     margin-left: auto !important;
     margin-right: auto !important;
 }
+#register_button:hover{
+    background: green;
+}
+#register_button{
+    border: 0!important;
+    border-radius: 8px!important;
+    padding-bottom: 0!important;
+    height: 60px!important;
+    background: #092a3a!important;
+    color: white!important;
+    cursor: pointer!important;
+    transition: none!important;
+    margin-left: auto!important;
+    width: 50%!important;
+    margin-right: auto!important;
+    margin-top:5%;
+
+}
+div#registerCard{
+    width:50%!important;
+    margin-left: auto!important;
+    margin-right: auto!important;
+}
+div#registerRow{
+    margin-top:5%!important;
+    /*margin-left:10%!important;*/
+}
+form#createUser{
+    /*text-align:center!important;*/
+}
+form#createUser>input[type="text"]{
+    background-color: rgb(232, 240, 254) !important;
+    background-image: none !important;
+    text-align: center!important;
+    width:100%;
+    color: rgb(0, 0, 0) !important;
+}
+input#verifyPassword{
+    background-color: rgb(232, 240, 254) !important;
+    background-image: none !important;
+    color: rgb(0, 0, 0) !important;
+    text-align: center!important;
+    width:100%;
+}
+input#password{
+     background-color: rgb(232, 240, 254) !important;
+     background-image: none !important;
+     color: rgb(0, 0, 0) !important;
+     text-align: center!important;
+     width:100%;
+ }
+form#createUser>label{
+    font-weight: bold;
+}
+@media screen and (min-width: 700px) {
+    input#password{
+        width:50%!important;
+    }
+    input#verifyPassword{
+        width:50%!important;
+    }
+    form#createUser>input[type="text"]{
+        width:50%!important;
+    }
+}
