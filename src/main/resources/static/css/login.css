@@ -114,3 +114,16 @@ div#side_nav{
     /*margin-left: 30px !important;*/
     /*margin-right: 30px !important;*/
 /*}*/
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+input:-webkit-autofill {
+    -webkit-text-fill-color: #092a3a !important;
+}
+h1#company_name{
+    width:250px;
+}
