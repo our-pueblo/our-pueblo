@@ -2,6 +2,29 @@
 <head th:replace="fragments/header :: header('Edit Profile', '')"></head>
 <body>
     <div th:replace="fragments/navbar :: navbar"></div>
-    <h1>Here is where a user/admin can edit details of their profile or deactivate their account</h1>
+    <div class="form-group" id="container">
+        <form id="editUser" th:action="@{/user/profile/edit}" th:method="post">
+            <h3>Username: <span th:text="${currentUser.username}"></span></h3>
+            <br/>
+            <h3>Email</h3>
+            <br/>
+            <input type="text" th:value="${currentUser.email}" id="email" name="email"/>
+            <br/>
+            <h3>Phone Number</h3>
+            <br/>
+            <input type="text" th:value="${currentUser.phone_number}" id="phoneNumber" name="phoneNumber"/>
+            <br/>
+            <h3>New Password</h3>
+            <br/>
+            <input type="password" id="password" name="password"/>
+            <br/>
+            <h3>Verify Password</h3>
+            <br/>
+            <input type="password" id="verifyPassword" name="verifyPassword"/>
+            <input type="hidden" th:value="${currentUser.id}" id="userID" name="userID"/>
+            <br/>
+            <input type="submit" class="btn btn-block btn-primary" value="Submit"/>
+        </form>
+    </div>
 </body>
 </html>

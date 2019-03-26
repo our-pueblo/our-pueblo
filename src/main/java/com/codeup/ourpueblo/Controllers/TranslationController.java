@@ -37,6 +37,11 @@ public class TranslationController {
     //How users request pages to translate, also see getmapping translate
     @GetMapping("/translate/request")
     public String requestTranslation(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        if (loginCheck(current)){
+            return "redirect:/login";
+        }
         Iterable<Request> requests = requestDao.findAll();
         model.addAttribute("requests", requests);
         return "request_translation";
@@ -44,6 +49,7 @@ public class TranslationController {
 
     @GetMapping("/translate/viewall")
     public String viewAllTranslations() {
+
         return "translate_viewall";
     }
 
@@ -56,6 +62,11 @@ public class TranslationController {
 //    TODO Change this to just use translation object, add request to the translation here and it should be fine, move user assignment from post to here
     @GetMapping("/translate/{id}")
     public String translate(@PathVariable long id, Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        if (loginCheck(current)){
+            return "redirect:/login";
+        }
         Request translationRequest = requestDao.findOne(id);
         if (translationRequest.getStatus().getId() != 101) {
             return "request_translation";
@@ -97,17 +108,27 @@ public class TranslationController {
 
     @GetMapping("/user/translations")
     public String userViewTranslations(Model model) {
-//       TODO Just for testing user id is hardwired, fix this after security
         User user  = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User current = userDao.findOne(user.getId());
+        if (loginCheck(current)){
+            return "redirect:/login";
+        }
         Iterable<Translation> userTranslations = translationDao.findByUser(current);
         model.addAttribute("translationList", userTranslations);
         return "userViewTranslations";
     }
-    //TODO Implement these
 
     @GetMapping("/translate/delete/{id}")
     public String confirmUserDelete(@PathVariable long id, Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        if (loginCheck(current)){
+            return "redirect:/login";
+        }
+        Translation check = translationDao.findOne(id);
+        if(current!=check.getUser()){
+            return "redirect:/user/dashboard";
+        }
         model.addAttribute("deleteID", id);
         return "confirmDelete";
     }
@@ -127,7 +148,15 @@ public class TranslationController {
 
     @GetMapping("/translate/edit/{id}")
     public String userEditTranslation(@PathVariable long id, Model model){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        if (loginCheck(current)){
+            return "redirect:/login";
+        }
         Translation editTranslation = translationDao.findOne(id);
+        if(current!=editTranslation.getUser()){
+            return "redirect:/user/dashboard";
+        }
         model.addAttribute("editTranslation", editTranslation);
         return "editTranslation";
     }
@@ -144,5 +173,9 @@ public class TranslationController {
         editTranslation.setTime(ts);
         Translation savedTranslation = translationDao.save(editTranslation);
         return "redirect:/user/dashboard";
+    }
+
+    private boolean loginCheck(User user){
+        return user==null;
     }
 }
