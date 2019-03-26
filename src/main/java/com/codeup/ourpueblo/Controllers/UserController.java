@@ -77,6 +77,9 @@ public class UserController {
         //Get the current user
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User current = userDao.findOne(user.getId());
+        if (loginCheck(current)){
+            return "redirect:/login";
+        }
         model.addAttribute("currentUser", current);
         Iterable<Translation> list = translationDao.findByUser(current);
         int count = 0;
@@ -88,8 +91,31 @@ public class UserController {
     }
 
     @GetMapping("/user/profile/edit")
-    public String editProfile() {
+    public String editProfile(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        if (loginCheck(current)){
+            return "redirect:/login";
+        }
+        model.addAttribute("currentUser", current);
         return "edit_profile";
+    }
+
+    @PostMapping("/user/profile/edit")
+    public String saveEdit(@RequestParam String email, @RequestParam String phoneNumber, @RequestParam String password, @RequestParam String verifyPassword, @RequestParam Long userID){
+        User user = userDao.findOne(userID);
+        user.setEmail(email);
+        user.setPhone_number(phoneNumber);
+        if (password!=null){
+            if (password.equals(verifyPassword)){
+                String hash = passwordEncoder.encode(password);
+                user.setPassword(hash);
+            }else{
+                return "redirect:/user/profile/edit";
+            }
+        }
+        userDao.save(user);
+        return "redirect:/user/dashboard";
     }
     //TODO Write edit profile mappings
 
@@ -98,6 +124,9 @@ public class UserController {
         //Get the current user
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User current = userDao.findOne(user.getId());
+        if (loginCheck(current)){
+            return "redirect:/login";
+        }
         //Add it to the model, used to figure out what links they should see
         model.addAttribute("currentUser", current);
         return "dashboard";
@@ -106,6 +135,14 @@ public class UserController {
     //Admin feature, gives a list of all users
     @GetMapping("/admin/userlist")
     public String userlist(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        if (loginCheck(current)){
+            return "redirect:/login";
+        }
+        if (!current.isAdmin()){
+            return "redirect:/user/dashboard";
+        }
         //Find all users, put them in a list
         Iterable<User> userList = userDao.findAll();
         //Give the list to the model
@@ -182,6 +219,9 @@ public class UserController {
         //Get the current user
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User current = userDao.findOne(user.getId());
+        if (loginCheck(current)){
+            return "redirect:/login";
+        }
         //If they aren't an admin kick them to the dashboard
         if (!current.isAdmin()) {
             return "redirect:/user/dashboard";
@@ -291,6 +331,14 @@ public class UserController {
     //Admin Feature: Get a list of all translations ready for deployment
     @GetMapping("/admin/deployment")
     public String deployment(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        if (loginCheck(current)){
+            return "redirect:/login";
+        }
+        if(!current.isAdmin()){
+            return "redirect:/user/dashboard";
+        }
         //201 is the Translation_Status associated with user reviewed and admin approved translations
         //Find all translations with the status of 201 and add them to a list, then give that list to the model
         Translation_Status translation_status = translationStatusDao.findOne(201L);
@@ -319,6 +367,12 @@ public class UserController {
     //Admin Feature: Approve a user translation for deployment
     @GetMapping("/admin/translations/approve/{id}")
     public String confirmApproval(@PathVariable long id, Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        if (loginCheck(current)){
+            return "redirect:/login";
+        }
+        if (!current.isAdmin())
         //Store the ID of the translation
         model.addAttribute("id", id);
         return "confirmApproval";
@@ -394,6 +448,11 @@ public class UserController {
             model.addAttribute("user", resetUser);
             return "reset";
         }
+    }
+
+
+    private boolean loginCheck(User user){
+        return user==null;
     }
 
 

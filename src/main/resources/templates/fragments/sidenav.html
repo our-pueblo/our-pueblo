@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
@@ -19,15 +19,16 @@
             <img src="../img/bird-log-nobg-blue-green.png" id = "navlogo"/>
                 <li>Our Pueblo</li>
                 <hr/>
-                <a href="#"><li>Dashboard</li></a>
-                <a href="#"><li>Profile</li></a>
+                <a href="/user/dashboard"><li>Dashboard</li></a>
+                <a href="/user/profile"><li>Profile</li></a>
                 <!--<a href="#"><li>Translate</li></a>-->
-                <a href="#"><li>New Translation</li></a>
-                <a href="#"><li>View Translations</li></a>
-                <a href="#"><li>View My Translations</li></a>
-                <a href="#"><li>About Us</li></a>
+                <a href="/translate"><li>New Translation</li></a>
+                <a href="/translate/viewall"><li>View Translations</li></a>
+                <!--<a href="#"><li>View My Translations</li></a>-->
+                <a href="/about"><li>About Us</li></a>
                 <!--<a href="#"><li>Resources</li></a>-->
-                <a href="#"><li>Logout</li></a>
+                <a sec:authorize="isAuthenticated()"
+                   href="/login"><li>Logout</li></a>
 
             </ul>
         </div>

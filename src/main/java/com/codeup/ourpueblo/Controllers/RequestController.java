@@ -71,6 +71,14 @@ public class RequestController {
 //Mapping for the Make A Request page
     @GetMapping("/request")
     public String makeRequest(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        if (current==null){
+            return "redirect:/login";
+        }
+        if(!current.isAdmin()){
+            return "redirect:/user/dashboard";
+        }
         //Create a new instance of of a request object and add it to the model
         model.addAttribute("request", new Request());
         //Get a list of all the departments, the request page has a drop down that is populated by this

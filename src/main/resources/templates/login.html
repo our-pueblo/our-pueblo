@@ -5,7 +5,9 @@
 </head>
 <body>
     <main>
+        <div id="side_nav" th:replace="fragments/sidenav"></div>
         <div id="container">
+
             <form th:action="@{/login}" method="post">
 
             <h1 id="company_name">Our Pueblo</h1>

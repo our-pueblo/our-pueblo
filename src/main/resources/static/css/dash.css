@@ -2,8 +2,8 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: whitesmoke !important;
-    z-index: 93939393;
+    /*background-color: whitesmoke !important;*/
+    z-index: 3;
 }
 
 a {
