@@ -37,8 +37,7 @@ public class TranslationController {
     //How users request pages to translate, also see getmapping translate
     @GetMapping("/translate/request")
     public String requestTranslation(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         if (loginCheck(current)){
             return "redirect:/login";
         }
@@ -62,10 +61,12 @@ public class TranslationController {
 //    TODO Change this to just use translation object, add request to the translation here and it should be fine, move user assignment from post to here
     @GetMapping("/translate/{id}")
     public String translate(@PathVariable long id, Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         if (loginCheck(current)){
             return "redirect:/login";
+        }
+        if (!current.isActive()){
+            return "redirect:/sorry";
         }
         Request translationRequest = requestDao.findOne(id);
         if (translationRequest.getStatus().getId() != 101) {
@@ -88,8 +89,7 @@ public class TranslationController {
     //    How users submit their translations
     @PostMapping("/translate")
     public String submitTranslation(@ModelAttribute Translation newTranslation, @RequestParam Long refRequest) {
-        User user  = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         newTranslation.setUser(current);
         Translation_Status translationStatus = translationStatusDao.findOne(101L);
         newTranslation.setStatus(translationStatus);
@@ -108,10 +108,12 @@ public class TranslationController {
 
     @GetMapping("/user/translations")
     public String userViewTranslations(Model model) {
-        User user  = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         if (loginCheck(current)){
             return "redirect:/login";
+        }
+        if (!current.isActive()){
+            return "redirect:/sorry";
         }
         Iterable<Translation> userTranslations = translationDao.findByUser(current);
         model.addAttribute("translationList", userTranslations);
@@ -120,10 +122,12 @@ public class TranslationController {
 
     @GetMapping("/translate/delete/{id}")
     public String confirmUserDelete(@PathVariable long id, Model model){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         if (loginCheck(current)){
             return "redirect:/login";
+        }
+        if (!current.isActive()){
+            return "redirect:/sorry";
         }
         Translation check = translationDao.findOne(id);
         if(current!=check.getUser()){
@@ -148,10 +152,12 @@ public class TranslationController {
 
     @GetMapping("/translate/edit/{id}")
     public String userEditTranslation(@PathVariable long id, Model model){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         if (loginCheck(current)){
             return "redirect:/login";
+        }
+        if (!current.isActive()){
+            return "redirect:/sorry";
         }
         Translation editTranslation = translationDao.findOne(id);
         if(current!=editTranslation.getUser()){
@@ -177,5 +183,11 @@ public class TranslationController {
 
     private boolean loginCheck(User user){
         return user==null;
+    }
+
+    private User getCurrent(){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        return current;
     }
 }

@@ -75,10 +75,12 @@ public class UserController {
     @GetMapping("/user/profile")
     public String profile(Model model) {
         //Get the current user
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+       User current = getCurrent();
         if (loginCheck(current)){
             return "redirect:/login";
+        }
+        if (!current.isActive()){
+            return "redirect:/sorry";
         }
         model.addAttribute("currentUser", current);
         Iterable<Translation> list = translationDao.findByUser(current);
@@ -92,10 +94,12 @@ public class UserController {
 
     @GetMapping("/user/profile/edit")
     public String editProfile(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         if (loginCheck(current)){
             return "redirect:/login";
+        }
+        if (!current.isActive()){
+            return "redirect:/sorry";
         }
         model.addAttribute("currentUser", current);
         return "edit_profile";
@@ -122,10 +126,12 @@ public class UserController {
     @GetMapping("/user/dashboard")
     public String dashboard(Model model) {
         //Get the current user
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         if (loginCheck(current)){
             return "redirect:/login";
+        }
+        if (!current.isActive()){
+            return "redirect:/sorry";
         }
         //Add it to the model, used to figure out what links they should see
         model.addAttribute("currentUser", current);
@@ -135,8 +141,7 @@ public class UserController {
     //Admin feature, gives a list of all users
     @GetMapping("/admin/userlist")
     public String userlist(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         if (loginCheck(current)){
             return "redirect:/login";
         }
@@ -201,8 +206,7 @@ public class UserController {
     @GetMapping("/seed")
     public String seedTables(Model model) {
         //To get to this page logged in user must be a "super admin" the app is set up to take the first user that creates an account with the name of admin and make them the super admin
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         //If you aren't the super admin you get kicked back to the dashboard
         if (current.getUsername().equals("admin")) {
             model.addAttribute("currentUser", current);
@@ -217,8 +221,7 @@ public class UserController {
     @GetMapping("/admin/requests")
     public String adminViewRequests(Model model) {
         //Get the current user
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         if (loginCheck(current)){
             return "redirect:/login";
         }
@@ -237,8 +240,7 @@ public class UserController {
     @GetMapping("/admin/requests/delete/{id}")
     public String confirmRequestDelete(@PathVariable long id, Model model) {
         //Make sure the current user is an admin
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         if (!current.isAdmin()) {
             return "redirect:/user/dashboard";
         } else {
@@ -331,8 +333,7 @@ public class UserController {
     //Admin Feature: Get a list of all translations ready for deployment
     @GetMapping("/admin/deployment")
     public String deployment(Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         if (loginCheck(current)){
             return "redirect:/login";
         }
@@ -351,8 +352,7 @@ public class UserController {
     @GetMapping("/admin/translations")
     public String seeTranslations(Model model) {
         // Make sure the current user is an admin
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         if (!current.isAdmin()) {
             return "redirect:/user/dashboard";
         } else {
@@ -367,8 +367,7 @@ public class UserController {
     //Admin Feature: Approve a user translation for deployment
     @GetMapping("/admin/translations/approve/{id}")
     public String confirmApproval(@PathVariable long id, Model model) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User current = userDao.findOne(user.getId());
+        User current = getCurrent();
         if (loginCheck(current)){
             return "redirect:/login";
         }
@@ -408,6 +407,9 @@ public class UserController {
             return "forgotPassword";
         } else {
             //If it is there get the id of the account associated with it and move on to the next step
+            if (!user.isActive()){
+                return "redirect:/sorry";
+            }
             Long userID = user.getId();
             model.addAttribute("userID", userID);
             return "verifySecurity";
@@ -450,9 +452,20 @@ public class UserController {
         }
     }
 
+    @GetMapping("/sorry")
+    public String sorry(){
+        return "sorry";
+    }
+
 
     private boolean loginCheck(User user){
         return user==null;
+    }
+
+    private User getCurrent(){
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User current = userDao.findOne(user.getId());
+        return current;
     }
 
 
