@@ -4,21 +4,6 @@
 <head th:replace="fragments/header :: header('Request a Page to Translate','/css/RequestTranslation.css')"></head>
 <body>
     <div id="side_nav" th:replace="fragments/sidenav"></div>
-    <!--<div th:replace="fragments/navbar :: navbar"></div>-->
-    <!--<div th:each="request : ${requests}">-->
-        <!--<div th:if="${request.status.id == 101}">-->
-        <!--<h1>Web Page: <span th:text="${request.web_page}"></span></h1>-->
-        <!--<br/>-->
-        <!--<h3>Department: <span th:text="${request.department_id.getName()}"></span></h3>-->
-        <!--<br/>-->
-        <!--<h3>Description: <span th:text="${request.description}"></span></h3>-->
-        <!--<br/>-->
-        <!--<h3>Status: <span th:text="${request.status.getStatus()}"></span></h3>-->
-        <!--<br/>-->
-        <!--<a th:href="@{/translate/{id}(id=${request.id})}">Translate This Page</a>-->
-        <!--</div>-->
-    <!--</div>-->
-
     <div class="container-fluid">
         <div class="row">
             <div class="col">
@@ -44,24 +29,6 @@
                         </p>
                     </div>
                 </div>
-                <!--<div th:each="request : ${requests}">-->
-                    <!--<div th:if="${request.status.id == 101}">-->
-                        <!--<h1>Web Page: <span th:text="${request.web_page}"></span></h1>-->
-                        <!--<br/>-->
-                        <!--<h3>Department: <h5 th:text="${request.department_id.getName()}"></h5></h3>-->
-                        <!--<br/>-->
-                        <!--<h3>Description: <span th:text="${request.description}"></span></h3>-->
-                        <!--<br/>-->
-                        <!--<h3>Status: <span th:text="${request.status.getStatus()}"></span></h3>-->
-                        <!--<br/>-->
-                        <!--<a th:href="@{/translate/{id}(id=${request.id})}">Translate This Page</a>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col">-->
-
-            <!--</div>-->
-
             </div>
         </div>
     </div>
