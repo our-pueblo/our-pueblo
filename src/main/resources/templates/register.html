@@ -6,35 +6,51 @@
     <title>Log In</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="/css/register.css"/>
+    <link rel="stylesheet" href="/css/dash.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <style>
+        body{background-image:none;}
+        html{background-image: url('../img/sa-riverwalk.jpeg')!important;}
+    </style>
 </head>
 <body>
-    <!--<div th:replace="fragments/navbar :: navbar"></div>-->
-    <div class="form-group" id = "container">
-        <form id="createUser" th:action="@{/register}" th:method="post" th:object="${user}">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" th:field="*{username}"/>
-            <label for="email" id="emailLabel">Email</label>
-            <input type="text" id="email" name="email" th:field="*{email}"/>
-            <br/>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" th:field="*{password}"/>
-            <label for="verifyPassword" id="verifyLabel">Confirm Password</label>
-            <input type="password" id="verifyPassword" name="verifyPassword"/>
-            <br/>
-            <label for="phoneNumber">Phone Number</label>
-            <input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phone_number}"/>
-            <label for="receiveEmails" id="receiveLabel">Receive Emails?</label>
-            <select name="recieveEmails" id="receiveEmails" th:field="*{recieve_emails}">
-                <option value="true">Yes</option>
-                <option value="false">No</option>
-            </select>
-            <br/>
-            <label for="securityQuestion"><span id="sq">Security Question:</span><br/>What is your best friend's name?</label>
-            <input type="text" id="securityQuestion" name="securityQuestion" th:field="*{security_question}"/>
-            <br/>
-            <input type="submit" class="btn btn-block btn-primary" value="Register"/>
-        </form>
+<main>
+    <div id="side_nav" th:replace="fragments/sidenav">
     </div>
+    <div class="container">
+        <!--<div th:replace="fragments/sidenav :: sidenav"></div>-->
+        <div id="container">
+            <!--<h1>Welcome to Our Pueblo!</h1>-->
+            <div class="row" id="registerRow">
+                <div class="col-md-12">
+                    <div  id="registerCard" class="text-center card border-dark mb-3 shadow container-item">
+                        <!--<div class="card-header">What is Our Pueblo?</div>-->
+                        <div class="card-body text-dark" style="width:100%!important">
+                            <h5 class="card-title">Register to Translate Pages</h5>
+                            <img src="../img/birdlogo.png" style="width:90px"/>
+                            <hr/>
+                            <form id="createUser" th:action="@{/register}" th:method="post" th:object="${user}">
+                            <label for="username">Username</label><br/>
+                            <input type="text" id="username" name="username" th:field="*{username}"/><br/>
+                            <label for="email" id="emailLabel">Email</label><br/>
+                            <input type="text" id="email" name="email" th:field="*{email}"/><br/>
+                            <label for="password">Password</label><br/>
+                            <input type="password" id="password" name="password" th:field="*{password}"/><br/>
+                            <label for="verifyPassword" id="verifyLabel">Confirm Password</label><br/>
+                            <input type="password" id="verifyPassword" name="verifyPassword"/><br/>
+                            <label for="phoneNumber">Phone Number</label><br/>
+                            <input type="text" id="phoneNumber" name="phoneNumber" th:field="*{phone_number}"/><br/>
+                            <label for="securityQuestion"><span id="sq">Security Question:</span><br/>What is your best friend's name?</label><br/>
+                            <input type="text" id="securityQuestion" name="securityQuestion" th:field="*{security_question}"/><br/>
+                            <input type="submit" id="register_button" class="btn btn-block btn-primary" value="Register"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>
 </body>
 </html>
