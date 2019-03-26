@@ -41,7 +41,7 @@ body{
     filter: blur(10px);
 }
 form img{
-    padding-top: 10px;
+    /*padding-top: 10px;*/
     width: 120px;
     height: 120px;
 }
@@ -73,6 +73,7 @@ input[type="submit"]{
     color: white;
     cursor: pointer;
     transition: all 1000ms ease-in-out;
+    width: 100% !important;
 
 }
 input[type="submit"]:hover{
