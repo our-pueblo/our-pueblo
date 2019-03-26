@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8" />
     <title>Title</title>
@@ -27,7 +27,8 @@
                 <!--<a href="#"><li>View My Translations</li></a>-->
                 <a href="/about"><li>About Us</li></a>
                 <!--<a href="#"><li>Resources</li></a>-->
-                <a href="/login"><li>Logout</li></a>
+                <a sec:authorize="isAuthenticated()"
+                   href="/login"><li>Logout</li></a>
 
             </ul>
         </div>
