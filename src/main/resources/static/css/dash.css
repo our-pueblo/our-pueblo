@@ -6,7 +6,7 @@ body {
     z-index: 3;
 }
 
-a {
+a.navLinks{
     z-index: 1000;
     text-decoration: none;
     color: #232323;

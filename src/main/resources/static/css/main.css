@@ -88,6 +88,11 @@ input#password{
 form#createUser>label{
     font-weight: bold;
 }
+
+a.links{
+    padding-left:25px;
+    padding-right:25px;
+}
 @media screen and (min-width: 700px) {
     input#password{
         width:50%!important;
