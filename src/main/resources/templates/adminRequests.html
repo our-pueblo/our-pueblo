@@ -3,15 +3,32 @@
 <head th:replace="fragments/header :: header('View All Requests','')">
 </head>
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
+<div id="side_nav" th:replace="fragments/sidenav"></div>
 
-    <!--<div th:each="request : ${requestList}">-->
-        <!--<h1>Request URL: <span th:text="${request.web_page}"></span></h1>-->
-        <!--<h1>Request Description: <span th:text="${request.description}"></span></h1>-->
-        <!--<h1>Department: <span th:text="${request.department_id.name}"></span></h1>-->
-        <!--<h1>Status: <span th:text="${request.status.status}"></span></h1>-->
-        <!--<a th:href="@{/admin/requests/delete/{id}(id=${request.id})}">Delete this Request</a>-->
+    <div class="container container-fluid">
+        <div id="container">
+            <div th:each="request : ${requestList}">
+                <div class="row">
+                    <div class="col">
+                        <div  class="text-center card border-dark mb-3 shadow container-item" style="max-width: 100%;">
+                            <div class="card-header">Request URL: <br/>
+                                <span th:text="${request.web_page}"></span>
+                            </div>
+                            <div class="card-body text-dark">
+                                <h3>Request Description:</h3>
+                                <h5 th:text="${request.description}" class="card-title"></h5>
+                                <h3>Department:</h3>
+                                <h5 th:text="${request.department_id.name}" class="card-title"></h5>
+                                <h3>Status:</h3>
+                                <h5 th:text="${request.status.status}"></h5>
+                                <a th:href="@{/admin/requests/delete/{id}(id=${request.id})}">Delete this Request</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!--</div>-->
 </body>
 </html>
