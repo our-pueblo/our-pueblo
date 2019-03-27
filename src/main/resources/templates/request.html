@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Request a Translation', '')"></head>
+<head th:replace="fragments/header :: header('Request a Translation', '/css/request.css')"></head>
 <body>
-    <h1>TESTING REQUEST FUNCTIONALITY</h1>
-    <div class="form-group">
-        <form id="requestForm" th:action="@{/request}" th:method="post" th:object="${request}">
-            <label for="webPage">Page URL</label>
-            <br/>
-            <input type="text" id="webPage" name="webPage" th:field="*{web_page}"/>
-            <br/>
-            <label for="description">Description of Page to be Translated</label>
-            <br/>
-            <input type="text" id="description" name="description" th:field="*{description}"/>
-            <br/>
-            <label for="department">Department</label>
-            <br/>
-            <select name="department" id="department">
-                <option th:each="department : ${dList}" th:value="${department.id}" th:text="${department.name}"></option>
-            </select>
-            <br/>
-            <input type="submit" class="btn btn-block btn-primary" value="Request"/>
-        </form>
-    </div>
-    <div th:replace="fragments/scripts :: scripts"></div>
+    <main>
+        <div id="side_nav" th:replace="fragments/sidenav"></div>
 
+        <div class="container container-fluid">
+            <div id="container">
+                <div class="row">
+                    <div class="col">
+                        <div  class="text-center card border-dark mb-3 shadow container-item">
+                            <div class="card-header">Request a page for translation</div>
+                            <div class="card-body text-dark">
+                                <form id="requestForm" th:action="@{/request}" th:method="post" th:object="${request}">
+                                    <label for="webPage">Page URL</label>
+                                    <br/>
+                                    <input type="text" id="webPage" name="webPage" th:field="*{web_page}"/>
+                                    <br/>
+                                    <label for="description">Description of Page to be Translated</label>
+                                    <br/>
+                                    <input type="text" id="description" name="description" th:field="*{description}"/>
+                                    <br/>
+                                    <label for="department">Department</label>
+                                    <br/>
+                                    <select name="department" id="department">
+                                        <option th:each="department : ${dList}" th:value="${department.id}" th:text="${department.name}"></option>
+                                    </select>
+                                    <br/>
+                                    <br/>
+                                    <input type="submit" value="Request"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
