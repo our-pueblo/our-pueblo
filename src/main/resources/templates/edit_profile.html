@@ -1,29 +1,54 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Edit Profile', '')"></head>
+<head th:replace="fragments/header :: header('Edit Profile', '/css/editProfile.css')"></head>
 <body>
-    <div class="form-group" id="container">
-        <form id="editUser" th:action="@{/user/profile/edit}" th:method="post">
-            <h3>Username: <span th:text="${currentUser.username}"></span></h3>
-            <br/>
-            <h3>Email</h3>
-            <br/>
-            <input type="text" th:value="${currentUser.email}" id="email" name="email"/>
-            <br/>
-            <h3>Phone Number</h3>
-            <br/>
-            <input type="text" th:value="${currentUser.phone_number}" id="phoneNumber" name="phoneNumber"/>
-            <br/>
-            <h3>New Password</h3>
-            <br/>
-            <input type="password" id="password" name="password"/>
-            <br/>
-            <h3>Verify Password</h3>
-            <br/>
-            <input type="password" id="verifyPassword" name="verifyPassword"/>
-            <input type="hidden" th:value="${currentUser.id}" id="userID" name="userID"/>
-            <br/>
-            <input type="submit" class="btn btn-block btn-primary" value="Submit"/>
-        </form>
-    </div>
+    <main>
+        <div id="side_nav" th:replace="fragments/sidenav"></div>
+
+        <div class="container container-fluid">
+            <div id="container">
+                <div class="row">
+                    <div class="col">
+                        <div  class="text-center card border-dark mb-3 shadow container-item">
+                            <div class="card-header">Edit Profile</div>
+                            <div class="card-body text-dark">
+
+                                <form id="editUser" th:action="@{/user/profile/edit}" th:method="post">
+                                    <h3>Username</h3>
+                                    <br/>
+                                    <h5 th:text="${currentUser.username}">
+                                    </h5>
+                                    <br/>
+                                    <h3>Email</h3>
+                                    <br/>
+                                    <input type="text" th:value="${currentUser.email}" id="email" name="email"/>
+                                    <br/>
+                                    <br/>
+                                    <h3>Phone Number</h3>
+                                    <br/>
+                                    <input type="text" th:value="${currentUser.phone_number}" id="phoneNumber" name="phoneNumber"/>
+                                    <br/>
+                                    <br/>
+                                    <h3>New Password</h3>
+
+                                    <br/>
+                                    <input type="password" id="password" name="password"/>
+                                    <br/>
+                                    <br/>
+                                    <h3>Verify Password</h3>
+                                    <br/>
+                                    <input type="password" id="verifyPassword" name="verifyPassword"/>
+                                    <input type="hidden" th:value="${currentUser.id}" id="userID" name="userID"/>
+                                    <br/>
+                                    <br/>
+                                    <input type="submit" class="btn btn-block btn-primary" value="Submit"/>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

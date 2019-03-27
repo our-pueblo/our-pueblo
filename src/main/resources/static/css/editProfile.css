@@ -1,0 +1,22 @@
+[type="submit"]{
+    border: 0;
+    border-radius: 8px;
+    padding-bottom: 0;
+    height: 60px;
+    background: #092a3a;
+    color: white;
+    cursor: pointer;
+    transition: all 1000ms ease-in-out;
+    width: 100% !important;
+}
+[type="submit"]:hover{
+    background: green;
+}
+
+input[type=text]{
+    width: 50%;
+}
+
+input{
+    text-align: center;
+}
