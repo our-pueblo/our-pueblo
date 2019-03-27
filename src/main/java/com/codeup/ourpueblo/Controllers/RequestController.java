@@ -126,10 +126,7 @@ public class RequestController {
         return "redirect:/user/dashboard";
     }
 
-    @GetMapping("/request/viewall")
-    public String viewAllUntranslated() {
-        return "view_all_untranslated";
-    }
+
 }
 
 

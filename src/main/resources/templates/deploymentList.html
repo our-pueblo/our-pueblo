@@ -2,20 +2,30 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="fragments/header :: header('Deployment List','')"></head>
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
-
+    <div class="container container-fluid">
+        <div id="container">
     <div th:each="deployment : ${deploymentList}">
+            <div class="row">
+                <div class="col">
+                    <div  class="text-center card border-dark mb-3 shadow container-item" style="max-width: 100%;">
+                        <div class="card-header">Request URL: <br/>
+                            <span th:text="${deployment.request.web_page}"></span>
+                        </div>
+                        <div class="card-body text-dark">
+                            <h3>Translation By:</h3>
+                            <h5 th:text="${deployment.user.username}" class="card-title"></h5>
+                            <h3>Timestamp:</h3>
+                            <h5 th:text="${deployment.time}" class="card-title"></h5>
+                            <h3>Translation:</h3>
+                            <h5 th:text="${deployment.userTranslation}"></h5>
 
-        <h1>Request URL: <span th:text="${deployment.request.web_page}"></span></h1>
-        <h1>Timestamp: <span th:text="${deployment.time}"></span></h1>
-        <h1>Translation By:  <span th:text="${deployment.user.username}"></span></h1>
-        <h1>Translation: <p><span th:text="${deployment.userTranslation}"></span></p></h1>
-
-
-
-
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
+    </div>
 
 </body>
 </html>

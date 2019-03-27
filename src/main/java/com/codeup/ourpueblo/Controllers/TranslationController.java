@@ -46,16 +46,7 @@ public class TranslationController {
         return "request_translation";
     }
 
-    @GetMapping("/translate/viewall")
-    public String viewAllTranslations() {
 
-        return "translate_viewall";
-    }
-
-    @GetMapping("/translate/view")
-    public String viewTranslation(@RequestParam long id) {
-        return "view_translation";
-    }
 
     //Page where user does there translating, also see submitTranslation
 //    TODO Change this to just use translation object, add request to the translation here and it should be fine, move user assignment from post to here
