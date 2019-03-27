@@ -30,7 +30,9 @@
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/about}" class="navLinks">About Us</a></li>
                 <div th:if="${current}">
                     <div th:if="${current.admin}">
+                        <hr/>
                         <li>Admin Functions</li>
+                        <hr/>
                         <li><a th:href="@{/request}" class="navLinks">Make a Request</a></li>
                         <li><a th:href="@{/admin/requests}" class="navLinks">View all Requests</a></li>
                         <li><a th:href="@{/admin/translations}" class="navLinks">View Translations</a></li>
