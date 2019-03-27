@@ -12,6 +12,8 @@ div.container-fluid{
     right: 10%;
     background-color: white !important;
     margin-top: 4em;
+    border: #092a3a solid 1px;
+    border-radius: 5px;
 }
 
 div.card{
@@ -103,4 +105,9 @@ a.links{
     form#createUser>input[type="text"]{
         width:50%!important;
     }
+}
+
+div.card-header{
+    background-color: #092a3a;
+    color: white;
 }

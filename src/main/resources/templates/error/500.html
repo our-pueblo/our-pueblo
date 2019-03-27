@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: header('500 Error', '')"></head>
+<body>
+    <div id="side_nav" th:replace="fragments/sidenav"></div>
+
+    <h3>Looks like something went wrong, if you got here after trying to make a request that means the url you submitted has probably been submitted by someone else, check the requests list and make sure it isn't already there.</h3>
+    <h3>If you continue to get this error please contact us at ourpueblo@gmail.com with the steps you took to get to this error.</h3>
+</body>
+</html>
