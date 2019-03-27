@@ -85,6 +85,7 @@ public class RequestController {
         Iterable<Department> list = departmanetDao.findAll();
         //Add the list to the model
         model.addAttribute("dList", list);
+        model.addAttribute("current", current);
         //Load the page
         return "request";
     }

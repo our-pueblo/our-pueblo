@@ -5,17 +5,16 @@
     <!--<div th:replace="fragments/navbar :: navbar"></div>-->
     <!--<h1>User list</h1>-->
     <!--<div th:each="user : ${userList}">-->
-        <!--<h3>Username: <span th:text="${user.username}"></span></h3>-->
-        <!--<p>ID: <span th:text="${user.id}"></span></p>-->
-        <!--<p>Email: <span th:text="${user.email}"></span></p>-->
-        <!--<p th:if="${user.active}">Account Status: Active</p>-->
-        <!--<p th:if="${!user.active}">Account Status: Deactivated</p>-->
-        <!--<p th:if="${user.admin}">Account Type: Admin</p>-->
-        <!--<p th:if="${!user.admin}">Account Type: User</p>-->
-        <!--<a th:href="@{/admin/userlist/toggle/{userID}(userID=${user.id})}">Change account status</a>-->
-        <!--<a th:href="@{/admin/userlist/makeadmin/{userID}(userID=${user.id})}" th:if="${!user.admin}">Make user admin</a>-->
-        <!--<hr/>-->
-
+    <!--<h3>Username: <span th:text="${user.username}"></span></h3>-->
+    <!--<p>ID: <span th:text="${user.id}"></span></p>-->
+    <!--<p>Email: <span th:text="${user.email}"></span></p>-->
+    <!--<p th:if="${user.active}">Account Status: Active</p>-->
+    <!--<p th:if="${!user.active}">Account Status: Deactivated</p>-->
+    <!--<p th:if="${user.admin}">Account Type: Admin</p>-->
+    <!--<p th:if="${!user.admin}">Account Type: User</p>-->
+    <!--<a th:href="@{/admin/userlist/toggle/{userID}(userID=${user.id})}">Change account status</a>-->
+    <!--<a th:href="@{/admin/userlist/makeadmin/{userID}(userID=${user.id})}" th:if="${!user.admin}">Make user admin</a>-->
+    <!--<hr/>-->
 
 
     <!--</div>-->
@@ -27,35 +26,35 @@
                 <div id="container">
                     <div class="row">
                         <div class="col">
-                            <div  class="text-center card border-dark mb-3 shadow container-item" style="max-width: 18rem;">
+                            <div class="text-center card border-dark mb-3 shadow container-item"
+                            >
                                 <div class="card-header">List of Users</div>
                                 <div class="card-body text-dark">
-                                    <h5 class="card-title" style="color: red"> </h5>
-                                    <p class="card-text">
-                                        <div th:each="user : ${userList}">
-                                            <h3>Username: <span th:text="${user.username}"></span></h3>
-                                    <p>ID: <span th:text="${user.id}"></span></p>
-                                    <p>Email: <span th:text="${user.email}"></span></p>
-                                    <p th:if="${user.active}">Account Status: Active</p>
-                                    <p th:if="${!user.active}">Account Status: Deactivated</p>
-                                    <p th:if="${user.admin}">Account Type: Admin</p>
-                                    <p th:if="${!user.admin}">Account Type: User</p>
-                                    <a th:href="@{/admin/userlist/toggle/{userID}(userID=${user.id})}">Change account status</a>
-                                    <a th:href="@{/admin/userlist/makeadmin/{userID}(userID=${user.id})}" th:if="${!user.admin}">Make user admin</a>
-                                    <hr/>
+                                    <h5 class="card-title" style="color: red"></h5>
+                                    <div th:each="user : ${userList}">
+                                        <h3>Username: <span th:text="${user.username}"></span></h3>
+                                        <p>ID: <span th:text="${user.id}"></span></p>
+                                        <p>Email: <span th:text="${user.email}"></span></p>
+                                        <p th:if="${user.active}">Account Status: Active</p>
+                                        <p th:if="${!user.active}">Account Status: Deactivated</p>
+                                        <p th:if="${user.admin}">Account Type: Admin</p>
+                                        <p th:if="${!user.admin}">Account Type: User</p>
+                                        <a th:href="@{/admin/userlist/toggle/{userID}(userID=${user.id})}">Change
+                                            account
+                                            status</a>
+                                        <a th:href="@{/admin/userlist/makeadmin/{userID}(userID=${user.id})}"
+                                           th:if="${!user.admin}">Make user admin</a>
+                                        <hr/>
 
 
-                                    <br/>
-                                    </p>
-                                    <br/>
-                                    <br/>
+                                        <br/>
+                                        <br/>
+                                        <br/>
 
-
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
