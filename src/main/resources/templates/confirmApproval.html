@@ -1,17 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Confirm Approval','')">
+<head th:replace="fragments/header :: header('Confirm Approval','/css/approveTranslation.css')">
 </head>
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
-    <h1>Approve this user translation</h1>
-    <form id="approveForm" th:action="@{/admin/translations/approve/}" method="post">
-    <div class="form-group">
-        <input type="hidden" th:value="${id}" name="approveID" id="approveID"/>
-        <input type="button" class="btn btn-block btn-primary" onclick="location.href='/user/dashboard';" value="No" />
-        <input type="submit" class="btn btn-block btn-primary" value="Yes"/>
-    </div>
-    </form>
+    <main>
+        <div id="side_nav" th:replace="fragments/sidenav"></div>
 
+        <div class="container container-fluid">
+            <div id="container">
+                <div class="row">
+                    <div class="col">
+                        <div  class="text-center card border-dark mb-3 shadow container-item">
+                            <div class="card-header">Profile Information</div>
+                            <div class="card-body text-dark">
+                                <h1>Approve this user translation</h1>
+                                <br/>
+                                <form id="approveForm" th:action="@{/admin/translations/approve/}" method="post">
+                                    <div class="form-group">
+                                        <input type="hidden" th:value="${id}" name="approveID" id="approveID"/>
+                                        <input id="red" type="button"  onclick="location.href='/user/dashboard';" value="No" />
+                                        <br/>
+
+                                        <br/>
+                                        <input type="submit" value="Yes"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 </html>
