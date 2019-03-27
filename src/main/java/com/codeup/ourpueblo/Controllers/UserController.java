@@ -89,6 +89,7 @@ public class UserController {
             count++;
         }
         model.addAttribute("totalTranslations", count);
+        model.addAttribute("current", current);
         return "profile";
     }
 
@@ -102,6 +103,7 @@ public class UserController {
             return "redirect:/sorry";
         }
         model.addAttribute("currentUser", current);
+        model.addAttribute("current", current);
         return "edit_profile";
     }
 
@@ -135,6 +137,7 @@ public class UserController {
         }
         //Add it to the model, used to figure out what links they should see
         model.addAttribute("currentUser", current);
+        model.addAttribute("current", current);
         return "dashboard";
     }
 
@@ -152,6 +155,7 @@ public class UserController {
         Iterable<User> userList = userDao.findAll();
         //Give the list to the model
         model.addAttribute("userList", userList);
+        model.addAttribute("current", current);
         return "userlist";
 
     }
@@ -211,6 +215,7 @@ public class UserController {
         if (current.getUsername().equals("admin")) {
             model.addAttribute("currentUser", current);
             model.addAttribute("checkUser", "admin");
+            model.addAttribute("current", current);
             return "initialSeed";
         } else {
             return "redirect:/user/dashboard";
@@ -232,6 +237,7 @@ public class UserController {
             //Otherwise get a list of all requests and add them to the model
             Iterable<Request> requests = requestDao.findAll();
             model.addAttribute("requestList", requests);
+            model.addAttribute("current", current);
             return "adminRequests";
         }
     }
@@ -246,6 +252,7 @@ public class UserController {
         } else {
             //If they are, add the id of the request to the model then go to the confirm page
             model.addAttribute("id", id);
+            model.addAttribute("current", current);
             return "confrimRequestDelete";
         }
     }
@@ -345,6 +352,7 @@ public class UserController {
         Translation_Status translation_status = translationStatusDao.findOne(201L);
         Iterable<Translation> translationsList = translationDao.findByStatus(translation_status);
         model.addAttribute("deploymentList", translationsList);
+        model.addAttribute("current", current);
         return "deploymentList";
     }
 
@@ -360,6 +368,7 @@ public class UserController {
             Translation_Status status = translationStatusDao.findOne(101L);
             Iterable<Translation> list = translationDao.findByStatus(status);
             model.addAttribute("list", list);
+            model.addAttribute("current", current);
             return "adminViewTranslations";
         }
     }
@@ -374,6 +383,7 @@ public class UserController {
         if (!current.isAdmin())
         //Store the ID of the translation
         model.addAttribute("id", id);
+        model.addAttribute("current", current);
         return "confirmApproval";
     }
 
@@ -453,7 +463,9 @@ public class UserController {
     }
 
     @GetMapping("/sorry")
-    public String sorry(){
+    public String sorry(Model model){
+        User current = getCurrent();
+        model.addAttribute("current", current);
         return "sorry";
     }
 

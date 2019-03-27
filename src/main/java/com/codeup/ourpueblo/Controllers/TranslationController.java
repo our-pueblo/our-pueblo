@@ -43,6 +43,7 @@ public class TranslationController {
         }
         Iterable<Request> requests = requestDao.findAll();
         model.addAttribute("requests", requests);
+        model.addAttribute("current", current);
         return "request_translation";
     }
 
@@ -62,6 +63,7 @@ public class TranslationController {
     @GetMapping("/translate/{id}")
     public String translate(@PathVariable long id, Model model) {
         User current = getCurrent();
+        model.addAttribute("current", current);
         if (loginCheck(current)){
             return "redirect:/login";
         }
@@ -117,6 +119,7 @@ public class TranslationController {
         }
         Iterable<Translation> userTranslations = translationDao.findByUser(current);
         model.addAttribute("translationList", userTranslations);
+        model.addAttribute("current", current);
         return "userViewTranslations";
     }
 
@@ -134,6 +137,7 @@ public class TranslationController {
             return "redirect:/user/dashboard";
         }
         model.addAttribute("deleteID", id);
+        model.addAttribute("current", current);
         return "confirmDelete";
     }
 
@@ -164,6 +168,7 @@ public class TranslationController {
             return "redirect:/user/dashboard";
         }
         model.addAttribute("editTranslation", editTranslation);
+        model.addAttribute("current", current);
         return "editTranslation";
     }
 
