@@ -4,24 +4,37 @@
 <head th:replace="fragments/header :: header('View Translations','')">
 </head>
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
+<div id="side_nav" th:replace="fragments/sidenav"></div>
 
-    <div th:each="translation : ${list}">
-        <h1>Request URL: <span th:text="${translation.request.web_page}"></span></h1>
-        <h1>Description: <span th:text="${translation.request.description}"></span></h1>
-        <h1>Department: <span th:text="${translation.request.department_id.name}"></span></h1>
-        <h1>Untranslated Text:</h1>
-        <br/>
-        <p><span th:text="${translation.request.untranslated_text}"></span></p>
-        <br/>
-        <h1>Google Translated Text:</h1>
-        <br/>
-        <p><span th:text="${translation.request.google_translate}"></span></p>
-        <br/>
-        <h1>User Translation: </h1>
-        <p><span th:text="${translation.userTranslation}"></span></p>
-        <a th:href="@{/admin/translations/approve/{id}(id=${translation.id})}">Approve Translation</a>
-        <a th:href="@{/admin/translations/delete/{id}(id=${translation.id})}">Delete Translation</a>
+<div class="container container-fluid">
+    <div id="container">
+        <div th:each="translation : ${list}">
+            <div class="row">
+                <div class="col">
+                    <div  class="text-center card border-dark mb-3 shadow container-item" style="max-width: 100%;">
+                        <div class="card-header">Request URL: <br/>
+                            <span th:text="${translation.request.web_page}"></span>
+                        </div>
+                        <div class="card-body text-dark">
+                            <h3>Description:</h3>
+                            <h5 th:text="${translation.request.description}" class="card-title"></h5>
+                            <h3>Department:</h3>
+                            <h5 th:text="${translation.request.department_id.name}" class="card-title"></h5>
+                            <hr/><h3>Status:</h3>
+                            <h1>Untranslated Text:</h1><br/>
+                            <p><span th:text="${translation.request.untranslated_text}"></span></p>
+                            <h1>Google Translated Text:</h1><br/>
+                            <p><span th:text="${translation.request.google_translate}"></span></p>
+                            <h1>User Translated Text:</h1><br/>
+                            <p><span th:text="${translation.userTranslation}"></span></p>
+                            <a th:href="@{/admin/translations/approve/{id}(id=${translation.id})}">Approve Translation</a>
+                            <a th:href="@{/admin/translations/delete/{id}(id=${translation.id})}">Delete Translation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 </body>
 </html>
