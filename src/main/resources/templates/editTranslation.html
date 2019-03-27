@@ -3,29 +3,6 @@
 <head th:replace="fragments/header :: header('Edit','/css/editTranslation.css')">
 </head>
 <body>
-<!--<div th:replace="fragments/navbar :: navbar"></div>-->
-
-<!--<div class="form-group">-->
-    <!--<form id="editForm" th:action="@{/translate/edit}" th:method="post" th:object="${editTranslation}">-->
-        <!--<label for="untranslatedText"> Untranslated Text</label>-->
-        <!--<br/>-->
-        <!--<textarea id="untranslatedText"  rows="10" th:text="${editTranslation.request.getUntranslated_text()}" readonly="readonly"></textarea>-->
-        <!--<br/>-->
-        <!--<label for="userTranslation">User Translated Text</label>-->
-        <!--<br/>-->
-        <!--<textarea id="userTranslation"  rows="10"  th:field="*{userTranslation}"></textarea>-->
-        <!--<br/>-->
-        <!--<label for="description">Please describe any changes that you have made.</label>-->
-        <!--<br/>-->
-        <!--<textarea id="description"  rows="10"  th:field="*{description_of_changes}"></textarea>-->
-        <!--<br/>-->
-        <!--<input type="submit" class="btn btn-block btn-primary" value="Submit Translation"/>-->
-        <!--<input type="hidden" th:field="*{id}"/>-->
-        <!--<input type="hidden" th:field="*{reason}"/>-->
-        <!--<input type="hidden" th:field="*{user}"/>-->
-        <!--<input type="hidden" th:field="*{request}"/>-->
-    <!--</form>-->
-<!--</div>-->
     <main>
         <div id="side_nav" th:replace="fragments/sidenav"></div>
 
@@ -62,9 +39,5 @@
             </div>
         </div>
     </main>
-
-
-
-
 </body>
 </html>
