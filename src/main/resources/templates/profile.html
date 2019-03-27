@@ -1,5 +1,5 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Profile','')"></head>
+<head th:replace="fragments/header :: header('Profile','/css/profile.css')"></head>
 <body>
     <main>
         <div id="side_nav" th:replace="fragments/sidenav"></div>
@@ -13,10 +13,17 @@
                             <div class="card-body text-dark">
                                 <h3>Username</h3>
                                 <h5 th:text="${currentUser.username}" class="card-title"></h5>
+                                <hr/>
                                 <h3>Email</h3>
                                 <h5 th:text="${currentUser.email}" class="card-title"></h5>
+                                <hr/>
                                 <h3>Total Number of Translations</h3>
                                 <h5 th:text="${totalTranslations}"></h5>
+                                <hr/>
+                                <form id="editUser" th:action="@{/user/profile/edit}" th:method="GET">
+
+                                    <input type="submit" value="Edit Profile"/>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -26,3 +33,4 @@
     </main>
 </body>
 </html>
+
