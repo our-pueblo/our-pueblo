@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="fragments/header :: header('Deployment List','')"></head>
 <body>
+<div id="side_nav" th:replace="fragments/sidenav"></div>
     <div class="container container-fluid">
         <div id="container">
     <div th:each="deployment : ${deploymentList}">
