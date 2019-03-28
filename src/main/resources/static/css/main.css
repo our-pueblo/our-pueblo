@@ -111,4 +111,38 @@ div.card-header{
     background-color: #092a3a;
     color: white;
 }
-
+img.card-img-top{
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
+}
+div#aboutUsContainer{
+    margin-top:1em!important;
+}
+div.aboutCard{
+    border:1px solid white;
+}
+.btn-linkedin {
+    margin-left:auto;
+    margin-right:auto;
+    background: #0E76A8;
+    border-radius: 0;
+    color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #084461;
+}
+.btn-linkedin:link, .btn-linkedin:visited {
+    color: #fff;
+}
+.btn-linkedin:active, .btn-linkedin:hover {
+    background: #084461;
+    color: #fff;
+}
+ul.list-group.list-group-flush {
+    list-style:none;
+}
+div#aboutUsContainer li{
+    margin-left: auto;
+    margin-right: auto;
+}

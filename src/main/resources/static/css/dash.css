@@ -9,7 +9,7 @@ body {
 a.navLinks{
     z-index: 1000;
     text-decoration: none;
-    color: #232323;
+    color: white;
     transition: color 0.3s ease;
 }
 

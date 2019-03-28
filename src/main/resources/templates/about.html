@@ -2,20 +2,45 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head th:replace="fragments/header :: header('About Our Pueblo', '')"></head>
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
-    <h1>What is Our Pueblo?</h1>
-    <p>Our Pueblo is an application created to facilitate the volunteer-based translation of the entire City of San Antonio website.</p>
-    <h1>How Does it Work?</h1>
-    <p>The way it works is simple.<br/><br/>
+    <div th:replace="fragments/sidenav :: sidenav"></div>
+    <div class="container-fluid" id="aboutUsContainer">
+    <h1 style="text-align: center;">Meet the Our Pueblo Team!</h1>
+        <div class="row">
+    <div class="card col aboutCard" style="width: 20rem!important;">
+        <img src="/img/MichaelCarranza.jpg" class="card-img-top" alt="Michael Carranza"/>
+        <div class="card-body">
+            <h5 class="card-title" style="text-align: center">Michael Carranza</h5>
+            <p class="card-text">I truly enjoy creating client-facing solutions to real-work problems using my eclectic skill set. My background in behavioral health positions me to excel in hybrid roles that rely on both task-oriented coding and cultivating relationships.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <!--<li class="list-group-item">From: Brownsville, TX</li>-->
+            <li><a href="https://linkedin.com/in/michaelcarranza" title="LinkedIn" class="btn btn-linkedin btn-lg"><i class="fa fa-linkedin fa-fw"></i> LinkedIn</a></li>
+        </ul>
+    </div>
+    <div class="card col aboutCard" style="width: 20rem!important;">
+        <img src="/img/AustinGarza.jpg" class="card-img-top" alt="Austin Garza"/>
+        <div class="card-body">
+            <h5 class="card-title" style="text-align: center">Austin Garza</h5>
+            <p class="card-text">I am a Marine Corps intelligence analyst turned full stack developer. Through code we are able to build meaningful and purposeful applications that have the ability to impact countless people's lives with our work.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <!--<li class="list-group-item">From: San Antonio, TX</li>-->
+            <li><a href="https://linkedin.com/in/austin-garza" title="LinkedIn" class="btn btn-linkedin btn-lg"><i class="fa fa-linkedin fa-fw"></i> LinkedIn</a></li>
 
-        1. Employees log in and request for a page to be translated. (Copy and Paste the URL)<br/>
-        2. Volunteers log in and request a page to translate. (Choose from a list)<br/>
-        3. They compare the original English text with the results from Google Translate, correcting any mistakes.<br/>
-        4. Once their translation is submitted, an employee reviews the text before it is accepted.<br/>
-        5. When an employee accepts a translation, the volunteer is notified via email of the new status.<br/><br/>
-
-        It is just that easy!
-
-    </p>
+        </ul>
+    </div>
+    <div class="card col aboutCard" style="width: 20rem!important;">
+        <img src="/img/RyanGlazer.jpg" class="card-img-top" alt="Ryan Glazer"/>
+        <div class="card-body">
+            <h5 class="card-title" style="text-align: center">Ryan Glazer</h5>
+            <p class="card-text">I have always had a love for technology, in particular computers and the prospect of AI. I greatly enjoy problem solving and learning new things. Few things are as satisfying to me as seeing my code doing its tasks.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <!--<li class="list-group-item">From: Dallas, TX</li>-->
+            <li><a href="https://linkedin.com/in/ryan-e-glazer" title="LinkedIn" class="btn btn-linkedin btn-lg"><i class="fa fa-linkedin fa-fw"></i> LinkedIn</a></li>
+        </ul>
+    </div>
+        </div>
+    </div>
 </body>
 </html>
