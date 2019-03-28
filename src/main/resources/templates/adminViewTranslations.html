@@ -21,6 +21,7 @@
                             <h3>Department:</h3>
                             <h5 th:text="${translation.request.department_id.name}" class="card-title"></h5>
                             <hr/><h3>Status:</h3>
+                            <h5 th:text="${translation.status.status}" class="card-title"></h5>
                             <h1>Untranslated Text:</h1><br/>
                             <p><span th:text="${translation.request.untranslated_text}"></span></p>
                             <h1>Google Translated Text:</h1><br/>
@@ -28,6 +29,7 @@
                             <h1>User Translated Text:</h1><br/>
                             <p><span th:text="${translation.userTranslation}"></span></p>
                             <a th:href="@{/admin/translations/approve/{id}(id=${translation.id})}">Approve Translation</a>
+                            <a th:href="@{/admin/translations/mark/{id}(id=${translation.id})}">Mark for Edits</a>
                             <a th:href="@{/admin/translations/delete/{id}(id=${translation.id})}">Delete Translation</a>
                         </div>
                     </div>
