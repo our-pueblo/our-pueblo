@@ -335,6 +335,9 @@ public class UserController {
         status.setId(201);
         status.setStatus("Approved by Admin");
         translationStatusDao.save(status);
+        status.setId(301);
+        status.setStatus("Reviewed by Admin, Needs Further Edits");
+        translationStatusDao.save(status);
         //Return to the dashboard
         return "redirect:/user/dashboard";
     }
