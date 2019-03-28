@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 public class UserController {
 
@@ -333,6 +335,9 @@ public class UserController {
         status.setId(201);
         status.setStatus("Approved by Admin");
         translationStatusDao.save(status);
+        status.setId(301);
+        status.setStatus("Reviewed by Admin, Needs Further Edits");
+        translationStatusDao.save(status);
         //Return to the dashboard
         return "redirect:/user/dashboard";
     }
@@ -366,7 +371,10 @@ public class UserController {
         } else {
             //If they are get all translations with a status of 101, meaning user reviewed but not admin approved
             Translation_Status status = translationStatusDao.findOne(101L);
-            Iterable<Translation> list = translationDao.findByStatus(status);
+            List<Translation> list = translationDao.findByStatus(status);
+            status = translationStatusDao.findOne(301L);
+            List<Translation> adder = translationDao.findByStatus(status);
+            list.addAll(adder);
             model.addAttribute("list", list);
             model.addAttribute("current", current);
             return "adminViewTranslations";
@@ -400,6 +408,22 @@ public class UserController {
         translationDao.save(translation);
         return "redirect:/user/dashboard";
     }
+
+    @GetMapping("/admin/translations/mark/{id}")
+    public String markForEdits(@PathVariable long id, Model model){
+        User current = getCurrent();
+        if (!current.isAdmin()){
+            return "redirect:/user/dashboard";
+        }
+        else {
+            Translation translation = translationDao.findOne(id);
+            Translation_Status status = translationStatusDao.findOne(301L);
+            translation.setStatus(status);
+            translationDao.save(translation);
+            return "redirect:/admin/translations";
+        }
+    }
+
 
     //Password recovery
     @GetMapping("/user/forgot")

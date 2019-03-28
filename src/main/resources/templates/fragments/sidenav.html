@@ -27,7 +27,7 @@
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/user/translations}" class="navLinks">Your Translations</a></li>
 
                 <!--<a href="#"><li>View My Translations</li></a>-->
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/about}" class="navLinks">About Us</a></li>
+                <li><a th:href="@{/about}" class="navLinks">About Us</a></li>
                 <div th:if="${current}">
                     <div th:if="${current.admin}">
                         <hr/>

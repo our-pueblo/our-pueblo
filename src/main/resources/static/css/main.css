@@ -111,20 +111,6 @@ div.card-header{
     background-color: #092a3a;
     color: white;
 }
-
-*::-webkit-scrollbar {
-    width: 10px;
-}
-
-*::-webkit-scrollbar-thumb {
-    background: #092a3a;
-    border-radius: 20px;
-}
-
-*::-webkit-scrollbar-track {
-    background: #ddd;
-    border-radius: 20px;
-}
 img.card-img-top{
     width:80%;
     margin-left:auto;
