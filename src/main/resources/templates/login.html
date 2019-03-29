@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <!--You need -->
-<head th:replace="fragments/header :: header('Login','/css/login.css')">
+<head>
+    <meta charset="UTF-8" />
+    <title>Log In</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/css/login.css"/>
 </head>
 <body>
     <main>
+        <div id="side_nav" th:replace="fragments/sidenav"></div>
         <div id="container">
+
             <form th:action="@{/login}" method="post">
 
-            <h1 id="company_name">Our Pueblo</h1>
+                <h1 id="company_name">Our Pueblo</h1>
 
                 <div th:if="${param.error}">
                     Invalid Username and Password.
@@ -19,7 +26,7 @@
 
                 <img src="/img/bird-log-nobg.png"/><br/>
                 <input type="text" placeholder="Username" id="username" name="username"/><br/>
-                <input type="password" placeholder="Password" id="pw" name="password"/><br/>
+                <input type="password" placeholder="Password" id="password" name="password"/><br/>
                 <input type="submit" value="Login"/><br/>
                 <span><a th:href="@{/user/forgot}">Forgot Password?</a></span>
             </form>
