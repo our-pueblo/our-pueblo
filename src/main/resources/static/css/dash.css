@@ -153,8 +153,13 @@ div.col-md-6{
     left: 30px;
 }
 
+.fas {
+    padding-right: 15px; !important;
+}
+
 hr {
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, grey, lightgrey, grey);
 }
+

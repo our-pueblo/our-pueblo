@@ -21,30 +21,30 @@
                 <li>Our Pueblo</li>
                 <hr/>
                 <!--<a href="/user/dashboard" class="navLinks"><li>Dashboard</li></a>-->
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/user/profile}" class="navLinks">Profile</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/user/profile}" class="navLinks"><i class="fas fa-user"></i>   Profile</a></li>
                 <!--<a href="#"><li>Translate</li></a>-->
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/translate}" class="navLinks">New Translation</a></li>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/user/translations}" class="navLinks">Your Translations</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/translate}" class="navLinks"><i class="fas fa-plus"></i>   New Translation</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/user/translations}" class="navLinks"><i class="fas fa-scroll"></i>   Your Translations</a></li>
 
                 <!--<a href="#"><li>View My Translations</li></a>-->
-                <li><a th:href="@{/about}" class="navLinks">About Us</a></li>
+                <li><a th:href="@{/about}" class="navLinks"><i class="fas fa-address-card"></i>   About Us</a></li>
                 <div th:if="${current}">
                     <div th:if="${current.admin}">
                         <hr/>
                         <li>Admin Functions</li>
                         <hr/>
-                        <li><a th:href="@{/request}" class="navLinks">Make a Request</a></li>
-                        <li><a th:href="@{/admin/requests}" class="navLinks">View all Requests</a></li>
-                        <li><a th:href="@{/admin/translations}" class="navLinks">View Translations</a></li>
-                        <li><a th:href="@{/admin/userlist}" class="navLinks">User List</a></li>
-                        <li><a th:href="@{/admin/deployment}" class="navLinks">Deployment List</a></li>
+                        <li><a th:href="@{/request}" class="navLinks"><i class="fas fa-plus"></i>   Make a Request</a></li>
+                        <li><a th:href="@{/admin/requests}" class="navLinks"><i class="fas fa-folder"></i>   View all Requests</a></li>
+                        <li><a th:href="@{/admin/translations}" class="navLinks"><i class="fas fa-book-open"></i>   View Translations</a></li>
+                        <li><a th:href="@{/admin/userlist}" class="navLinks"><i class="fas fa-users"></i>   User List</a></li>
+                        <li><a th:href="@{/admin/deployment}" class="navLinks"><i class="fas fa-database"></i>   Deployment List</a></li>
                     </div>
                 </div>
                 <!--<a href="#"><li>Resources</li></a>-->
-                <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}" class="navLinks">Login</a></li>
+                <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}" class="navLinks"><i class="fas fa-sign-in-alt"></i>   Login</a></li>
                 <li sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" th:method="post" id="logoutForm" style="display: inline-block">
-                    <a href="#" onclick="document.getElementById('logoutForm').submit();" class="navLinks">Logout</a>
+                    <a href="#" onclick="document.getElementById('logoutForm').submit();" class="navLinks"><i class="fas fa-sign-out-alt"></i>   Logout</a>
                 </form>
                 </li>
 
