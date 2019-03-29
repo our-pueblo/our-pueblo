@@ -133,6 +133,7 @@ div.aboutCard{
     width: 15%;
     margin-left:5%;
     display: inline;
+    cursor: pointer;
 }
 ul.list-group.list-group-flush {
     list-style:none;
