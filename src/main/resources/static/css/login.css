@@ -123,7 +123,7 @@ input:-webkit-autofill:active {
     transition: background-color 5000s ease-in-out 0s;
 }
 input:-webkit-autofill {
-    -webkit-text-fill-color: #092a3a !important;
+    -webkit-text-fill-color: white !important;
 }
 h1#company_name{
     width:250px;
