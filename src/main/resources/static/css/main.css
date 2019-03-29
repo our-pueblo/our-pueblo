@@ -116,15 +116,7 @@ img.card-img-top{
     margin-left:auto;
     margin-right:auto;
 }
-div#aboutUsContainer{
-    margin-top:1em!important;
-    background-color: #092a3a!important;
-}
-div.aboutCard{
-    border:none;
-    background-color: #092a3a;
-    color: white;
-}
+
 .btn-linkedin {
     width: 15%;
     display:inline;
@@ -139,17 +131,7 @@ ul.list-group.list-group-flush {
     list-style:none;
     display: inline-block;
 }
-div#aboutUsContainer li{
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #092a3a;
-}
-h1#aboutHeading{
-    text-align: center;
-    padding-top:0.5em;
-    padding-bottom:0.5em;
-    color:white;
-}
+
 
 .card-body{
     background-color: #092a3a !important;
