@@ -13,9 +13,9 @@
                         <p>
                         <div th:each="request : ${requests}">
                             <div th:if="${request.status.id == 101}">
-                                <h1>Web Page: <span th:text="${request.web_page}"></span></h1>
+                                <h3>Web Page: <span th:text="${request.web_page}"></span></h3>
                                 <br/>
-                                <h3>Department: <h5 th:text="${request.department_id.getName()}"></h5></h3>
+                                <h3>Department: <span th:text="${request.department_id.getName()}"></span></h3>
                                 <br/>
                                 <h3>Description: <span th:text="${request.description}"></span></h3>
                                 <br/>
