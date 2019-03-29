@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Index', '')">
-    <link rel="stylesheet" href='../static/css/'/>
+<head th:replace="fragments/header :: header('Index', '/css/index.css')">
 </head>
 <body>
 <main>
@@ -21,14 +20,40 @@
                             <p class="card-text">Our Pueblo is an application that was created as a way for volunteers to contribute to the translation of the entire City of San Antonio website.</p>
                         <hr/>
                             <h5 class="card-title">How Does it Work?</h5>
-                            <p style="text-align: left"><br/>
+                            <div class="card-group">
+                                <div class="card">
+                                    <img src="../img/bird-colored.png" class="howTo" alt="..."/>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img src="../img/bird-colored.png" class="howTo" alt="..."/>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <img src="../img/bird-colored.png" class="howTo" alt="..."/>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--<p style="text-align: left"><br/>-->
 
-                                1. Employees log in and request for a page to be translated. (Copy and Paste the URL)<br/>
-                                2. Volunteers log in and request a page to translate. (Choose from a list)<br/>
-                                3. They compare the original English text with the results from Google Translate, correcting any mistakes.<br/>
-                                4. Once their translation is submitted, an employee reviews the text before it is accepted.<br/>
-                                5. When an employee accepts a translation, the volunteer is notified via email of the new status.<br/><br/>
-                            </p><br/>
+                                <!--1. Employees log in and request for a page to be translated. (Copy and Paste the URL)<br/>-->
+                                <!--2. Volunteers log in and request a page to translate. (Choose from a list)<br/>-->
+                                <!--3. They compare the original English text with the results from Google Translate, correcting any mistakes.<br/>-->
+                                <!--4. Once their translation is submitted, an employee reviews the text before it is accepted.<br/>-->
+                                <!--5. When an employee accepts a translation, the volunteer is notified via email of the new status.<br/><br/>-->
+                            <!--</p><br/>-->
                             <p>It is just that simple! Try it for yourself!<br/>
                                 <a href="/login" class="links">Log In</a>
 
