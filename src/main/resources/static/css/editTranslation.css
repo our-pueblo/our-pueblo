@@ -6,7 +6,7 @@ textarea{
     border-radius: 8px;
     padding-bottom: 0;
     height: 60px;
-    background: #092a3a;
+    background: lightslategray;
     color: white;
     cursor: pointer;
     transition: all 1000ms ease-in-out;
