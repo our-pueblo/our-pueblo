@@ -151,3 +151,7 @@ span{
 div.col-md-6{
     left: 30px;
 }
+
+.fas {
+    padding-right: 15px; !important;
+}
