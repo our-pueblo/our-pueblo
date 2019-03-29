@@ -118,16 +118,20 @@ img.card-img-top{
 }
 div#aboutUsContainer{
     margin-top:1em!important;
+    background-color: #092a3a!important;
 }
 div.aboutCard{
-    border:1px solid white;
+    border:none;
+    background-color: #092a3a;
+    color: white;
 }
 .btn-linkedin {
     width: 15%;
     display:inline;
 }
 .btn-github {
-    width: 20%;
+    width: 15%;
+    margin-left:5%;
     display: inline;
 }
 ul.list-group.list-group-flush {
@@ -137,4 +141,11 @@ ul.list-group.list-group-flush {
 div#aboutUsContainer li{
     margin-left: auto;
     margin-right: auto;
+    background-color: #092a3a;
+}
+h1#aboutHeading{
+    text-align: center;
+    padding-top:0.5em;
+    padding-bottom:0.5em;
+    color:white;
 }
