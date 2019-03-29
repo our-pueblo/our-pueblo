@@ -156,5 +156,6 @@ div.col-md-6{
 hr {
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, grey, lightgrey, grey);
+    background-image: linear-gradient(to right, grey, white, grey);
+    width: 100%;
 }
