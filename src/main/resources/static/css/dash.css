@@ -14,13 +14,12 @@ a.navLinks{
 }
 
 a:hover {
-    color: #092a3a;
+    color: lightgrey;
 }
 ul#menu{
-    background-color: #35823E;
+    background-color: #092a3a;
     border: 2px solid black;
-    height: 700px;
-    overflow: auto;
+    overflow: scroll;
 }
 
 #menuToggle {
@@ -74,7 +73,7 @@ ul#menu{
 #menuToggle input:checked ~ span{
     opacity: 1;
     transform: rotate(45deg) translate(-2px, -1px);
-    background: #232323;
+    background: white;
 }
 
 #menuToggle input:checked ~ span:nth-last-child(3){
@@ -88,9 +87,9 @@ ul#menu{
 }
 
 #menu {
-    position: absolute;
+    position: fixed;
     width: 300px;
-    margin: -100px 0 0 0px;
+    margin: -77px 0 0 0px;
     padding: 50px;
     padding-top: 125px;
     /*background: whitesmoke;*/
@@ -150,4 +149,19 @@ span{
 
 div.col-md-6{
     left: 30px;
+}
+
+/*hr {*/
+    /*height: 1px;*/
+    /*!*color: lightgrey;*!*/
+    /*border-top: 3px double lightgrey;*/
+    /*!*background-color: lightgrey;*!*/
+    /*!*border: none;*!*/
+/*}*/
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, grey, lightgrey, grey);
+    width: inherit;
 }
