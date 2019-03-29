@@ -20,6 +20,7 @@ ul#menu{
     background-color: #092a3a;
     border: 2px solid black;
     overflow: scroll;
+    height: 100%;
 }
 
 #menuToggle {
@@ -89,7 +90,8 @@ ul#menu{
 #menu {
     position: fixed;
     width: 300px;
-    margin: -77px 0 0 0px;
+    /*margin: -77px 0 0 0px !important;*/
+    top: 0;
     padding: 50px;
     padding-top: 125px;
     /*background: whitesmoke;*/
@@ -151,17 +153,8 @@ div.col-md-6{
     left: 30px;
 }
 
-/*hr {*/
-    /*height: 1px;*/
-    /*!*color: lightgrey;*!*/
-    /*border-top: 3px double lightgrey;*/
-    /*!*background-color: lightgrey;*!*/
-    /*!*border: none;*!*/
-/*}*/
-
 hr {
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, grey, lightgrey, grey);
-    width: inherit;
 }
