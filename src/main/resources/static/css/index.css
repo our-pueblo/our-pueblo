@@ -5,11 +5,18 @@ img.howTo{
     background-color:inherit!important;
 }
 div#indexRow{
-    margin-top:3%;
+    margin-top:7%;
 }
 #\20 indexCard{
     width: 75% !important;
     margin: .5em !important;
     margin-left: auto !important;
     margin-right: auto !important;
+}
+div.container-fluid{
+    /*margin-top:-2%!important;*/
+
+}
+a.links{
+    padding:25px;
 }

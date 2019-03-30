@@ -8,3 +8,6 @@ div#\ dashboardCard {
     margin-left: auto !important;
     margin-right: auto !important;
 }
+h3#dashboardSubheading{
+    padding-top:0.35em;
+}

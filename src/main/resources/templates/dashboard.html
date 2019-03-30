@@ -12,15 +12,31 @@
                     <div class="col-md-12">
                         <div  id="dashboardCard" class="text-center card border-dark mb-3 shadow container-item">
                             <div class="card-body text-dark">
-                            <h1>Welcome and thank you for registering to use Our Pueblo! Your efforts as a volunteer are essential to this programs existence.</h1>
+                            <h1>Thank you for being a member of Our Pueblo!</h1>
                             <br/>
-                            <h3>If this is your first time using the site here are some tips to get you started!</h3>
-                            <ul style="list-style: none">
-                                <li>Use the side nav to get around the site, just click the icon in the top left to open it.</li>
-                                <li>New Translation will give you a list of requests for translations we have, click on one and you will see the original page text along with a Google translation of the page, make your edits to the translation then just hit submit, an admin will review it as soon as they can!</li>
-                                <li>Your Translations will show all the translations you have made, and if they have yet to be approved bvy an admin it will let you edit or delete them.</li>
-                                <li>Your Profile is just that, your profile! Here you can see what contact details you gave us and change them if you need to</li>
-                            </ul>
+                                <div>
+                                <img src="/img/hamburger.png" alt="hamburger-icon" style="width:64px; float:left"/>
+                                <h3 id="dashboardSubheading">Use the navigation menu in the top left corner to get around.</h3>
+                                </div>
+                                <br/>
+                                <div>
+                                    <a th:href="@{/user/profile}" class="navLinks"><i class="fas fa-user"></i>Profile</a><br/>
+                                    <a th:href="@{/translate}" class="navLinks"><i class="fas fa-plus"></i>New Translation</a><br/>
+                                    <a th:href="@{/user/translations}" class="navLinks"><i class="fas fa-scroll"></i>Your Translations</a><br/>
+                                    <a th:href="@{/about}" class="navLinks"><i class="fas fa-address-card"></i>About Us</a><br/>
+                                    <div th:if="${current}">
+                                        <div th:if="${current.admin}">
+                                            <hr/>
+                                            Admin Functions
+                                            <hr/>
+                                            <a th:href="@{/request}" class="navLinks"><i class="fas fa-plus"></i>   Make a Request</a><br/>
+                                            <a th:href="@{/admin/requests}" class="navLinks"><i class="fas fa-folder"></i>   View all Requests</a><br/>
+                                            <a th:href="@{/admin/translations}" class="navLinks"><i class="fas fa-book-open"></i>   View Translations</a><br/>
+                                            <a th:href="@{/admin/userlist}" class="navLinks"><i class="fas fa-users"></i>   User List</a><br/>
+                                            <a th:href="@{/admin/deployment}" class="navLinks"><i class="fas fa-database"></i>   Deployment List</a>
+                                        </div>
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>
