@@ -124,7 +124,7 @@ public class TranslationController {
             return "redirect:/sorry";
         }
         Translation check = translationDao.findOne(id);
-        if(current!=check.getUser()){
+        if(current!=check.getUser()||!current.isAdmin()){
             return "redirect:/user/dashboard";
         }
         model.addAttribute("deleteID", id);
