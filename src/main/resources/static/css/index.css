@@ -4,3 +4,12 @@ img.howTo{
     width:90px;
     background-color:inherit!important;
 }
+div#indexRow{
+    margin-top:3%;
+}
+#\20 indexCard{
+    width: 75% !important;
+    margin: .5em !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}

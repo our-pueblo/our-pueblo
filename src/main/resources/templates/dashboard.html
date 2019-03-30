@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Dashboard','')"></head>
-<style>
-    body{
-        background: url('/img/sa-market.jpg') fixed no-repeat;
-        background-size: cover;
-    }
-</style>
+<head th:replace="fragments/header :: header('Dashboard','/css/dashboard.css')"></head>
 
 <body>
     <main>
@@ -14,53 +8,26 @@
 
         <div class="container container-fluid">
             <div id="container">
-                <h1>Welcome and thank you for registering to use Our Pueblo! Your efforts as a volunteer are essential to this programs existence.</h1>
-                <br/>
-                <h3>If this is your first time using the site here are some tips to get you started!</h3>
-                <ul>
-                    <li>Use the side nav to get around the site, just click the icon in the top left ot open it.</li>
-                    <li>New Translation will give you a list of requests for translations we have, click on one and you will see the original page text along with a Google translation of the page, make your edits to the translation then just hit submit, an admin will review it as soon as they can!</li>
-                    <li>Your Translations will show all the translations you have made, and if they have yet to be approved bvy an admin it will let you edit or delete them.</li>
-                    <li>Your Profile is just that, your profile! Here you can see what contact details you gave us and change them if you need to</li>
-                </ul>
-                <br/>
+                <div class="row" id="indexRow">
+                    <div class="col-md-12">
+                        <div  id="dashboardCard" class="text-center card border-dark mb-3 shadow container-item">
+                            <div class="card-body text-dark">
+                            <h1>Welcome and thank you for registering to use Our Pueblo! Your efforts as a volunteer are essential to this programs existence.</h1>
+                            <br/>
+                            <h3>If this is your first time using the site here are some tips to get you started!</h3>
+                            <ul style="list-style: none">
+                                <li>Use the side nav to get around the site, just click the icon in the top left to open it.</li>
+                                <li>New Translation will give you a list of requests for translations we have, click on one and you will see the original page text along with a Google translation of the page, make your edits to the translation then just hit submit, an admin will review it as soon as they can!</li>
+                                <li>Your Translations will show all the translations you have made, and if they have yet to be approved bvy an admin it will let you edit or delete them.</li>
+                                <li>Your Profile is just that, your profile! Here you can see what contact details you gave us and change them if you need to</li>
+                            </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
-    <!--<img src="/img/bird-log-nobg.png" class="owner-img" onclick="openNav()" />-->
-    <!--<div id="mainContent">-->
-        <!--<h1>User Features</h1>-->
-        <!--<br/>-->
-        <!--<h4>View Profile</h4>-->
-        <!--<br/>-->
-        <!--<a href="/user/profile">View Profile</a>-->
-        <!--<h4>Request a Translation</h4>-->
-        <!--<br/>-->
-        <!--<a href="/translate/request">Request a Page to Translate</a>-->
-        <!--<h4>View Submitted Translations</h4>-->
-        <!--<br/>-->
-        <!--&lt;!&ndash;TODO Create this&ndash;&gt;-->
-        <!--<a href="/user/translations">View all Translations you have made</a>-->
-        <!--<hr/>-->
-        <!--<h1>Admin Features</h1>-->
-        <!--<br/>-->
-        <!--<h4>View User List</h4>-->
-        <!--<br/>-->
-        <!--<a href="/admin/userlist">View User List</a>-->
-        <!--<h4>View All Requests</h4>-->
-        <!--<br/>-->
-        <!--&lt;!&ndash;TODO Create this&ndash;&gt;-->
-        <!--<a href="/admin/requests">View All Requests</a>-->
-        <!--<h4>View All Translations</h4>-->
-        <!--<br/>-->
-        <!--&lt;!&ndash;TODO Create this&ndash;&gt;-->
-        <!--<a href="admin/translations">View All Translations</a>-->
-        <!--<h4>View Pages with text ready for deployment</h4>-->
-        <!--<br/>-->
-        <!--&lt;!&ndash;TODO Create this&ndash;&gt;-->
-        <!--<a href="/admin/deployment">View Pages Ready for Deployment</a>-->
-    <!--</div>-->
-    <!--<script src="/static/js/showText.js"></script>-->
 
 </body>
 </html>

@@ -1,78 +1,10 @@
-
-#contain::before{
-    /*background: inherit;*/
-    /*box-shadow: inset 0 0 0 200px rgba(255,255,255,0.2);*/
-}
-
-div.card{
-    width: 100% !important;
-}
-
-.container-item{
-    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2) !important;
-    border-radius: 5px;
-    /*z-index: 1 !important;*/
-
-}
-.container-item:before{
-
-    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .8) !important;
-    content: "" !important;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    filter: blur(1.5rem) !important;
-    margin: -20px;
-
-
-
-}
-
-main{
-    /*background: url('../img/sa-skyline-2.jpg') fixed no-repeat;*/
-    /*background-size: cover;*/
-}
-
-div.container{
-    background: url('../img/sa-skyline-2.jpg') fixed no-repeat;
+body{
+    background: url('/img/sa-market.jpg') fixed no-repeat;
     background-size: cover;
 }
-
-html{
-    background: url('../img/sa-skyline-2.jpg') fixed no-repeat;
-    background-size: cover;
+div#\ dashboardCard {
+    width: 75% !important;
+    margin: .5em !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
-.container{
-    width: 80% !important;
-}
-#container{
-    width: 1200px !important;
-    height: 600px !important;
-    background: inherit !important;
-    position: absolute ;
-    overflow: hidden !important;
-    top: 10% !important;
-    left: 10% !important;
-    margin-left: 10px !important;
-    margin-top: 25px !important;
-    border-radius: 8px!important;
-}
-#container:before{
-    width: 1300px !important;
-    height: 800px!important;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: inherit;
-    box-shadow: inset 0 0 0 200px rgba(255,255,255,0.2) !important;
-    filter: blur(1.5rem) !important;
-}
-div.row{
-    width: 90% !important;
-}
-
