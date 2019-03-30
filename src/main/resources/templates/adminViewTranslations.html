@@ -32,7 +32,7 @@
                             <p><span th:text="${translation.userTranslation}"></span></p>
                             <a th:href="@{/admin/translations/approve/{id}(id=${translation.id})}">Approve Translation</a>
                             <a th:href="@{/admin/translations/mark/{id}(id=${translation.id})}">Mark for Edits</a>
-                            <a th:href="@{/admin/translations/delete/{id}(id=${translation.id})}">Delete Translation</a>
+                            <a th:href="@{/translate/delete/{id}(id=${translation.id})}">Delete Translation</a>
                         </div>
                     </div>
                 </div>
