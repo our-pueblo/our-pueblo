@@ -15,26 +15,15 @@
                             <h1>Thank you for being a member of Our Pueblo!</h1>
                             <br/>
                                 <div>
-                                <img src="/img/hamburger.png" alt="hamburger-icon" style="width:64px; float:left"/>
+                                <!--<img src="/img/hamburger.png" alt="hamburger-icon" style="width:64px; float:left"/>-->
                                 <h3 id="dashboardSubheading">Use the navigation menu in the top left corner to get around.</h3>
                                 </div>
                                 <br/>
                                 <div>
-                                    <a th:href="@{/user/profile}" class="navLinks"><i class="fas fa-user"></i>Profile</a><br/>
-                                    <a th:href="@{/translate}" class="navLinks"><i class="fas fa-plus"></i>New Translation</a><br/>
-                                    <a th:href="@{/user/translations}" class="navLinks"><i class="fas fa-scroll"></i>Your Translations</a><br/>
-                                    <a th:href="@{/about}" class="navLinks"><i class="fas fa-address-card"></i>About Us</a><br/>
-                                    <div th:if="${current}">
-                                        <div th:if="${current.admin}">
-                                            <hr/>
-                                            Admin Functions
-                                            <hr/>
-                                            <a th:href="@{/request}" class="navLinks"><i class="fas fa-plus"></i>   Make a Request</a><br/>
-                                            <a th:href="@{/admin/requests}" class="navLinks"><i class="fas fa-folder"></i>   View all Requests</a><br/>
-                                            <a th:href="@{/admin/translations}" class="navLinks"><i class="fas fa-book-open"></i>   View Translations</a><br/>
-                                            <a th:href="@{/admin/userlist}" class="navLinks"><i class="fas fa-users"></i>   User List</a><br/>
-                                            <a th:href="@{/admin/deployment}" class="navLinks"><i class="fas fa-database"></i>   Deployment List</a>
-                                        </div>
+                                    <i class="fas fa-user" style="margin-left:1em;"></i><span style="text-decoration: underline;">Profile:</span> View and edit your contact information.<br/>
+                                    <i class="fas fa-plus"></i><span style="text-decoration: underline;">New Translation:</span> Choose a page to translate.<br/>
+                                    <i class="fas fa-scroll" style="margin-left:5em;"></i><span style="text-decoration: underline;">Your Translations:</span> See all the pages you have translated.<br/>
+                                    <i class="fas fa-address-card" style="margin-left:2em;"></i><span style="text-decoration: underline;">About Us:</span> Learn more about the Our Pueblo team.<br/>
                                 </div>
                                 </div>
                             </div>
@@ -42,7 +31,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </main>
 
 </body>
