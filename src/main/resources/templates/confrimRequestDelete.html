@@ -16,7 +16,7 @@
                                 <form id="deleteForm" th:action="@{/admin/requests/delete}" method="post">
                                     <div class="form-group">
                                         <input type="hidden" th:value="${id}" name="deleteID" id="deleteID"/>
-                                        <input type="button"  value="No" />
+                                        <input type="button" onclick="location.href='/admin/requests';"  value="No" />
                                         <br/>
                                         <br/>
                                         <input type="submit" value="Yes"/>
