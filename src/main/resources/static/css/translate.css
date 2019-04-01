@@ -14,3 +14,7 @@ input[type="submit"]:hover{
     background: green !important;
 }
 
+textarea{
+    border-radius: 8px;
+    padding: 20px;
+}
