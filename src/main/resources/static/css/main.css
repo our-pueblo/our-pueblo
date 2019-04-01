@@ -63,3 +63,40 @@ ul.list-group.list-group-flush {
     background-color: white !important;
     color: #092a3a !important;
 }
+
+.a-button {
+
+    display: inline;
+    width: 75px;
+    height: 15px;
+    background: lightslategrey;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    transition: all 1000ms ease-in-out;
+    text-decoration: none;
+
+}
+.a-button:hover{
+    background-color: green;
+}
+
+.a-button-red{
+    display: inline;
+    width: 75px;
+    height: 15px;
+    background: lightslategrey;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    transition: all 1000ms ease-in-out;
+    text-decoration: none;
+}
+
+.a-button-red:hover{
+    background-color: red;
+}
