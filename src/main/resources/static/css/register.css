@@ -1,22 +1,22 @@
 
-#register_button:hover{
-    background: green;
-}
-#register_button{
-    border: 0!important;
-    border-radius: 8px!important;
-    padding-bottom: 0!important;
-    height: 60px!important;
-    background: #092a3a!important;
-    color: white!important;
-    cursor: pointer!important;
-    transition: none!important;
-    margin-left: auto!important;
-    width: 50%!important;
-    margin-right: auto!important;
-    margin-top:5%;
+/*#register_button:hover{*/
+    /*background: green;*/
+/*}*/
+/*#register_button{*/
+    /*border: 0!important;*/
+    /*border-radius: 8px!important;*/
+    /*padding-bottom: 0!important;*/
+    /*height: 60px!important;*/
+    /*background: #092a3a!important;*/
+    /*color: white!important;*/
+    /*cursor: pointer!important;*/
+    /*transition: none!important;*/
+    /*margin-left: auto!important;*/
+    /*width: 50%!important;*/
+    /*margin-right: auto!important;*/
+    /*margin-top:5%;*/
 
-}
+/*}*/
 div#registerCard{
     width:50%!important;
     margin-left: auto!important;
@@ -57,6 +57,28 @@ form#createUser>label{
 a.links{
     padding-left:25px;
     padding-right:25px;
+}
+
+input[type="submit"]{
+    border: 0!important;;
+    border-radius: 8px!important;;
+    padding-bottom: 0!important;;
+    height: 60px!important;;
+    background: lightslategray!important;;
+    color: white!important;;
+    cursor: pointer!important;;
+    transition: all 1000ms ease-in-out!important;;
+    width: 50% !important;
+    margin-top: 2em;
+    margin-left: auto!important;
+    margin-right: auto!important;
+
+}
+label{
+    margin-top:.75em;
+}
+input[type="submit"]:hover{
+    background: green!important;;
 }
 @media screen and (min-width: 700px) {
     input#password{
