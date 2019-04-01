@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head th:replace="fragments/header :: header('Confirm Delete','')"></head>
+<head th:replace="fragments/header :: header('Confirm Delete','/css/confirmDelete.css')"></head>
 <body>
-    <div th:replace="fragments/navbar :: navbar"></div>
-    <h1 style="color: red;">ARE YOU SURE YOU WANT TO DELETE THIS TRANSLATION?</h1>
-    <form id="deleteForm" th:action="@{/admin/requests/delete}" method="post">
-        <div class="form-group">
-            <input type="hidden" th:value="${id}" name="deleteID" id="deleteID"/>
-            <input type="button" class="btn btn-block btn-primary" onclick="location.href='/user/dashboard';" value="No" />
-            <input type="submit" class="btn btn-block btn-primary" value="Yes"/>
+    <!--<div th:replace="fragments/navbar :: navbar"></div>-->
+    <!--<h1 style="color: red;">ARE YOU SURE YOU WANT TO DELETE THIS TRANSLATION?</h1>-->
+    <!--<form id="deleteForm" th:action="@{/admin/requests/delete}" method="post">-->
+        <!--<div class="form-group">-->
+            <!--<input type="hidden" th:value="${id}" name="deleteID" id="deleteID"/>-->
+            <!--<input type="button" class="btn btn-block btn-primary" q value="No" />-->
+            <!--<input type="submit" class="btn btn-block btn-primary" value="Yes"/>-->
+        <!--</div>-->
+    <!--</form>-->
+
+    <main>
+        <div id="side_nav" th:replace="fragments/sidenav"></div>
+
+        <div class="container container-fluid">
+            <div id="container">
+                <div class="row">
+                    <div class="col">
+                        <div  class="text-center card border-dark mb-3 shadow container-item">
+                            <div class="card-header">Confirm Request Deletion</div>
+                            <div class="card-body text-dark">
+                                <h1 style="color: red;">ARE YOU SURE YOU WANT TO DELETE THIS TRANSLATION?</h1>
+                                <form id="deleteForm" th:action="@{/admin/requests/delete}" method="post">
+                                    <div class="form-group">
+                                        <input type="hidden" th:value="${id}" name="deleteID" id="deleteID"/>
+                                        <input type="button"  value="No" />
+                                        <br/>
+                                        <br/>
+                                        <input type="submit" value="Yes"/>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
+    </main>
 </body>
 </html>
