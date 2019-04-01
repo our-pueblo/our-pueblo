@@ -39,10 +39,10 @@
                                         <p th:if="${!user.active}">Account Status: Deactivated</p>
                                         <p th:if="${user.admin}">Account Type: Admin</p>
                                         <p th:if="${!user.admin}">Account Type: User</p>
-                                        <a th:href="@{/admin/userlist/toggle/{userID}(userID=${user.id})}">Change
+                                        <a class="a-button" th:href="@{/admin/userlist/toggle/{userID}(userID=${user.id})}">Change
                                             account
                                             status</a>
-                                        <a th:href="@{/admin/userlist/makeadmin/{userID}(userID=${user.id})}"
+                                        <a class="a-button" th:href="@{/admin/userlist/makeadmin/{userID}(userID=${user.id})}"
                                            th:if="${!user.admin}">Make user admin</a>
                                         <hr/>
 
