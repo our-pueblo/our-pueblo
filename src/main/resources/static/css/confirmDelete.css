@@ -1,0 +1,31 @@
+input[type="submit"]{
+    border: 0;
+    border-radius: 8px;
+    padding-bottom: 0;
+    height: 60px;
+    background: lightslategray;
+    color: white;
+    cursor: pointer;
+    transition: all 1000ms ease-in-out;
+    width: 25% !important;
+
+}
+input[type="submit"]:hover{
+    background: green;
+}
+input[type="button"]{
+    border: 0;
+    border-radius: 8px;
+    padding-bottom: 0;
+    height: 60px;
+    background: lightslategray;
+    color: white;
+    cursor: pointer;
+    transition: all 1000ms ease-in-out;
+    width: 25% !important;
+
+}
+
+input[type="button"]:hover{
+    background-color: red;
+}
