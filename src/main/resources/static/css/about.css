@@ -3,6 +3,9 @@ div#aboutUsContainer li{
     margin-right: auto;
     background-color: #092a3a;
 }
+div.container.container-fluid{
+    background-color: #092a3a!important;
+}
 h1#aboutHeading{
     text-align: center;
     padding-top:0.5em;
@@ -13,8 +16,27 @@ div#aboutUsContainer{
      margin-top:1em!important;
      background-color: #092a3a!important;
  }
-div.aboutCard{
+div.card.col.aboutCard{
     border:none;
     background-color: #092a3a;
     color: white;
+
+}
+.btn-linkedin {
+    width: 35px;
+    display:inline;
+}
+.btn-github {
+    width: 35px;
+    margin-left:5%;
+    display: inline;
+    cursor: pointer;
+}
+div.aboutCard{
+    background-color: #092a3a!important;
+    border: none!important;
+}
+div.card{
+    background-color: #092a3a!important;
+    border: none!important;
 }

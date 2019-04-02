@@ -25,7 +25,6 @@ div.card{
     margin: .5em !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
-
 }
 body {
     background: url('../img/sa-skyline-2.jpg') fixed no-repeat;
@@ -43,16 +42,7 @@ img.card-img-top{
     margin-right:auto;
 }
 
-.btn-linkedin {
-    width: 15%;
-    display:inline;
-}
-.btn-github {
-    width: 15%;
-    margin-left:5%;
-    display: inline;
-    cursor: pointer;
-}
+
 ul.list-group.list-group-flush {
     list-style:none;
     display: inline-block;
@@ -69,7 +59,6 @@ ul.list-group.list-group-flush {
 }
 
 .a-button {
-
     display: inline;
     width: 75px;
     height: 15px;
@@ -81,6 +70,7 @@ ul.list-group.list-group-flush {
     font-weight: bold;
     transition: all 1000ms ease-in-out;
     text-decoration: none;
+    margin: 1.5em;
 
 }
 .a-button:hover{
