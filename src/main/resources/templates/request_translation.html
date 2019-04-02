@@ -8,22 +8,20 @@
         <div class="row">
             <div class="col">
                 <div class="card border-dark mb-3 shadow">
-                    <div class="card-header">
-                        <Re>Translate Request</Re>
-                    </div>
+                    <div class="card-header">Translate Request</div>
                     <div class="card-body">
                         <p>
                         <div th:each="request : ${requests}">
                             <div th:if="${request.status.id == 101}">
-                                <h1>Web Page: <span th:text="${request.web_page}"></span></h1>
+                                <h3>Web Page: <span th:text="${request.web_page}"></span></h3>
                                 <br/>
-                                <h3>Department: <h5 th:text="${request.department_id.getName()}"></h5></h3>
+                                <h3>Department: <span th:text="${request.department_id.getName()}"></span></h3>
                                 <br/>
                                 <h3>Description: <span th:text="${request.description}"></span></h3>
                                 <br/>
                                 <h3>Status: <span th:text="${request.status.getStatus()}"></span></h3>
                                 <br/>
-                                <a th:href="@{/translate/{id}(id=${request.id})}">Translate This Page</a>
+                                <a class="a-button" th:href="@{/translate/{id}(id=${request.id})}">Translate This Page</a>
                                 <hr/>
                             </div>
                         </div>

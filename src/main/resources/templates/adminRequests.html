@@ -21,7 +21,7 @@
                                 <h5 th:text="${request.department_id.name}" class="card-title"></h5>
                                 <h3>Status:</h3>
                                 <h5 th:text="${request.status.status}"></h5>
-                                <a th:href="@{/admin/requests/delete/{id}(id=${request.id})}">Delete this Request</a>
+                                <a class="a-button" th:href="@{/admin/requests/delete/{id}(id=${request.id})}">Delete this Request</a>
                             </div>
                         </div>
                     </div>

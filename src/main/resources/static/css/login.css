@@ -62,7 +62,9 @@ input{
     padding-bottom: 10px;
     font-size: 18px;
     font-weight: bold;
-    color: #092a3a;
+    color: white;
+    text-shadow: 2px 2px slategrey;
+
 }
 input[type="submit"]{
     border: 0;
