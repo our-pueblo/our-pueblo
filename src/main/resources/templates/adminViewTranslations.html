@@ -32,7 +32,7 @@
                             <p><span th:text="${translation.userTranslation}"></span></p>
                             <a class="a-button"  th:href="@{/admin/translations/approve/{id}(id=${translation.id})}">Approve Translation</a>
                             <a class="a-button" th:href="@{/admin/translations/mark/{id}(id=${translation.id})}">Mark for Edits</a>
-                            <a class="a-button-red" th:href="@{/translate/delete/{id}(id=${translation.id})}">Delete Translation</a>
+                            <a class="a-button-red" style="margin-left: 1.25em" th:href="@{/translate/delete/{id}(id=${translation.id})}">Delete Translation</a>
                         </div>
                     </div>
                 </div>
