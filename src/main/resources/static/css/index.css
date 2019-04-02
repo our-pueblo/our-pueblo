@@ -7,11 +7,12 @@ img.howTo{
 div#indexRow{
     margin-top:7%;
 }
-#\20 indexCard{
+div#indexCard{
     width: 75% !important;
     margin: .5em !important;
     margin-left: auto !important;
     margin-right: auto !important;
+    z-index:-1!important;
 }
 div.container-fluid{
     /*margin-top:-2%!important;*/
