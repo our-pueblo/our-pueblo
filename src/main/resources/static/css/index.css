@@ -12,7 +12,6 @@ div#indexCard{
     margin: .5em !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    z-index:-1!important;
 }
 div.container-fluid{
     /*margin-top:-2%!important;*/

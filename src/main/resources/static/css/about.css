@@ -3,6 +3,9 @@ div#aboutUsContainer li{
     margin-right: auto;
     background-color: #092a3a;
 }
+div.container.container-fluid{
+    background-color: #092a3a!important;
+}
 h1#aboutHeading{
     text-align: center;
     padding-top:0.5em;
@@ -17,8 +20,23 @@ div.card.col.aboutCard{
     border:none;
     background-color: #092a3a;
     color: white;
-    z-index:-1!important;
+
 }
-img.card-img-top{
-    z-index: -1!important;
+.btn-linkedin {
+    width: 35px;
+    display:inline;
+}
+.btn-github {
+    width: 35px;
+    margin-left:5%;
+    display: inline;
+    cursor: pointer;
+}
+div.aboutCard{
+    background-color: #092a3a!important;
+    border: none!important;
+}
+div.card{
+    background-color: #092a3a!important;
+    border: none!important;
 }
