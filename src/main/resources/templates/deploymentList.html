@@ -10,13 +10,13 @@
                 <div class="col">
                     <div  class="text-center card border-dark mb-3 shadow container-item" style="max-width: 100%;">
                         <div class="card-header">Request URL: <br/>
-                            <span th:text="${deployment.request.web_page}"></span>
+                            <a th:href="${deployment.request.web_page}"><span th:text="${deployment.request.web_page}"></span></a>
                         </div>
                         <div class="card-body text-dark">
                             <h3>Translation By:</h3>
                             <h5 th:text="${deployment.user.username}" class="card-title"></h5>
-                            <h3>Timestamp:</h3>
-                            <h5 th:text="${deployment.time}" class="card-title"></h5>
+                            <h3>Created:</h3>
+                            <h5 th:text="${#dates.format(deployment.time, 'MM-dd-YYYY')}" class="card-title"></h5>
                             <h3>Translation:</h3>
                             <h5 th:text="${deployment.userTranslation}"></h5>
 
