@@ -1,12 +1,11 @@
-body{
-    background: url('/img/sa-market.jpg') fixed no-repeat;
-    background-size: cover;
-}
-div#\ dashboardCard {
+/*body{*/
+/*}*/
+div#dashboardCard {
     width: 75% !important;
     margin: .5em !important;
     margin-left: auto !important;
     margin-right: auto !important;
+    z-index:-1!important;
 }
 h3#dashboardSubheading{
     padding-top:0.35em;

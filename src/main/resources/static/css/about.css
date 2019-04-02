@@ -13,8 +13,12 @@ div#aboutUsContainer{
      margin-top:1em!important;
      background-color: #092a3a!important;
  }
-div.aboutCard{
+div.card.col.aboutCard{
     border:none;
     background-color: #092a3a;
     color: white;
+    z-index:-1!important;
+}
+img.card-img-top{
+    z-index: -1!important;
 }
