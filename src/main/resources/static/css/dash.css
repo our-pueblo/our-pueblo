@@ -1,11 +1,9 @@
-
 body {
     margin: 0;
     padding: 0;
     /*background-color: whitesmoke !important;*/
     z-index: 3;
 }
-
 
 a.navLinks{
     z-index: 1000;
@@ -27,11 +25,12 @@ ul#menu{
 #menuToggle {
     display: block;
     position: sticky;
-    top: 5% !important;
-    left: 3% !important;
-    z-index: 999 !important;
+    top: 50px;
+    left: 50px;
+    z-index: 1;
     -webkit-user-select: none;
     user-select: none;
+    position: -webkit-sticky;
 }
 
 #menuToggle input {
@@ -39,11 +38,11 @@ ul#menu{
     width: 40px;
     height: 32px;
     position: absolute;
-    top: 5% !important;
-    left: 3% !important;
+    top: -7px;
+    left: -5px;
     cursor: pointer;
     opacity: 0;
-    z-index: 1000 !important;
+    z-index: 2;
     -webkit-touch-callout: none;
 }
 
@@ -56,8 +55,6 @@ ul#menu{
     position: relative;
     background: #cdcdcd;
     border-radius: 3px;
-    top: 5% !important;
-    left: 3% !important;
     z-index: 1;
     transform-origin: 4px 0px;
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
@@ -67,20 +64,17 @@ ul#menu{
 
 #menuToggle span:first-child {
     transform-origin: 0% 0%;
-    z-index: 1001;
 }
 
 #menuToggle span:nth-last-child(2)
 {
     transform-origin: 0% 100%;
-    z-index: 1001;
 }
 
 #menuToggle input:checked ~ span{
     opacity: 1;
     transform: rotate(45deg) translate(-2px, -1px);
     background: white;
-    z-index: 1001;
 }
 
 #menuToggle input:checked ~ span:nth-last-child(3){
@@ -107,10 +101,10 @@ ul#menu{
     transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 img#navlogo{
-width:64px;
-float:left;
-margin-top:-15px;
-margin-right:10px;
+    width:64px;
+    float:left;
+    margin-top:-15px;
+    margin-right:10px;
 
 }
 #menu li{
@@ -168,18 +162,4 @@ hr {
     height: 1px;
     background-image: linear-gradient(to right, grey, white, grey);
     width: 100%;
-}
-
-/*z index changes*/
-
-ul#menu{
-    z-index: 999;
-}
-
-#menuToggle{
-    z-index: 999;
-}
-
-#menuToggle input{
-    z-index: 999;
 }
