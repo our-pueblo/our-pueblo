@@ -5,6 +5,10 @@ body{
     /*background-color: #092a3a !important;*/
 }
 
+*{
+    z-index: 0;
+}
+
 div.container-fluid{
     color: black;
     width: 80%;
